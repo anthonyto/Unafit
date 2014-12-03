@@ -2,6 +2,11 @@
 	<p id="notice"><%= notice %></p>
 
 	<!-- Show all the gyms here -->
+	<ul>
+		<% @gyms.each do |gym| %>
+			<li><%= gym.name %></li>
+		<% end %>
+	</ul>	
 
 	<%= link_to 'Edit User', edit_user_path(@user) %> |
 	<%= link_to 'Create a new gym', new_gym_path %>
