@@ -1,0 +1,99 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gym.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @gym.email %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @gym.phone_number %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @gym.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @gym.state %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @gym.street %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @gym.lat %>
+</p>
+
+<p>
+  <strong>Lng:</strong>
+  <%= @gym.lng %>
+</p>
+
+<p>
+  <strong>2 gym passes:</strong>
+  <%= @gym.2_gym_passes %>
+</p>
+
+<p>
+  <strong>3 gym passes:</strong>
+  <%= @gym.3_gym_passes %>
+</p>
+
+<p>
+  <strong>4 gym passes:</strong>
+  <%= @gym.4_gym_passes %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @gym.status %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gym.description %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @gym.link %>
+</p>
+
+<p>
+  <strong>Profile image:</strong>
+  <%= @gym.profile_image %>
+</p>
+
+<p>
+  <strong>Logo image:</strong>
+  <%= @gym.logo_image %>
+</p>
+
+<p>
+  <strong>Showers:</strong>
+  <%= @gym.showers %>
+</p>
+
+<p>
+  <strong>Classes:</strong>
+  <%= @gym.classes %>
+</p>
+
+<p>
+  <strong>Reservation policy:</strong>
+  <%= @gym.reservation_policy %>
+</p>
+
+<%= link_to 'Edit', edit_gym_path(@gym) %> |
+<%= link_to 'Back', gyms_path %>

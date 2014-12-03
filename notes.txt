@@ -1,1 +1,3 @@
 rails g scaffold User first_name:string last_name:string email:string phone_number:string city:string state:string street:string zip:string lat:decimal lng:decimal type:string number_of_sessions:integer
+
+rails generate scaffold Gym name:string email:string phone_number:string city:string state:string street:string lat:decimal  lng:decimal 2_gym_passes:int 3_gym_passes:int 4_gym_passes:int status:string description:text link:string profile_image:string logo_image:string showers:boolean classes:text reservation_policy:text 

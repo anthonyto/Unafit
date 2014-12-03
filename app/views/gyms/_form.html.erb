@@ -1,0 +1,93 @@
+<%= form_for(@gym) do |f| %>
+  <% if @gym.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gym.errors.count, "error") %> prohibited this gym from being saved:</h2>
+
+      <ul>
+      <% @gym.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :street %><br>
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :lng %><br>
+    <%= f.text_field :lng %>
+  </div>
+  <div class="field">
+    <%= f.label :2_gym_passes %><br>
+    <%= f.text_field :2_gym_passes %>
+  </div>
+  <div class="field">
+    <%= f.label :3_gym_passes %><br>
+    <%= f.text_field :3_gym_passes %>
+  </div>
+  <div class="field">
+    <%= f.label :4_gym_passes %><br>
+    <%= f.text_field :4_gym_passes %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_image %><br>
+    <%= f.text_field :profile_image %>
+  </div>
+  <div class="field">
+    <%= f.label :logo_image %><br>
+    <%= f.text_field :logo_image %>
+  </div>
+  <div class="field">
+    <%= f.label :showers %><br>
+    <%= f.check_box :showers %>
+  </div>
+  <div class="field">
+    <%= f.label :classes %><br>
+    <%= f.text_area :classes %>
+  </div>
+  <div class="field">
+    <%= f.label :reservation_policy %><br>
+    <%= f.text_area :reservation_policy %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

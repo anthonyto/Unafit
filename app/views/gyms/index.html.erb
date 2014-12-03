@@ -1,0 +1,61 @@
+<h1>Listing gyms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone number</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Street</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>2 gym passes</th>
+      <th>3 gym passes</th>
+      <th>4 gym passes</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Profile image</th>
+      <th>Logo image</th>
+      <th>Showers</th>
+      <th>Classes</th>
+      <th>Reservation policy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gyms.each do |gym| %>
+      <tr>
+        <td><%= gym.name %></td>
+        <td><%= gym.email %></td>
+        <td><%= gym.phone_number %></td>
+        <td><%= gym.city %></td>
+        <td><%= gym.state %></td>
+        <td><%= gym.street %></td>
+        <td><%= gym.lat %></td>
+        <td><%= gym.lng %></td>
+        <td><%= gym.2_gym_passes %></td>
+        <td><%= gym.3_gym_passes %></td>
+        <td><%= gym.4_gym_passes %></td>
+        <td><%= gym.status %></td>
+        <td><%= gym.description %></td>
+        <td><%= gym.link %></td>
+        <td><%= gym.profile_image %></td>
+        <td><%= gym.logo_image %></td>
+        <td><%= gym.showers %></td>
+        <td><%= gym.classes %></td>
+        <td><%= gym.reservation_policy %></td>
+        <td><%= link_to 'Show', gym %></td>
+        <td><%= link_to 'Edit', edit_gym_path(gym) %></td>
+        <td><%= link_to 'Destroy', gym, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gym', new_gym_path %>
