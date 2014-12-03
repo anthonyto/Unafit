@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  # root 'gyms#index'
+  root 'users#show'
 
   resources :gyms
 
   devise_for :users
   resources :users
 
-  root 'gyms#index'
 end
