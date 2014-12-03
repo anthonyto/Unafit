@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # root 'gyms#index'
-  root 'users#show'
+  root 'welcome#index'
 
   resources :gyms
 
