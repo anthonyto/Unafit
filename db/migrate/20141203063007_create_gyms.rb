@@ -9,9 +9,9 @@ class CreateGyms < ActiveRecord::Migration
       t.string :street
       t.decimal :lat
       t.decimal :lng
-      t.int :2_gym_passes
-      t.int :3_gym_passes
-      t.int :4_gym_passes
+      t.integer :two_gym_passes
+      t.integer :three_gym_passes
+      t.integer :four_gym_passes
       t.string :status
       t.text :description
       t.string :link

@@ -12,9 +12,9 @@ RSpec.describe "gyms/index", :type => :view do
         :street => "Street",
         :lat => "9.99",
         :lng => "9.99",
-        :2_gym_passes => "",
-        :3_gym_passes => "",
-        :4_gym_passes => "",
+        :two_gym_passes => 1,
+        :three_gym_passes => 2,
+        :four_gym_passes => 3,
         :status => "Status",
         :description => "MyText",
         :link => "Link",
@@ -33,9 +33,9 @@ RSpec.describe "gyms/index", :type => :view do
         :street => "Street",
         :lat => "9.99",
         :lng => "9.99",
-        :2_gym_passes => "",
-        :3_gym_passes => "",
-        :4_gym_passes => "",
+        :two_gym_passes => 1,
+        :three_gym_passes => 2,
+        :four_gym_passes => 3,
         :status => "Status",
         :description => "MyText",
         :link => "Link",
@@ -58,9 +58,9 @@ RSpec.describe "gyms/index", :type => :view do
     assert_select "tr>td", :text => "Street".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
+    assert_select "tr>td", :text => 1.to_s, :count => 2
+    assert_select "tr>td", :text => 2.to_s, :count => 2
+    assert_select "tr>td", :text => 3.to_s, :count => 2
     assert_select "tr>td", :text => "Status".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
     assert_select "tr>td", :text => "Link".to_s, :count => 2

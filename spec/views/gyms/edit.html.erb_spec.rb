@@ -11,9 +11,9 @@ RSpec.describe "gyms/edit", :type => :view do
       :street => "MyString",
       :lat => "9.99",
       :lng => "9.99",
-      :2_gym_passes => "",
-      :3_gym_passes => "",
-      :4_gym_passes => "",
+      :two_gym_passes => 1,
+      :three_gym_passes => 1,
+      :four_gym_passes => 1,
       :status => "MyString",
       :description => "MyText",
       :link => "MyString",
@@ -46,11 +46,11 @@ RSpec.describe "gyms/edit", :type => :view do
 
       assert_select "input#gym_lng[name=?]", "gym[lng]"
 
-      assert_select "input#gym_2_gym_passes[name=?]", "gym[2_gym_passes]"
+      assert_select "input#gym_two_gym_passes[name=?]", "gym[two_gym_passes]"
 
-      assert_select "input#gym_3_gym_passes[name=?]", "gym[3_gym_passes]"
+      assert_select "input#gym_three_gym_passes[name=?]", "gym[three_gym_passes]"
 
-      assert_select "input#gym_4_gym_passes[name=?]", "gym[4_gym_passes]"
+      assert_select "input#gym_four_gym_passes[name=?]", "gym[four_gym_passes]"
 
       assert_select "input#gym_status[name=?]", "gym[status]"
 

@@ -11,9 +11,9 @@ RSpec.describe "gyms/show", :type => :view do
       :street => "Street",
       :lat => "9.99",
       :lng => "9.99",
-      :2_gym_passes => "",
-      :3_gym_passes => "",
-      :4_gym_passes => "",
+      :two_gym_passes => 1,
+      :three_gym_passes => 2,
+      :four_gym_passes => 3,
       :status => "Status",
       :description => "MyText",
       :link => "Link",
@@ -35,9 +35,9 @@ RSpec.describe "gyms/show", :type => :view do
     expect(rendered).to match(/Street/)
     expect(rendered).to match(/9.99/)
     expect(rendered).to match(/9.99/)
-    expect(rendered).to match(//)
-    expect(rendered).to match(//)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/1/)
+    expect(rendered).to match(/2/)
+    expect(rendered).to match(/3/)
     expect(rendered).to match(/Status/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/Link/)
