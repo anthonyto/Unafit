@@ -22,7 +22,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-.env
 Procfile
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
@@ -74,3 +73,6 @@ Temporary Items
 
 # KDE directory preferences
 .directory
+
+# Ignore application configuration
+/config/application.yml
