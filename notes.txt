@@ -27,7 +27,3 @@ first_name
 last_name
 phone_number
 email
-
-
-heroku config:add GMAIL_DOMAIN=gmail.com 
-GMAIL_USERNAME=unafitmailer@gmail.com GMAIL_PASSWORD=';Wamt~D2M<'
