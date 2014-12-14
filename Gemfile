@@ -21,8 +21,8 @@ gem 'spring',        group: :development
 
 # authentication and roles
 gem 'devise'
-gem 'rolify'
-gem 'cancancan', '~> 1.9'
+# gem 'rolify'
+# gem 'cancancan', '~> 1.9'
 
 gem 'figaro'
 
