@@ -1,0 +1,25 @@
+<div class="container-fluid">
+	<p id="notice"><%= notice %></p>
+
+
+	<h2>All Unafit Gyms</h2>
+	<table class="table">
+		<tr>
+			<th>Gym Name</th>
+			<th>Street</th>
+			<th>State</th>
+			<th>Description</th>
+		</tr>
+		<% @gyms.each do |gym| %>
+		<tr>
+			<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+			<td><%= gym.street %></td>
+			<td><%= gym.state %></td>
+			<td><%= gym.description %></td>
+		</tr>
+	<% end %>
+	</table>
+	
+	<%= link_to 'Edit User', edit_user_path(@user) %> |
+	<%= link_to 'Create a new gym', new_gym_path %>
+</div>

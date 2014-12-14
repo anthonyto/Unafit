@@ -7,3 +7,9 @@
     background-size: 100% auto;
 	min-height: 600px;
 }
+
+
+.jumbotron h1, p 
+{
+	color: #FFFFFF;
+}
