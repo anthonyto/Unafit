@@ -4,15 +4,16 @@ rails generate scaffold Gym name:string email:string phone_number:string city:st
 
 Types of users
 
-Manager
-name
+User
 email
+
+Manager
+gym_name
 
 
 Client
 first_name
 last_name
-email
 phone_number
 city
 state
@@ -25,5 +26,3 @@ number_of_sessions (2,3,4)
 Administrator
 first_name
 last_name
-phone_number
-email
