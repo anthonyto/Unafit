@@ -42,6 +42,6 @@ class ManagersController < ApplicationController
     end
 
     def manager_params
-      params.require(:manager).permit(:gym_name)
+      params.require(:manager).permit(:gym_name, :email)
     end
 end
