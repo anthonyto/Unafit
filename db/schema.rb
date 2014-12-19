@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203063007) do
+ActiveRecord::Schema.define(version: 20141219214525) do
 
   create_table "gyms", force: true do |t|
     t.string   "name"
@@ -38,25 +38,14 @@ ActiveRecord::Schema.define(version: 20141203063007) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone_number"
-    t.string   "city"
-    t.string   "state"
-    t.string   "street"
-    t.string   "zip"
-    t.decimal  "lat",                    precision: 10, scale: 0
-    t.decimal  "lng",                    precision: 10, scale: 0
-    t.string   "type"
-    t.integer  "number_of_sessions"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                                           default: "", null: false
-    t.string   "encrypted_password",                              default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                   default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
