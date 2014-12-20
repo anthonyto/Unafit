@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   def show_admin
     @gyms  = Gym.all
     @users = User.all
-
   end
   
   # GET /users/1
