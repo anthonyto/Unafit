@@ -1,0 +1,26 @@
+Overview:
+
+The project is a website that is a variety pass for small boutique-type gyms, for example cross fit gyms, yoga studios, cycling studios, etc. Through the website a user can pay $100/month and pick two or three gyms and they get passes to each gym for that month. This gives users variety and more value for their dollar. 
+
+User specs are attached so you can get a feel for what the website should be able to do.
+
+Design Specs
+
+The "Homepage", "Browse Gym Pages", and "Gym Page" are the ones that will be exposed to the public, and need the most design work done. The client showed me www.classpass.com as a starting point for the type of design that they want done. There are more Class Pass pages you can see here: http://www.businessinsider.com/classpass-review-2014-10
+
+The three dashboard pages (Admin dashboard, User dashboard, Gym dashboard) I imagine are going to look pretty similar, but just with different information presented. Below I outline what each page should have. 
+
+
+Homepage
+
+
+Browse Gym Page
+
+Gym Page
+
+Admin Dashboard
+
+User Dashboard
+
+Gym Dashboard
+	
