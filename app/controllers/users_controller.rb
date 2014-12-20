@@ -8,10 +8,21 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-
+  
+  # Use three different show methods here, because each user type dashboard is so different 
   # GET /users/1
-  # GET /users/1.json
-  def show
+  def show_client
+  end
+  
+  # GET /users/1
+  def show_admin
+    @gyms  = Gym.all
+    @users = User.all
+
+  end
+  
+  # GET /users/1
+  def show_manager
   end
 
   # GET /users/new
