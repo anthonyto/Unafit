@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   end
   
+  enum role: [:admin, :manager, :client]
   
   
          
