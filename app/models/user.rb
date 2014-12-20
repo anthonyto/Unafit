@@ -23,4 +23,16 @@ class User < ActiveRecord::Base
     self.role ||= :client
   end
  
+  def client? 
+    self.role == "client"
+  end
+  
+  def admin?
+    self.role == "admin"
+  end
+  
+  def manager?
+    self.role == "manager"
+  end
+  
 end

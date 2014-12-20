@@ -9,19 +9,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
   
-  # Use three different show methods here, because each user type dashboard is so different 
-  # GET /users/1
-  def show_client
-  end
-  
-  # GET /users/1
-  def show_admin
-    @gyms  = Gym.all
-    @users = User.all
-  end
-  
-  # GET /users/1
-  def show_manager
+  def show
+    if current_user.admin?
+      render "show_admin"
+    elsif current_user.manager?
+      render "show_manager"
+    else
+      render "show_client"
+    end
   end
 
   # GET /users/new
