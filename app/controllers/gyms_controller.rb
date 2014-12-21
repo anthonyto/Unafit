@@ -13,7 +13,9 @@ class GymsController < ApplicationController
   end
 
   def new
-    @gym = Gym.new
+    @user = User.new
+    @gym  = Gym.new
+
     respond_with(@gym)
   end
 
@@ -21,7 +23,8 @@ class GymsController < ApplicationController
   end
 
   def create
-    @gym = Gym.new(gym_params)
+    @gym  = Gym.new(gym_params)
+    @user = User.new(user_params)
     @gym.save
     respond_with(@gym)
   end
@@ -43,5 +46,9 @@ class GymsController < ApplicationController
 
     def gym_params
       params.require(:gym).permit(:name, :email, :phone_number, :city, :state, :street, :lat, :lng, :two_gym_passes, :three_gym_passes, :four_gym_passes, :status, :description, :link, :profile_image, :logo_image, :showers, :classes, :reservation_policy)
+    end
+    
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :role => 1)
     end
 end

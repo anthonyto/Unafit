@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<h3>Gym</h3>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -71,6 +72,23 @@
     <%= f.label :reservation_policy %><br>
     <%= f.text_area :reservation_policy %>
   </div>
+  
+  <h3>Gym Manager</h3>
+  <!-- Fields for user that will own this gym -->
+  <%= fields_for @user do |u| %>
+	  <div class="field">
+	    <%= u.label :first_name %><br>
+	    <%= u.text_field :first_name %>
+	  </div>  <div class="field">
+	     <%= u.label :last_name %><br>
+	     <%= u.text_field :last_name %>
+	   </div>
+	   <div class="field">
+	     <%= u.label :email %><br>
+	     <%= u.text_field :email %>
+	   </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
