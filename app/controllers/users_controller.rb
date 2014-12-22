@@ -11,10 +11,13 @@ class UsersController < ApplicationController
   
   def show
     if current_user.admin?
+      @gyms = Gym.all
       render "show_admin"
     elsif current_user.manager?
+      @gym = Gym.where(manager_id: current_user.id)
       render "show_manager"
     else
+      @gym = 
       render "show_client"
     end
   end
@@ -88,5 +91,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email)
+    end
+    
+    def registered_gyms 
+      @gyms = 
     end
 end

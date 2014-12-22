@@ -1,0 +1,19 @@
+<h2>Client Dashboard</h2>
+
+	<h2>Gyms you are subscribed to</h2>
+	<table class="table">
+		<tr>
+			<th>Gym Name</th>
+			<th>Street</th>
+			<th>State</th>
+			<th>Description</th>
+		</tr>
+		<% @gyms.each do |gym| %>
+		<tr>
+			<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+			<td><%= gym.street %></td>
+			<td><%= gym.state %></td>
+			<td><%= gym.description %></td>
+		</tr>
+	<% end %>
+	</table>
