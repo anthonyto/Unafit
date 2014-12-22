@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   
   # a manager can have only one gym
   # a client can have many gyms
-  has_and_belongs_to_many :gyms
+  has_many :registrations
+  has_many :gyms, through :registrations
   
   # set roles, that correspond to integers in the database
   enum role: [:admin, :manager, :client]
