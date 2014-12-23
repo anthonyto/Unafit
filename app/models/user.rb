@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   end
   
-  # a manager can have only one gym
-  # a client can have many gyms
   has_many :registrations
   has_many :gyms, :through => :registrations
   has_one :client_profile
