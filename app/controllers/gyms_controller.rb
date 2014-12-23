@@ -9,10 +9,10 @@ class GymsController < ApplicationController
   end
 
   def show
-    if @gym.manager_id.nil?
-      render 'users/new_manager'
-    end
-    respond_with(@gym)
+    # if @gym.manager_id.nil?
+    #   render 'users/new_manager'
+    # end
+    # respond_with(@gym)
   end
 
   def new

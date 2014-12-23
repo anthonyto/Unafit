@@ -1,6 +1,7 @@
 	<h2>All Unafit Gyms</h2>
 	<table class="table">
 		<tr>
+			<th>Register</th>
 			<th>Gym Name</th>
 			<th>Street</th>
 			<th>State</th>
@@ -8,6 +9,7 @@
 		</tr>
 		<% @gyms.each do |gym| %>
 		<tr>
+			<td><%= check_box_tag "user[gym_ids][]", gym.id, current_user.gym_ids.include?(gym_id) %>
 			<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
 			<td><%= gym.street %></td>
 			<td><%= gym.city %></td>
