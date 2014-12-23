@@ -1,8 +1,8 @@
 class CreateRegistrations < ActiveRecord::Migration
   def change
     create_table :registrations do |t|
-      t.integer :gym_id
-      t.integer :user_id
+      t.belongs_to :gym, index: true
+      t.belongs_to :user, index: true
 
       t.timestamps
     end

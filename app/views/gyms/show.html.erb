@@ -93,6 +93,9 @@
   <strong>Reservation policy:</strong>
   <%= @gym.reservation_policy %>
 </p>
-
-<%= link_to 'Edit', edit_gym_path(@gym) %> |
-<%= link_to 'Home', user_path(current_user.id) %>
+<% if user_signed_in? && current_user.admin? %>
+	<%= link_to 'Edit', edit_gym_path(@gym) %> |
+	<% end %>
+<% if user_signed_in? %>
+	<%= link_to 'Home', user_path(current_user.id) %>
+<% end %>	

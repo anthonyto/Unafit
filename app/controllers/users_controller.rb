@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @gym = Gym.where(manager_id: current_user.id)
       render "show_manager"
     else
-      @gym = 
+      @gyms = current_user.gyms
       render "show_client"
     end
   end
@@ -93,7 +93,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email)
     end
     
-    def registered_gyms 
-      @gyms = 
-    end
 end
