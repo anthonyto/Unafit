@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :users do 
-    resources :client_profiles, only: [:new]
+    resources :client_profiles
+    # resources :client_profiles, only: [:new]
     resources :gyms
   end
 

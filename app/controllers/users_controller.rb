@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       render "show_manager"
     else
       if current_user.client_profile.nil?
-        render "client_profile/create_client_profile"
+        redirect_to new_user_client_profile_path(current_user.id)
       else
         @gyms = current_user.gyms
         render "show_client"

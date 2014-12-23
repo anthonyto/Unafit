@@ -2,6 +2,8 @@
 
 <h2>Profile Info</h2>
 
+<%= current_user.client_profile.inspect %>
+
 
 	<h2>Gyms you are subscribed to</h2>
 	<table class="table">
@@ -21,4 +23,4 @@
 	<% end %>
 	</table>
 	
-	<%= link_to "Update gym registrations", gym_paths %>
+	<%= link_to "Update gym registrations", gyms_path %>
