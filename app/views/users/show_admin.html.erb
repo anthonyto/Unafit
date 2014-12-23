@@ -7,6 +7,7 @@
 			<th>Street</th>
 			<th>State</th>
 			<th>Description</th>
+			<th>Manager</th>
 		</tr>
 		<% @gyms.each do |gym| %>
 		<tr>
@@ -14,6 +15,13 @@
 			<td><%= gym.street %></td>
 			<td><%= gym.state %></td>
 			<td><%= gym.description %></td>
+			<td>
+				<% if gym.manager_id.nil? %>
+					No manager! <%= link_to "Add one", new_manager_gym_path(gym.id) %>
+				<% else %>
+					<%= gym.manager_id %>
+				<% end %>
+			</td>
 		</tr>
 	<% end %>
 	</table>

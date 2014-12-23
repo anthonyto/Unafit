@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   else
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+    # devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   end
   
   has_many :registrations
@@ -35,5 +36,11 @@ class User < ActiveRecord::Base
   def manager?
     self.role == "manager"
   end
+  
+  # def create_profile
+  #   profile = ClientProfile.create
+  #   profile.client_id = self.id
+  #   puts "Profile: #{profile}"
+  # end
   
 end

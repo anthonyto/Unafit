@@ -1,14 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
   
   # GET /resource/sign_up
-  def new
-    build_resource({})
-    set_minimum_password_length
-    yield resource if block_given?
-    @profile = resource.client_profile.build
-    @response = {:resource => self.resource, :profile => @profile}
-    respond_with @response
-  end
+  # def new
+  #   build_resource({})
+  #   set_minimum_password_length
+  #   yield resource if block_given?
+  #   @profile = resource.client_profile.build
+  #   @response = {:resource => self.resource, :profile => @profile}
+  #   respond_with @response
+  # end
   
   # Override the registrations controller to only allow clients register themselves
   # POST /resource

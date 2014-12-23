@@ -12,6 +12,10 @@ class GymPolicy
   def show?
   end
   
+  def new_manager?
+    @current_user.admin?
+  end
+  
   def update?
     @current_user.admin? or @current_user.manager?
   end

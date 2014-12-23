@@ -9,13 +9,24 @@ class GymsController < ApplicationController
   end
 
   def show
+    if @gym.manager_id.nil?
+      render 'users/new_manager'
+    end
     respond_with(@gym)
   end
 
   def new
-    @user = User.new
     @gym  = Gym.new
-
+  end
+  
+  def new_manager
+    @user = User.new
+  end
+  
+  def create_manager
+    @user = User.new(user_params)
+    @gym.associate_gym_and_manager(@gym)
+    @user.save
     respond_with(@gym)
   end
 
@@ -24,7 +35,6 @@ class GymsController < ApplicationController
 
   def create
     @gym  = Gym.new(gym_params)
-    @user = User.new(user_params)
     @gym.save
     respond_with(@gym)
   end
@@ -50,5 +60,9 @@ class GymsController < ApplicationController
     
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :role => 1)
+    end
+    
+    def associate_gym_and_manager(manager)
+      @gym.manager_id = manager.id
     end
 end

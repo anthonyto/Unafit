@@ -17,8 +17,12 @@ class UsersController < ApplicationController
       @gym = Gym.where(manager_id: current_user.id)
       render "show_manager"
     else
-      @gyms = current_user.gyms
-      render "show_client"
+      if current_user.client_profile.nil?
+        render "client_profile/create_client_profile"
+      else
+        @gyms = current_user.gyms
+        render "show_client"
+      end
     end
   end
 
