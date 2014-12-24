@@ -20,10 +20,12 @@ class GymsController < ApplicationController
   end
   
   def new_manager
+    authorize current_user
     @user = User.new
   end
   
   def create_manager
+    authorize current_user
     @user = User.new(user_params)
     @gym.associate_gym_and_manager(@gym)
     @user.save

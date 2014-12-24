@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
     authorize current_user
+    @users = User.all
   end
   
   def show
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    authorize current_user
     @user = User.new
   end
   
@@ -68,9 +69,9 @@ class UsersController < ApplicationController
   
   # GET /users/1/update_registrations
   def edit_registrations
+    authorize current_user
     @registered_gyms = current_user.gyms
     @gyms = Gym.all
-    authorize current_user
   end
   
   def update_registrations
