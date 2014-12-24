@@ -14,8 +14,11 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :users do 
+    member do 
+      get 'edit_registrations'
+      patch 'edit_registrations', to: 'users#update_registrations'
+    end
     resources :client_profiles
-    # resources :client_profiles, only: [:new]
     resources :gyms
   end
 

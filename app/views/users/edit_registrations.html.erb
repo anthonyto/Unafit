@@ -1,0 +1,71 @@
+<% if @user.gyms.empty? %>
+	<h3>You are currently not subscribed to any gyms</h3>
+<% else %>
+	<h3>Gyms that you are currently registered at</h3>
+	<table class="table">
+		<tr>
+			<th>Gym Name</th>
+			<th>Street</th>
+			<th>State</th>
+			<th>Description</th>
+		</tr>
+		<% @registered_gyms.each do |gym| %>
+		<tr>
+			<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+			<td><%= gym.street %></td>
+			<td><%= gym.city %></td>
+			<td><%= gym.state %></td>
+			<td><%= gym.email %></td>
+			<td><%= gym.phone_number %></td>
+			<td><%= gym.description %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+	<h2>All Unafit Gyms</h2>
+	<div class="field">
+		<table class="table">
+			<tr>
+				<th>Register</th>
+				<th>Gym Name</th>
+				<th>Street</th>
+				<th>State</th>
+				<th>Description</th>
+			</tr>
+			<% @gyms.each do |gym| %>
+			<tr>
+				<td><%= check_box_tag "user[gym_ids][]", gym.id, current_user.gym_ids.include?(gym.id) %></td>
+				<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+				<td><%= gym.street %></td>
+				<td><%= gym.city %></td>
+				<td><%= gym.state %></td>
+				<td><%= gym.email %></td>
+				<td><%= gym.phone_number %></td>
+				<td><%= gym.description %></td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+  <% end %>
+  
+

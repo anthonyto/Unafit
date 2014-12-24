@@ -6,7 +6,7 @@
 <%= link_to "Edit your profile", edit_user_client_profile_path(current_user.id, current_user.client_profile.id)%>
 
 
-	<h2>Gyms you are subscribed to</h2>
+	<h2>Gyms you are registered to</h2>
 	<table class="table">
 		<tr>
 			<th>Gym Name</th>
@@ -24,4 +24,4 @@
 	<% end %>
 	</table>
 	
-	<%= link_to "Update gym registrations", gyms_path %>
+	<%= link_to "Update gym registrations", edit_registrations_user_path(current_user.id) %>

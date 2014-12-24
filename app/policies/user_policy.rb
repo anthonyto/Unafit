@@ -11,6 +11,10 @@ class UserPolicy
     @current_user.admin?
   end
   
+  def edit_registrations?
+    @current_user.client?
+  end
+  
   def show_client
     @current_user.client?
   end
