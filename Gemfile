@@ -25,6 +25,8 @@ gem 'pundit'
 # For environment variable configurations
 gem 'figaro'
 gem 'geocoder'
+# for payments
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do 
     gem 'rspec-rails', '~> 3.0'
