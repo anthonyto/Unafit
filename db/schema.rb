@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226191255) do
+ActiveRecord::Schema.define(version: 20141226191946) do
 
   create_table "client_profiles", force: true do |t|
     t.string   "first_name"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20141226191255) do
     t.string   "state"
     t.string   "street"
     t.string   "zip"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.float    "latitude",           limit: 24
+    t.float    "longitude",          limit: 24
     t.integer  "number_of_sessions"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20141226191255) do
     t.string   "city"
     t.string   "state"
     t.string   "street"
-    t.decimal  "latitude",           precision: 10, scale: 0
-    t.decimal  "longitude",          precision: 10, scale: 0
+    t.float    "latitude",           limit: 24
+    t.float    "longitude",          limit: 24
     t.integer  "two_gym_passes"
     t.integer  "three_gym_passes"
     t.integer  "four_gym_passes"
