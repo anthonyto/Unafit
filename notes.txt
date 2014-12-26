@@ -30,3 +30,5 @@ email
 
 
 tail -f log/development.log | grep -vE "(^$|asset)"
+
+Gym.create(:name => "test", :street => "7960 kathryn crosby court", :state => "ca", :city => "san diego", :zip => "92127")

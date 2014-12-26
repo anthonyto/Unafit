@@ -1,8 +1,11 @@
 class ClientProfile < ActiveRecord::Base
   belongs_to :user
+  geocoded_by :full_street_address
+  after_validation :geocode
   
-  def set_lat_lng
-    self.lat = 1
-    self.lng = 2
+  def full_street_address
+    address = "#{self.street} #{self.city} #{self.state} #{self.zip}"
+    return address
   end
+  
 end
