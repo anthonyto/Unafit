@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :email, :first_name, :last_name, :role, presence: true
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   

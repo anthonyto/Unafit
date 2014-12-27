@@ -1,4 +1,7 @@
 class Gym < ActiveRecord::Base
+  validates :name, :email, :phone_number, :city, :state, :street, :zip, :description, 
+            :two_gym_passes, :three_gym_passes, :four_gym_passes, presence: true
+  
   has_many :registrations
   has_many :users, :through => :registrations
   geocoded_by :full_street_address
