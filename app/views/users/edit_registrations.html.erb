@@ -1,12 +1,17 @@
+<%= javascript_include_tag "edit_registrations" %>
+
+
 <% if @user.gyms.empty? %>
-	<h3>You are currently not subscribed to any gyms</h3>
+	<h4>You are currently not subscribed to any gyms</h4>
 <% else %>
-	<h3>Gyms that you are currently registered at</h3>
-	<table class="table">
+	<h4>Gyms that you are currently registered at</h4>
+	<table class="table table-striped">
 		<tr>
 			<th>Gym Name</th>
 			<th>Street</th>
 			<th>State</th>
+			<th>Email</th>
+			<th>Phone Number</th>
 			<th>Description</th>
 		</tr>
 		<% @registered_gyms.each do |gym| %>
@@ -37,14 +42,16 @@
   <% end %>
 
 
-	<h2>All Unafit Gyms</h2>
-	<div class="field">
-		<table class="table">
+	<h4>Unafit gyms in your area</h4>
+	<div class="field" id="gyms">
+		<table class="table table-striped">
 			<tr>
 				<th>Register</th>
 				<th>Gym Name</th>
 				<th>Street</th>
 				<th>State</th>
+				<th>Email</th>
+				<th>Phone Number</th>
 				<th>Description</th>
 			</tr>
 			<% @gyms.each do |gym| %>
@@ -67,5 +74,10 @@
   </div>
   
   <% end %>
+	
+	
+	<script type="text/javascript">
+		checkboxlimit(document.forms.edit_user_<%= current_user.id %>.elements.user_gym_ids_, <%= current_user.client_profile.number_of_sessions %>);
+	</script>
   
 

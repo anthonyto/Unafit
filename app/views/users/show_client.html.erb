@@ -1,15 +1,17 @@
 <div class="container-fluid">
+	
 	<div class="row">
 	  <div class="col-md-4">
 			<h4>User Information</h4>
 			<ul>
-				<li>Name:  		<%= "#{current_user.client_profile.first_name} #{current_user.client_profile.last_name}" %></li>
+				<li>Name:  		<%= "#{current_user.first_name} #{current_user.last_name}" %></li>
 				<li>Phone: 		<%= current_user.client_profile.phone_number %> </li>
 				<li>Address: 	<%= current_user.client_profile.street %></li>
 				<li>City: 		<%= current_user.client_profile.city %></li>
 				<li>Zip Code: <%= current_user.client_profile.zip %></li>
 				<li>State: 		<%= current_user.client_profile.state %></li>
 			</ul>
+			<%= link_to "Update Profile", edit_user_client_profile_path(current_user.id, current_user.client_profile.id), :class => "btn btn-primary btn-xs"%>
 		</div>
 	  <div class="col-md-4">
 			<h4>Payment Information</h4>
@@ -20,33 +22,30 @@
 			None of this is stored
 		</div>
 	</div>
-</div>
-
-<div class="container-fluid">
+	
 	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
-			
+		<div class="col-md-12">
 			<h4>Gyms you are registered to</h4>
-			<table class="table-striped">
-				<tr>
-					<th>Gym Name</th>
-					<th>Street</th>
-					<th>State</th>
-					<th>Description</th>
-				</tr>
-				<% @gyms.each do |gym| %>
-				<tr>
-					<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
-					<td><%= gym.street %></td>
-					<td><%= gym.state %></td>
-					<td><%= gym.description %></td>
-				</tr>
-			<% end %>
-			</table>
-			<%= link_to "Update gym registrations", edit_registrations_user_path(current_user.id) %>
-			
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<tr>
+						<th>Gym Name</th>
+						<th>Street</th>
+						<th>State</th>
+						<th>Description</th>
+					</tr>
+					<% @gyms.each do |gym| %>
+					<tr>
+						<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+						<td><%= gym.street %></td>
+						<td><%= gym.state %></td>
+						<td><%= gym.description %></td>
+					</tr>
+				<% end %>
+				</table>
+			</div>
+			<%= link_to "Update gym registrations", edit_registrations_user_path(current_user.id), :class => "btn btn-primary btn-sm" %>
 		</div>
-		<div class="col-md-1"></div>
 	</div>
+	
 </div>
