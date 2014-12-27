@@ -13,6 +13,8 @@
 			<th>Gym Name</th>
 			<th>Street</th>
 			<th>State</th>
+			<th>Email</th>
+			<th>Phone Number</th>
 			<th>Description</th>
 		</tr>
 		<% @registered_gyms.each do |gym| %>
@@ -51,6 +53,8 @@
 				<th>Gym Name</th>
 				<th>Street</th>
 				<th>State</th>
+				<th>Email</th>
+				<th>Phone Number</th>
 				<th>Description</th>
 			</tr>
 			<% @gyms.each do |gym| %>
@@ -74,4 +78,7 @@
   
   <% end %>
   
+	<script type="text/javascript">
+		checkboxlimit(document.forms.edit_user_<%= current_user.id %>.elements.user_gym_ids_, <%= current_user.client_profile.number_of_sessions %>);
+	</script>
 

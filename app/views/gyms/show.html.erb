@@ -1,98 +1,23 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h4><%= @gym.name %></h4>
+			<ul>
+				<li>Email: <%= @gym.email %></li>
+				<li>Phone: <%= @gym.phone_number %></li>
+				<li>Address: <%= "#{@gym.street}, #{@gym.city}, #{@gym.state} #{@gym.zip}" %></li>
+				<li>Two subscription passes: <%= @gym.two_gym_passes %></li>
+				<li>Three subscription passes: <%= @gym.three_gym_passes %></li>
+				<li>Four subscription passes: <%= @gym.four_gym_passes %></li>
+				<li>Description: <%= @gym.description %></li>
+				<li>Url: <%= @gym.link %></li>
+				<li>Classes: <%= @gym.classes %></li>
+				<li>Reservation Policy: <%= @gym.reservation_policy %></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @gym.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @gym.email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @gym.phone_number %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @gym.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @gym.state %>
-</p>
-
-<p>
-  <strong>Street:</strong>
-  <%= @gym.street %>
-</p>
-
-<p>
-  <strong>Lat:</strong>
-  <%= @gym.lat %>
-</p>
-
-<p>
-  <strong>Lng:</strong>
-  <%= @gym.lng %>
-</p>
-
-<p>
-  <strong>Two gym passes:</strong>
-  <%= @gym.two_gym_passes %>
-</p>
-
-<p>
-  <strong>Three gym passes:</strong>
-  <%= @gym.three_gym_passes %>
-</p>
-
-<p>
-  <strong>Four gym passes:</strong>
-  <%= @gym.four_gym_passes %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @gym.status %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @gym.description %>
-</p>
-
-<p>
-  <strong>Link:</strong>
-  <%= @gym.link %>
-</p>
-
-<p>
-  <strong>Profile image:</strong>
-  <%= @gym.profile_image %>
-</p>
-
-<p>
-  <strong>Logo image:</strong>
-  <%= @gym.logo_image %>
-</p>
-
-<p>
-  <strong>Showers:</strong>
-  <%= @gym.showers %>
-</p>
-
-<p>
-  <strong>Classes:</strong>
-  <%= @gym.classes %>
-</p>
-
-<p>
-  <strong>Reservation policy:</strong>
-  <%= @gym.reservation_policy %>
-</p>
 <% if user_signed_in? && current_user.admin? %>
 	<%= link_to 'Edit', edit_gym_path(@gym) %> |
 	<% end %>
