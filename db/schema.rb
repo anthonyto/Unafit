@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228005430) do
+ActiveRecord::Schema.define(version: 20141228020831) do
 
   create_table "client_profiles", force: true do |t|
     t.string   "phone_number"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141228005430) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "paid",                          default: false
+    t.boolean  "active",                        default: false
     t.datetime "last_payment"
     t.integer  "number_of_payments",            default: 0
   end
