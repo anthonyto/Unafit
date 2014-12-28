@@ -27,6 +27,9 @@ gem 'figaro'
 gem 'geocoder'
 # for payments
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+# for cron jobs
+gem 'whenever', :require => false
+
 
 group :development, :test do 
     gem 'rspec-rails', '~> 3.0'
