@@ -21,7 +21,7 @@ class ChargesController < ApplicationController
     )
 
     # Set all payment attributes
-    current_user.client_profile.paid = true 
+    current_user.client_profile.active = true 
     current_user.client_profile.number_of_payments++
     current_user.client_profile.last_payment = Time.now
     

@@ -15,7 +15,7 @@ class UserPolicy
   end
   
   def edit_registrations?
-    @current_user.client? && @current_user.paid?
+    @current_user.client? && @current_user.active?
   end
   
 end
