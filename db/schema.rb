@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20141228005430) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "paid",                          default: false
-    t.datetime "last_date_paid"
-    t.integer  "times_paid",                    default: 0
+    t.datetime "last_payment"
+    t.integer  "number_of_payments",            default: 0
   end
 
   add_index "client_profiles", ["user_id"], name: "index_client_profiles_on_user_id", using: :btree
