@@ -10,4 +10,5 @@ class ClientProfile < ActiveRecord::Base
     return address
   end
   
+  
 end

@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4>Gyms you are registered to</h4>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<tr>
+					<th>Gym Name</th>
+					<th>Street</th>
+					<th>State</th>
+					<th>Description</th>
+				</tr>
+				<% @gyms.each do |gym| %>
+				<tr>
+					<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+					<td><%= gym.street %></td>
+					<td><%= gym.state %></td>
+					<td><%= gym.description %></td>
+				</tr>
+			<% end %>
+			</table>
+		</div>
+		<%= link_to "Update gym registrations", edit_registrations_user_path(current_user.id), :class => "btn btn-primary btn-sm" %>
+	</div>
+</div>
