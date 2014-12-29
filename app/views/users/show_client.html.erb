@@ -2,7 +2,7 @@
 	
 	<div class="row">
 	  <div class="col-md-4">
-			<h4>User Information</h4>
+			<h4>Your Information</h4>
 			<ul>
 				<li>Name:  		<%= "#{current_user.first_name} #{current_user.last_name}" %></li>
 				<li>Phone: 		<%= current_user.client_profile.phone_number %> </li>
@@ -10,23 +10,33 @@
 				<li>City: 		<%= current_user.client_profile.city %></li>
 				<li>Zip Code: <%= current_user.client_profile.zip %></li>
 				<li>State: 		<%= current_user.client_profile.state %></li>
+				<li>Account: 
+					<% if current_user.client_profile.active? %>
+						Active
+					<% else %>
+						Inactive
+					<% end %>
+				</li>
+				<li>Last Payment: 
+					<% if current_user.client_profile.last_payment.nil? %>
+						Not yet paid</li>
+					<% else %>
+						<%= current_user.client_profile.last_payment.to_formatted_s(:short) %></li>
+						<li>Membership expires: <%= current_user.expires.to_formatted_s(:short) %>
+					<% end %>
 			</ul>
 			<%= link_to "Update Profile", edit_user_client_profile_path(current_user.id, current_user.client_profile.id), :class => "btn btn-primary btn-xs"%>
 		</div>
 	  <div class="col-md-4">
-			<h4>Payment Information</h4>
-			wait we store no payment information lol, it's all stored in stripe
 		</div>
 	  <div class="col-md-4">
-			<h4>Billing Address</h4>
-			None of this is stored
 		</div>
 	</div>
 	
 	<% if current_user.client_profile.active? %>
-		<%= render 'edit_subscriptions'%>
+		<%= render 'subscriptions'%>
 	<% else %>
-		<h4>You are not currently subscribed to any gyms. If you are ready to subscribe, please pay your membership to get started!</h4>
+		<h4>Ready to sign up? Pay your membership to get started!</h4>
 		<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>
 	<% end %>
 	

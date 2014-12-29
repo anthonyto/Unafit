@@ -38,6 +38,9 @@ class User < ActiveRecord::Base
     self.role == "manager"
   end
   
+  def expires
+    return 30.days.since(self.client_profile.last_payment)
+  end
 
       
   # def create_profile

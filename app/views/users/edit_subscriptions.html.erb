@@ -4,7 +4,7 @@
 	
 </div>
 
-<% if @user.gyms.empty? %>
+<% if @subscribed_gyms.nil? %>
 	<h3>You are currently not subscribed to any gyms</h3>
 <% else %>
 	<h3>Gyms that you are currently registered at</h3>
@@ -17,7 +17,7 @@
 			<th>Phone Number</th>
 			<th>Description</th>
 		</tr>
-		<% @registered_gyms.each do |gym| %>
+		<% @subscribed_gyms.each do |gym| %>
 		<tr>
 			<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
 			<td><%= gym.street %></td>
