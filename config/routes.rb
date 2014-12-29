@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   
   resources :users do 
     member do 
-      get 'edit_registrations'
-      patch 'edit_registrations', to: 'users#update_registrations'
+      get 'edit_subscriptions'
+      patch 'edit_subscriptions', to: 'users#update_subscriptions'
     end
     resources :client_profiles
     resources :gyms

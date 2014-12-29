@@ -24,7 +24,7 @@
 	</div>
 	
 	<% if current_user.client_profile.active? %>
-		<%= render 'edit_registrations'%>
+		<%= render 'edit_subscriptions'%>
 	<% else %>
 		<h4>You are not currently subscribed to any gyms. If you are ready to subscribe, please pay your membership to get started!</h4>
 		<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>

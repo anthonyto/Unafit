@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
     # devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   end
   
-  has_many :registrations
-  has_many :gyms, :through => :registrations
+  has_many :subscriptions
+  has_many :gyms, :through => :subscriptions
   has_one :client_profile
   accepts_nested_attributes_for :client_profile
   

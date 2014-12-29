@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :edit_registrations, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :edit_subscriptions, :destroy]
   before_action :set_gyms
   before_action :authenticate_user!
 
@@ -67,14 +67,14 @@ class UsersController < ApplicationController
     end
   end
   
-  # GET /users/1/update_registrations
-  def edit_registrations
+  # GET /users/1/edit_subscriptionss
+  def edit_sunscriptions
     authorize current_user
     @registered_gyms = current_user.gyms
     @gyms = Gym.all
   end
   
-  def update_registrations
+  def update_subscriptions
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

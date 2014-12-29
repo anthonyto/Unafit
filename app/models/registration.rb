@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :gym
 end
