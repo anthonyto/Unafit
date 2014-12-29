@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
     self.role == "manager"
   end
   
+
+      
   # def create_profile
   #   profile = ClientProfile.create
   #   profile.client_id = self.id
