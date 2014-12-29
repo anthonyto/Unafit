@@ -29,6 +29,8 @@ gem 'geocoder'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # for cron jobs
 gem 'whenever', :require => false
+# Google maps integration
+gem 'gmaps4rails'
 
 
 group :development, :test do 
