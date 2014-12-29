@@ -27,9 +27,30 @@
 			</ul>
 			<%= link_to "Update Profile", edit_user_client_profile_path(current_user.id, current_user.client_profile.id), :class => "btn btn-primary btn-xs"%>
 		</div>
-	  <div class="col-md-4">
-		</div>
-	  <div class="col-md-4">
+	  <div class="col-md-8">
+			<div style='width: 800px;'>
+			  <div id="map" style='width: 800px; height: 400px;'>
+					<script>
+						handler = Gmaps.build('Google');
+						handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+						  markers = handler.addMarkers([
+						    {
+						      "lat": 0,
+						      "lng": 0,
+						      "picture": {
+						        "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+						        "width":  36,
+						        "height": 36
+						      },
+						      "infowindow": "hello!"
+						    }
+						  ]);
+						  handler.bounds.extendWith(markers);
+						  handler.fitMapToBounds();
+						});
+					</script>
+			  </div>
+			</div>
 		</div>
 	</div>
 	
