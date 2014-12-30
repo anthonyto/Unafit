@@ -15,7 +15,7 @@ class UserPolicy
   end
   
   def edit_subscriptions?
-    @current_user.client? && @current_user.active?
+    @current_user.client? and @current_user.client_profile.active?
   end
   
 end

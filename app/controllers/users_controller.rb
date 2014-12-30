@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   end
   
   # GET /users/1/edit_subscriptionss
-  def edit_sunscriptions
+  def edit_subscriptions
     authorize current_user
     @subscribed_gyms = current_user.gyms
     @gyms = Gym.all
