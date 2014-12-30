@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229194213) do
+ActiveRecord::Schema.define(version: 20141230182634) do
 
   create_table "client_profiles", force: true do |t|
     t.string   "phone_number"
@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(version: 20141229194213) do
     t.text     "reservation_policy"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "manager_id"
+    t.integer  "user_id"
     t.string   "zip"
   end
 
-  add_index "gyms", ["manager_id"], name: "index_gyms_on_manager_id", using: :btree
+  add_index "gyms", ["user_id"], name: "index_gyms_on_user_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.integer  "gym_id"
