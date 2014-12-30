@@ -59,6 +59,25 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def new_manager
+    @gym  = Gym.find(params[:gym_id])
+    @user = @gym.build_user(:role => "manager")
+  end
+  
+  def create_manager
+    @user.save
+    redirect_to user_path(current_user.id)
+  end
+  
+  def new_admin
+    @user = User.new(:role => "admin")
+  end
+  
+  def create_admin
+    @user.save
+    redirect_to user_path(current_user.id)
+  end
 
   # GET /users/1/edit
   def edit

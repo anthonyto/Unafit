@@ -8,19 +8,24 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :gyms do
-    member do 
-      get 'new_manager'
-      post 'new_manager', to: 'gyms#create_manager'
-    end
     resources :users, only: [:index, :show]
   end
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "my_devise/registrations"} do
+    member do 
+      get 'new_admin', to: 'my_devise/registrations#new_admin'
+      post 'new_admin', to: 'my_devise/registrations#create_admin'
+    end
+  end
   
   resources :users do 
     member do 
       get 'edit_subscriptions'
       patch 'edit_subscriptions', to: 'users#update_subscriptions'
+      get 'new_manager'
+      post 'new_manager', to: 'users#create_manager'
+      # get 'new_admin', to: 'registrations#new_admin'
+      # post 'new_admin', to: 'registrations#create_admin'
     end
     resources :client_profiles
     resources :gyms

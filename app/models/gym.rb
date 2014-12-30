@@ -4,6 +4,7 @@ class Gym < ActiveRecord::Base
   
   has_many :subscriptions
   has_many :users, :through => :subscriptions
+  belongs_to :user
   geocoded_by :full_street_address
   after_validation :geocode
   

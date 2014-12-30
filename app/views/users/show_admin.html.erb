@@ -16,16 +16,17 @@
 			<td><%= gym.state %></td>
 			<td><%= gym.description %></td>
 			<td>
-				<% if gym.manager_id.nil? %>
-					No manager! <%= link_to "Add one", new_manager_gym_path(gym.id) %>
+				<% if gym.user_id.nil? %>
+					No manager! <%= link_to "Add one", new_manager_user_path(gym.id) %>
 				<% else %>
-					<%= gym.manager_id %>
+					<%= gym.client_id.first_name %>
 				<% end %>
 			</td>
 		</tr>
 	<% end %>
 	</table>
 	
-	<%= link_to 'Edit User', edit_user_path(@user) %> |
-	<%= link_to 'Create a new gym', new_gym_path %>
+	<%= link_to 'Edit User', edit_user_path(@user), :class => "btn btn-primary btn-sm"%>
+	<%= link_to 'New Gym', new_gym_path, :class => "btn btn-primary btn-sm" %>
+	
 </div>

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   
   has_many :subscriptions
   has_many :gyms, :through => :subscriptions
+  has_one :gym
   has_one :client_profile
   accepts_nested_attributes_for :client_profile
   

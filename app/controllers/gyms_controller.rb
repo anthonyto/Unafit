@@ -4,8 +4,9 @@ class GymsController < ApplicationController
   respond_to :html
 
   def index
-    if current_user.client_profile.nil? && Rails.env.production?
-      # if a user is not signed in, use their IP to find nearby gyms
+    if 
+    if !user_signed_in? || current_user.client_profile.nil?
+      # if a user is not signed in or active, use their IP to find nearby gyms
       @gyms = Gym.near(request.location, 25)
     else
       # send gyms within 25 miles of their address
@@ -29,18 +30,18 @@ class GymsController < ApplicationController
     @gym  = Gym.new
   end
   
-  def new_manager
-    authorize current_user
-    @user = User.new
-  end
-  
-  def create_manager
-    authorize current_user
-    @user = User.new(user_params)
-    @gym.associate_gym_and_manager(@gym)
-    @user.save
-    respond_with(@gym)
-  end
+  # def new_manager
+  #   authorize current_user
+  #   @user = User.new
+  # end
+  #
+  # def create_manager
+  #   authorize current_user
+  #   @user = User.new(user_params)
+  #   @gym.associate_gym_and_manager(@gym)
+  #   @user.save
+  #   respond_with(@gym)
+  # end
 
   def edit
   end
@@ -48,7 +49,8 @@ class GymsController < ApplicationController
   def create
     @gym  = Gym.new(gym_params)
     @gym.save
-    respond_with(@gym)
+    @user = @gym.build_user(:role => "manager")
+    redirect_to new_manager_user_path
   end
 
   def update
