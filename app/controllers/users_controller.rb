@@ -21,7 +21,16 @@ class UsersController < ApplicationController
       if current_user.client_profile.nil?
         redirect_to new_user_client_profile_path(current_user.id)
       else
-        @gyms = current_user.gyms
+        if current_user.client_profile.active? 
+          @gyms = current_user.gyms
+        else 
+          @gyms = Gym.near(current_user.client_profile.geocode, 25)
+        end
+        @hash = Gmaps4rails.build_markers(@gyms) do |gym, marker|
+          marker.lat gym.latitude
+          marker.lng gym.longitude
+        end
+        p "@GYMS #{@hash.inspect}"
         render "show_client"
       end
     end

@@ -1,0 +1,14 @@
+<script>
+	handler = Gmaps.build('Google');
+	handler.buildMap({ 
+		provider: {
+			disableDefaultUI: true, 
+			zoom: 10,
+			center: new google.maps.LatLng(<%= current_user.client_profile.latitude %>, <%= current_user.client_profile.longitude %>)
+		}, 
+		internal: {id: 'map'}}, function(){
+	  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+	  handler.bounds.extendWith(markers);
+	  handler.fitMapToBounds();
+	});
+</script>

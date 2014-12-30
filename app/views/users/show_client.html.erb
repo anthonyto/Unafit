@@ -28,37 +28,28 @@
 			<%= link_to "Update Profile", edit_user_client_profile_path(current_user.id, current_user.client_profile.id), :class => "btn btn-primary btn-xs"%>
 		</div>
 	  <div class="col-md-8">
+			<% if current_user.client_profile.active %>
+				<h4>Gyms you are subscribed to</h4>
+			<% else %>
+				<h4>Gyms in your area</h4>
+			<% end %>
 			<div style='width: 800px;'>
 			  <div id="map" style='width: 800px; height: 400px;'>
-					<script>
-						handler = Gmaps.build('Google');
-						handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-						  markers = handler.addMarkers([
-						    {
-						      "lat": 0,
-						      "lng": 0,
-						      "picture": {
-						        "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-						        "width":  36,
-						        "height": 36
-						      },
-						      "infowindow": "hello!"
-						    }
-						  ]);
-						  handler.bounds.extendWith(markers);
-						  handler.fitMapToBounds();
-						});
-					</script>
+					<%= render 'gyms/map'%>
 			  </div>
 			</div>
 		</div>
 	</div>
 	
-	<% if current_user.client_profile.active? %>
-		<%= render 'subscriptions'%>
-	<% else %>
-		<h4>Ready to sign up? Pay your membership to get started!</h4>
-		<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>
-	<% end %>
-	
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-8">
+			<% if current_user.client_profile.active? %>
+				<%= render 'subscriptions'%>
+			<% else %>
+				<h4>Ready to sign up? Pay your membership to get started!</h4>
+				<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>
+			<% end %>
+		</div>
+	</div>
 </div>
