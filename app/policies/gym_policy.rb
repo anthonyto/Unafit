@@ -12,6 +12,14 @@ class GymPolicy
   def show?
   end
   
+  def check_in_client?
+    @current_user.manager?
+  end
+  
+  def update_sessions_left?
+    @current_user.manager?
+  end
+  
   def new_manager?
     @current_user.admin?
   end

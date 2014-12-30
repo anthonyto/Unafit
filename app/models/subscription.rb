@@ -1,7 +1,7 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
   belongs_to :gym
-  after_initialize :set_default_sessions_left
+  # after_initialize :set_default_sessions_left
   # validates sessions_left, presence: true
   
   def set_default_sessions_left

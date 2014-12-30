@@ -7,13 +7,15 @@
 					<th>Street</th>
 					<th>State</th>
 					<th>Description</th>
+					<th>Sessions left</th>
 				</tr>
-				<% @gyms.each do |gym| %>
+				<% @subscriptions.each do |subscription| %>
 				<tr>
-					<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
-					<td><%= gym.street %></td>
-					<td><%= gym.state %></td>
-					<td><%= gym.description %></td>
+					<td><%= link_to subscription.gym.name, gym_path(subscription.gym.id), :class => 'navbar-link' %></td>
+					<td><%= subscription.gym.street %></td>
+					<td><%= subscription.gym.state %></td>
+					<td><%= subscription.gym.description %></td>
+					<td><%= subscription.sessions_left%></td>
 				</tr>
 			<% end %>
 			</table>

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :gyms do
+    member do
+      get 'check_in_client', to: 'gyms#check_in_client'
+      get 'update_sessions_left', to: 'gyms#update_sessions_left'
+    end
     resources :users, only: [:index, :show]
   end
 

@@ -1,12 +1,14 @@
 class GymsController < ApplicationController
-  before_action :set_gym, only: [:show, :edit, :update, :destroy]
+  before_action :set_gym, only: [:show, :edit, :update, :check_in_client, :update_sessions_left, :destroy]
 
   respond_to :html
 
   def index
-    if 
-    if !user_signed_in? || current_user.client_profile.nil?
-      # if a user is not signed in or active, use their IP to find nearby gyms
+    if !user_signed_in? && Rails.env.development? 
+      # in development and not logged in , just get gyms in madison
+      @gyms = Gym.near([43.0771, -89.3815], 25)
+    elsif !user_signed_in? || current_user.client_profile.nil?
+      # if a user is not signed in and in prod, or inactive, use their IP to find nearby gyms
       @gyms = Gym.near(request.location, 25)
     else
       # send gyms within 25 miles of their address
@@ -57,6 +59,17 @@ class GymsController < ApplicationController
     @gym.update(gym_params)
     respond_with(@gym)
   end
+  
+  def check_in_client
+    @users = @gym.users
+  end
+  
+  # How can we enforce that a manager can only check in a client of their own? 
+  def update_sessions_left
+    @user = User.find(params[:user_id])
+    decrement_session(@gym, @user)
+    redirect_to current_user
+  end
 
   def destroy
     @gym.destroy
@@ -64,6 +77,19 @@ class GymsController < ApplicationController
   end
 
   private
+  
+    def decrement_session(gym, user)
+      sessions_left = user.subscriptions.where(gym_id: gym.id).first.sessions_left
+      if !gym.users.find(user) || sessions_left.nil?
+        # throw some error here
+      else
+        if sessions_left > 0 
+          sessions = sessions_left - 1
+          user.subscriptions.where(gym_id: gym.id).first.update(sessions_left: sessions)
+        end
+      end
+    end
+    
     def set_gym
       @gym = Gym.find(params[:id])
     end

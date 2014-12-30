@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :edit_subscriptions, :destroy]
-  before_action :set_gyms
+  # before_action :set_gyms
   before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
   def index
     authorize current_user
-    @users = User.all
+    if current_user.admin?
+      @users = User.all
+    else
+      @gym   = Gym.find(params[:gym_id])
+      @users = @gym.users
+    end
   end
   
   def show
@@ -15,7 +20,9 @@ class UsersController < ApplicationController
       @gyms = Gym.all
       render "show_admin"
     elsif current_user.manager?
-      @gym = Gym.where(manager_id: current_user.id)
+      @gym   = Gym.where(user_id: current_user.id).first
+      @hash  = gym_to_hash(@gym)
+      @users = @gym.users
       render "show_manager"
     else
       if current_user.client_profile.nil?
@@ -23,7 +30,8 @@ class UsersController < ApplicationController
       else
         # If the user is subscribed, send the gyms they are subscribed to
         if current_user.active_and_subscribed? 
-          @gyms = current_user.gyms
+          @subscriptions = current_user.subscriptions
+          @gyms          = current_user.gyms
         else 
           # if the user is inactive or unsubscribed, send gyms in their area
           @gyms = Gym.near(current_user.client_profile.geocode, 25)
@@ -101,7 +109,8 @@ class UsersController < ApplicationController
   def edit_subscriptions
     authorize current_user
     @subscribed_gyms = current_user.gyms
-    @gyms = Gym.near(current_user.client_profile.geocode, 25)
+    @gyms            = Gym.near(current_user.client_profile.geocode, 25)
+
   end
   
   def update_subscriptions
@@ -133,15 +142,13 @@ class UsersController < ApplicationController
       @user = current_user
     end
     
-    # find gyms according to user type
-    # if admin, find all
-    # if gym manager, find one gym
-    # if user, find all gyms that they are subscribed to      
-     def set_gyms
-       # for now, just do admin
-       @gyms = Gym.all
-     end
-    
+    def gym_to_hash(gyms)
+      hash = Gmaps4rails.build_markers(gyms) do |gym, marker|
+        marker.lat gym.latitude
+        marker.lng gym.longitude
+      end
+      return hash
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

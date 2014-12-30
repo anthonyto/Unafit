@@ -1,0 +1,39 @@
+<div class="container-fluid">
+	<div class="row">
+		
+		<div class="col-md-4">
+			<h4><%= @gym.name %> Manager Dashboard</h4>
+			<ul>
+				<li>Email: <%= @gym.email %></li>
+				<li>Phone: <%= @gym.phone_number %></li>
+				<li>Address: <%= "#{@gym.street}, #{@gym.city}, #{@gym.state} #{@gym.zip}" %></li>
+				<li>Two subscription passes: <%= @gym.two_gym_passes %></li>
+				<li>Three subscription passes: <%= @gym.three_gym_passes %></li>
+				<li>Four subscription passes: <%= @gym.four_gym_passes %></li>
+				<li>Description: <%= @gym.description %></li>
+				<li>Url: <%= @gym.link %></li>
+				<li>Classes: <%= @gym.classes %></li>
+				<li>Reservation Policy: <%= @gym.reservation_policy %></li>
+			</ul>
+			<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%>
+			
+			<h4>Statistics</h4>
+			<ul>
+				<li>Unafit members: <%= @users.size %></li>
+			</ul>
+			
+			<h4>Manage</h4>
+			<%= link_to 'Show all Users', gym_users_path(@gym.id), :class => "btn btn-primary btn-sm"%>
+			<%= link_to 'Check in a User', check_in_client_gym_path(@gym.id), :class => "btn btn-primary btn-sm"%>
+		</div>
+		
+		<div class="col-md-8">
+			<div style='width: 800px;'>
+			  <div id="map" style='width: 800px; height: 400px;'>
+					<%= render 'gyms/map'%>
+			  </div>
+			</div>
+		</div>
+		
+	</div>
+</div>

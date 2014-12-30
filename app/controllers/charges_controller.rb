@@ -21,10 +21,12 @@ class ChargesController < ApplicationController
     )
 
     # Set all payment attributes
-    current_user.client_profile.active = true 
-    current_user.client_profile.number_of_payments+1
-    current_user.client_profile.last_payment = Time.now
-    current_user.client_profile.save
+    num_payments =     current_user.client_profile.number_of_payments+1
+    current_user.client_profile.update(
+      active: true, 
+      number_of_payments: num_payments, 
+      last_payment: DateTime.now
+    )
     
     flash[:notice] = "Thanks, you payment was successful!"
     redirect_to user_path(current_user)
