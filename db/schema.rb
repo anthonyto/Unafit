@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230182634) do
+ActiveRecord::Schema.define(version: 20141230205720) do
 
   create_table "client_profiles", force: true do |t|
     t.string   "phone_number"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20141230182634) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sessions_left"
   end
 
   add_index "subscriptions", ["gym_id"], name: "index_subscriptions_on_gym_id", using: :btree
