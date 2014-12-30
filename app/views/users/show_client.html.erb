@@ -11,7 +11,7 @@
 				<li>Zip Code: <%= current_user.client_profile.zip %></li>
 				<li>State: 		<%= current_user.client_profile.state %></li>
 				<li>Account: 
-					<% if current_user.client_profile.active? %>
+					<% if current_user.active? %>
 						Active
 					<% else %>
 						Inactive
@@ -28,7 +28,7 @@
 			<%= link_to "Update Profile", edit_user_client_profile_path(current_user.id, current_user.client_profile.id), :class => "btn btn-primary btn-xs"%>
 		</div>
 	  <div class="col-md-8">
-			<% if current_user.client_profile.active %>
+			<% if current_user.active_and_subscribed? %>
 				<h4>Gyms you are subscribed to</h4>
 			<% else %>
 				<h4>Gyms in your area</h4>
@@ -44,8 +44,11 @@
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-8">
-			<% if current_user.client_profile.active? %>
+			<% if current_user.active_and_subscribed? %>
 				<%= render 'subscriptions'%>
+			<% elsif current_user.active? %>
+				<br></br>
+				<%= link_to "Subscribe for gyms", edit_subscriptions_user_path(current_user.id), :class => "btn btn-primary btn-sm" %>
 			<% else %>
 				<h4>Ready to sign up? Pay your membership to get started!</h4>
 				<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>

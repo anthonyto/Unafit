@@ -41,8 +41,15 @@ class User < ActiveRecord::Base
   def expires
     return 30.days.since(self.client_profile.last_payment)
   end
+  
+  def active?
+    self.role == "client" && self.client_profile.active?
+  end
 
-      
+  def active_and_subscribed?
+    self.active? && !self.gyms.empty?
+  end
+  
   # def create_profile
   #   profile = ClientProfile.create
   #   profile.client_id = self.id

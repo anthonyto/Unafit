@@ -21,9 +21,11 @@ class UsersController < ApplicationController
       if current_user.client_profile.nil?
         redirect_to new_user_client_profile_path(current_user.id)
       else
-        if current_user.client_profile.active? 
+        # If the user is subscribed, send the gyms they are subscribed to
+        if current_user.active_and_subscribed? 
           @gyms = current_user.gyms
         else 
+          # if the user is inactive or unsubscribed, send gyms in their area
           @gyms = Gym.near(current_user.client_profile.geocode, 25)
         end
         @hash = Gmaps4rails.build_markers(@gyms) do |gym, marker|
