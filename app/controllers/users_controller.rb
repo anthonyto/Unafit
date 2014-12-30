@@ -82,7 +82,7 @@ class UsersController < ApplicationController
   def edit_subscriptions
     authorize current_user
     @subscribed_gyms = current_user.gyms
-    @gyms = Gym.all
+    @gyms = Gym.near(current_user.client_profile.geocode, 25)
   end
   
   def update_subscriptions

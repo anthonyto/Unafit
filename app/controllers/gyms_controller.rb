@@ -4,15 +4,25 @@ class GymsController < ApplicationController
   respond_to :html
 
   def index
-    @gyms = Gym.all
-    respond_with(@gyms)
+    if current_user.client_profile.nil? && Rails.env.production?
+      # if a user is not signed in, use their IP to find nearby gyms
+      @gyms = Gym.near(request.location, 25)
+    else
+      # send gyms within 25 miles of their address
+      @gyms = Gym.near(current_user.client_profile.geocode, 25)
+    end
+    @hash = Gmaps4rails.build_markers(@gyms) do |gym, marker|
+      marker.lat gym.latitude
+      marker.lng gym.longitude
+    end
+    respond_with(@gyms, @hash)
   end
 
   def show
-    # if @gym.manager_id.nil?
-    #   render 'users/new_manager'
-    # end
-    # respond_with(@gym)
+    @hash = Gmaps4rails.build_markers(@gym) do |gym, marker|
+      marker.lat gym.latitude
+      marker.lng gym.longitude
+    end
   end
 
   def new

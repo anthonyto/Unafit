@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-4">
 			<h4><%= @gym.name %></h4>
 			<ul>
 				<li>Email: <%= @gym.email %></li>
@@ -14,13 +14,24 @@
 				<li>Classes: <%= @gym.classes %></li>
 				<li>Reservation Policy: <%= @gym.reservation_policy %></li>
 			</ul>
+			
+			<% if user_signed_in? && current_user.admin? %>
+				<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%> |
+				<% end %>
+			<% if user_signed_in? %>
+				<%= link_to 'Home', user_path(current_user.id), :class => 'btn btn-primary btn-xs' %>
+			<% end %>
+			<%= link_to 'Back', :back, :class => 'btn btn-primary btn-xs' %>
+		</div>
+		
+		<div class="col-md-8">
+			<div style='width: 800px;'>
+			  <div id="map" style='width: 800px; height: 400px;'>
+					<%= render 'gyms/map'%>
+			  </div>
+			</div>
 		</div>
 	</div>
 </div>
 
-<% if user_signed_in? && current_user.admin? %>
-	<%= link_to 'Edit', edit_gym_path(@gym) %> |
-	<% end %>
-<% if user_signed_in? %>
-	<%= link_to 'Home', user_path(current_user.id) %>
-<% end %>	
+
