@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
-  devise_for :users, :controllers => {:registrations => "my_devise/registrations"} do
-    member do 
-      get 'new_admin', to: 'my_devise/registrations#new_admin'
-      post 'new_admin', to: 'my_devise/registrations#create_admin'
-    end
+  devise_for :users
+ 
+  devise_scope :user do
+    get 'new_admin', to: 'my_devise/registrations#new_admin'
+    post 'new_admin', to: 'my_devise/registrations#create_admin'
   end
+ 
   
   resources :users do 
     member do 
@@ -28,8 +29,8 @@ Rails.application.routes.draw do
       patch 'edit_subscriptions', to: 'users#update_subscriptions'
       get 'new_manager'
       post 'new_manager', to: 'users#create_manager'
-      # get 'new_admin', to: 'registrations#new_admin'
-      # post 'new_admin', to: 'registrations#create_admin'
+      get 'new_admin', to: 'users#new_admin'
+      post 'new_admin', to: 'users#create_admin'
     end
     resources :client_profiles
     resources :gyms

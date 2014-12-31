@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   end
   
   def create_admin
-    @user.save
+    @user = User.create!(user_params)
     redirect_to user_path(current_user.id)
   end
 
@@ -152,7 +152,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :gym_ids => [])
+      params.require(:user).permit(:first_name, :last_name, :email, :encrypted_password, :gym_ids => [])
     end
     
 end

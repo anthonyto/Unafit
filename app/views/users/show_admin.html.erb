@@ -19,7 +19,7 @@
 				<% if gym.user_id.nil? %>
 					No manager! <%= link_to "Add one", new_manager_user_path(gym.id) %>
 				<% else %>
-					<%= gym.client_id.first_name %>
+					<%= gym.user.first_name %>
 				<% end %>
 			</td>
 		</tr>
@@ -28,5 +28,7 @@
 	
 	<%= link_to 'Edit User', edit_user_path(@user), :class => "btn btn-primary btn-sm"%>
 	<%= link_to 'New Gym', new_gym_path, :class => "btn btn-primary btn-sm" %>
+	<%= link_to 'New Devise Admin', new_admin_path, :class => "btn btn-primary btn-sm"%>
+	<%= link_to 'New Admin', new_admin_user_path(current_user.id), :class => "btn btn-primary btn-sm"%>
 	
 </div>
