@@ -1,37 +1,18 @@
-rails g scaffold User first_name:string last_name:string email:string phone_number:string city:string state:string street:string zip:string lat:decimal lng:decimal type:string number_of_sessions:integer
-
-rails generate scaffold Gym name:string email:string phone_number:string city:string state:string street:string lat:decimal  lng:decimal two_gym_passes:integer three_gym_passes:integer four_gym_passes:integer status:string description:text link:string profile_image:string logo_image:string showers:boolean classes:text reservation_policy:text 
-
-Types of users
-
-Manager
-name
-email
-
-
-Client
-first_name
-last_name
-email
-phone_number
-city
-state
-street
-zip
-lat
-lng
-number_of_sessions (2,3,4)
-
-Administrator
-first_name
-last_name
-phone_number
-email
-
-
 tail -f log/development.log | grep -vE "(^$|asset)"
 
 Gym.create(:name => "test", :street => "7960 kathryn crosby court", :state => "ca", :city => "san diego", :zip => "92127")
 
 '2014-12-26 08:13:00 UTC'
 '2014-11-26 08:13:00 UTC'
+
+
+Questions: 
+
+how long do you want invitations to last? 
+
+test gym
+
+The Boxing Club
+8650 Genesee Avenue
+San Diego
+CA 92122

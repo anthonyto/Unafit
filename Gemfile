@@ -21,6 +21,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 # For authentication
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
 # For authorization
 gem 'pundit'
 # For environment variable configurations

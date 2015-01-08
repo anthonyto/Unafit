@@ -5,10 +5,9 @@ class User < ActiveRecord::Base
   
   # Only set email confirmations in production, because they are annoying in dev
   if Rails.env.production?
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+    devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
   else
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-    # devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+    devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :invitable
   end
   
   has_many :subscriptions
@@ -22,11 +21,43 @@ class User < ActiveRecord::Base
   # set user to client by default if it is not set
   after_initialize :set_default_role, :if => :new_record?
   
+  attr_writer :invitation_instructions
+  
+  # Admin Invitation Customizations
+  
+  # def deliver_invitation
+  #  if @invitation_instructions.present?
+  #    ::Devise.mailer.send(@invitation_instructions, self).deliver
+  #  else
+  #    super
+  #  end
+  # end
+
+  # These do nothing right now, they both simply call invite!
+  # But if you want to send different emails based on admin or manager, then you have to 
+  # set these up.
+  def self.invite_admin!(attributes={}, invited_by=nil)
+    self.invite!(attributes, invited_by)
+   # self.invite!(attributes, invited_by) do |invitable|
+   #   invitable.invitation_instructions = :guest_invitation_instructions
+   # end
+  end
+
+  def self.invite_manager!(attributes={}, invited_by=nil)
+    self.invite!(attributes, invited_by)
+   # self.invite!(attributes, invited_by) do |invitable|
+   #   invitable.invitation_instructions = :friend_invitation_instructions
+   # end
+  end
   
   def set_default_role
     self.role ||= :client
   end
  
+  def add_role(role)
+    self.role = role
+  end
+  
   def client? 
     self.role == "client"
   end

@@ -1,0 +1,13 @@
+<h2>Invite An Administrator</h2>
+
+<%= form_for resource, :as => resource_name, :url => new_admin_path, :html => {:method => :post} do |f| %>
+  <%= devise_error_messages! %>
+
+<% resource.class.invite_key_fields.each do |field| -%>
+  <p><%= f.label field %><br />
+  <%= f.text_field field %></p>
+<% end -%>
+
+
+<p><%= f.submit %></p>
+<% end %>

@@ -10,9 +10,15 @@ class ClientProfilesController < ApplicationController
   
   def create 
     @client_profile = current_user.build_client_profile(client_profile_params)
-    @client_profile.set_lat_lng
-    @client_profile.save
-    respond_with(current_user)
+    respond_to do |format|
+      if @client_profile.save
+        format.html { redirect_to current_user, notice: 'Profile was successfully created.' }
+        format.json { render :show, status: :created, location: current_user }
+      else
+        format.html { render :new }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def edit

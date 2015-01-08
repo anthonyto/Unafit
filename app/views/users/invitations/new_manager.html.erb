@@ -1,0 +1,15 @@
+<h2>Invite A Manager</h2>
+
+<%= form_for resource, :as => resource_name, :url => new_manager_path(params[:id]), :html => {:method => :post} do |f| %>
+  <%= devise_error_messages! %>
+
+<% resource.class.invite_key_fields.each do |field| -%>
+  <p><%= f.label field %><br />
+  <%= f.text_field field %></p>
+<% end -%>
+
+	<%= f.hidden_field :gym_id, value: @gym.id %>
+
+
+<p><%= f.submit %></p>
+<% end %>

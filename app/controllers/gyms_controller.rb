@@ -31,28 +31,21 @@ class GymsController < ApplicationController
   def new
     @gym  = Gym.new
   end
-  
-  # def new_manager
-  #   authorize current_user
-  #   @user = User.new
-  # end
-  #
-  # def create_manager
-  #   authorize current_user
-  #   @user = User.new(user_params)
-  #   @gym.associate_gym_and_manager(@gym)
-  #   @user.save
-  #   respond_with(@gym)
-  # end
 
   def edit
   end
 
   def create
     @gym  = Gym.new(gym_params)
-    @gym.save
-    @user = @gym.build_user(:role => "manager")
-    redirect_to new_manager_user_path
+    
+    respond_to do |format|
+      if @gym.save
+        format.html { redirect_to new_manager_path(@gym.id), notice: 'Gym was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def update
@@ -95,7 +88,7 @@ class GymsController < ApplicationController
     end
 
     def gym_params
-      params.require(:gym).permit(:name, :email, :phone_number, :city, :state, :street, :lat, :lng, :two_gym_passes, :three_gym_passes, :four_gym_passes, :status, :description, :link, :profile_image, :logo_image, :showers, :classes, :reservation_policy)
+      params.require(:gym).permit(:name, :email, :phone_number, :city, :state, :street, :zip, :two_gym_passes, :three_gym_passes, :four_gym_passes, :status, :description, :link, :profile_image, :logo_image, :showers, :classes, :reservation_policy)
     end
     
     def user_params

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :edit_subscriptions, :destroy]
-  # before_action :set_gyms
   before_action :authenticate_user!
 
   # GET /users
@@ -66,25 +65,6 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end
-  
-  def new_manager
-    @gym  = Gym.find(params[:gym_id])
-    @user = @gym.build_user(:role => "manager")
-  end
-  
-  def create_manager
-    @user.save
-    redirect_to user_path(current_user.id)
-  end
-  
-  def new_admin
-    @user = User.new(:role => "admin")
-  end
-  
-  def create_admin
-    @user = User.create!(user_params)
-    redirect_to user_path(current_user.id)
   end
 
   # GET /users/1/edit
