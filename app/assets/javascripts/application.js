@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require underscore
 //= require twitter/bootstrap
 //= require turbolinks
 //= require gmaps/google
+//= require jquery.dataTables.min.js
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_tree .

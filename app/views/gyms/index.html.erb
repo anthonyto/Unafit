@@ -1,29 +1,46 @@
 <div class="container-fluid">
+	
 	<div class="row">
-
-		<div class="col-md-4">
-			<h2>All Unafit Gyms</h2>
-			<table class="table">
-				<tr>
-					<th>Gym Name</th>
-					<th>Description</th>
-				</tr>
-				<% @gyms.each do |gym| %>
-				<tr>
-					<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
-					<td><%= gym.description %></td>
-				</tr>
-			<% end %>
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+		  <div id="sidebar-builder">
+		  </div>
+			
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div id='sidebar-container'>
+			</div>
+			<table id="gyms" class="table">
+				<thead>
+					<tr>
+						<th>Gym Name</th>
+						<th>Street</th>
+						<th>City</th>
+						<th>State</th>
+						<th>Zip</th>
+					</tr>
+				</thead>
+				<tbody id="gyms-tbody">
+						<!-- <% @gyms.each do |gym| %>
+						<tr>
+							<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+							<td><%= gym.street %></td>
+							<td><%= gym.city %></td>
+							<td><%= gym.state %></td>
+							<td><%= gym.zip %></td>
+						</tr>
+					<% end %> -->
+				</tbody>
 			</table>
 		</div>
-		
-		<div class="col-md-8">
-			<div style='width: 800px;'>
-			  <div id="map" style='width: 800px; height: 400px;'>
-					<%= render 'map'%>
-			  </div>
-			</div>
-		</div>
-		
+		<div class="col-md-1"></div>
 	</div>
+
 </div>
+
+<%= render 'index_gyms_map' %>

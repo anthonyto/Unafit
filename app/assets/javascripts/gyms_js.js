@@ -1,0 +1,3 @@
+// $('#gymsfoo').DataTable({
+// 	paging: false
+// });

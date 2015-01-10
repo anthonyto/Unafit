@@ -16,3 +16,10 @@ The Boxing Club
 8650 Genesee Avenue
 San Diego
 CA 92122
+
+
+//= require jquery.dataTables.min.js
+ *= require jquery.dataTables.min.css
+
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
