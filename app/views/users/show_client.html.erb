@@ -33,26 +33,33 @@
 			<% else %>
 				<h4>Gyms in your area</h4>
 			<% end %>
-			<div style='width: 800px;'>
-			  <div id="map" style='width: 800px; height: 400px;'>
-					<%= render 'gyms/map'%>
-			  </div>
+			<div id="map">
 			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<% if current_user.active_and_subscribed? %>
+						<%= render 'gyms/gym_table' %>
+					<% elsif current_user.active? %>
+						<br></br>
+						<%= link_to "Subscribe for gyms", edit_subscriptions_user_path(current_user.id), :class => "btn btn-primary btn-sm" %>
+					<% else %>
+						<h4>Ready to sign up? Pay your membership to get started!</h4>
+						<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>
+					<% end %>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-8">
-			<% if current_user.active_and_subscribed? %>
-				<%= render 'subscriptions'%>
-			<% elsif current_user.active? %>
-				<br></br>
-				<%= link_to "Subscribe for gyms", edit_subscriptions_user_path(current_user.id), :class => "btn btn-primary btn-sm" %>
-			<% else %>
-				<h4>Ready to sign up? Pay your membership to get started!</h4>
-				<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>
-			<% end %>
+			
 		</div>
 	</div>
+	
 </div>
+
+<%= render 'gyms/index_gyms_map' %>

@@ -1,32 +1,40 @@
 <div class="container-fluid">
-
-	<h2>All Unafit Gyms</h2>
-	<table class="table">
-		<tr>
-			<th>Gym Name</th>
-			<th>Street</th>
-			<th>State</th>
-			<th>Description</th>
-			<th>Manager</th>
-		</tr>
-		<% @gyms.each do |gym| %>
-		<tr>
-			<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
-			<td><%= gym.street %></td>
-			<td><%= gym.state %></td>
-			<td><%= gym.description %></td>
-			<td>
-				<% if gym.user_id.nil? %>
-					No manager! <%= link_to "Add one", new_manager_path(gym_id: gym.id) %>
-				<% elsif gym.user.invitation_accepted_at.nil? %>
-					Manager not registered yet. 
-				<% else %>
-					<%= gym.user.first_name %>
-				<% end %>
-			</td>
-		</tr>
-	<% end %>
-	</table>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h2>All Unafit Gyms</h2>
+			<table id="admin-table" class="table display">
+				<thead>
+					<tr>
+						<th>Gym Name</th>
+						<th>Street</th>
+						<th>State</th>
+						<th>Description</th>
+						<th>Manager</th>
+					</tr>
+				</thead>
+				<% @gyms.each do |gym| %>
+				<tbody>
+					<tr>
+						<td><%= link_to gym.name, gym_path(gym.id), :class => 'navbar-link' %></td>
+						<td><%= gym.street %></td>
+						<td><%= gym.state %></td>
+						<td><%= gym.description %></td>
+						<td>
+							<% if gym.user_id.nil? %>
+								No manager! <%= link_to "Add one", new_manager_path(gym_id: gym.id) %>
+							<% elsif gym.user.invitation_accepted_at.nil? %>
+								Manager not registered yet. 
+							<% else %>
+								<%= gym.user.first_name %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			<% end %>
+			</table>
+		</div>
+	</div>
 	
 	<%= link_to 'Edit User', edit_user_path(@user), :class => "btn btn-primary btn-sm"%>
 	<%= link_to 'New Gym', new_gym_path, :class => "btn btn-primary btn-sm" %>

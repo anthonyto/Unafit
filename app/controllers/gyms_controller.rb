@@ -4,20 +4,26 @@ class GymsController < ApplicationController
   respond_to :html
 
   def index
+    # FOR DEV ONLY
     if !user_signed_in? && Rails.env.development? 
-      # in development and not logged in , just get gyms in madison
+      # in development and not logged in, just get gyms in madison
       @gyms = Gym.near([43.0771, -89.3815], 25)
       @center = [43.0771, -89.3815]
+    elsif user_signed_in? && current_user.admin? 
+      # in dev and logged in as admin, send all the gyms
+      @gyms = Gym.all
+      @center = [@gyms.first.latitude, @gyms.first.longitude]
+    # END FOR DEV ONLY
     elsif !user_signed_in? || current_user.client_profile.nil?
       # if a user is not signed in and in prod, or inactive, use their IP to find nearby gyms
       @gyms = Gym.near(request.location, 25)
       @center = [request.location.latitude, request.location.longitude]
     else
       # send gyms within 25 miles of their address
-      @gyms = Gym.near(current_user.client_profile.geocode, 25)
+      @gyms = Gym.near(current_user.client_profile.geocode, 50)
       @center = [@gyms.first.latitude, @gyms.first.longitude]
     end
-    @hash = Gmaps4rails.build_markers(@gyms) do |gym, marker|
+    @gyms_json = Gmaps4rails.build_markers(@gyms) do |gym, marker|
       marker.lat gym.latitude
       marker.lng gym.longitude
       marker.json({
@@ -27,24 +33,24 @@ class GymsController < ApplicationController
         state: gym.state,
         zip: gym.zip
       })
-      # marker.title gym.name
-      # marker.sidebar "I'm the sidebar"
       marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
     end
-    # @hash = @gyms.to_gmaps4rails do |gym, marker|
-    #   marker.lat gym.latitude
-    #   marker.lng gym.longitude
-    #   marker.title gym.name
-    #   marker.info_window render_to_string(partial: "layouts/infowindow", locals: { gym: location })
-    # end
-    respond_with(@gyms, @hash)
+    respond_with(@gyms, @gyms_json)
   end
 
   def show
-    @hash = Gmaps4rails.build_markers(@gym) do |gym, marker|
+    @gym_json = Gmaps4rails.build_markers(@gym) do |gym, marker|
       marker.lat gym.latitude
       marker.lng gym.longitude
+      marker.json({
+        name: gym.name,
+        street: gym.street,
+        city: gym.city,
+        state: gym.state,
+        zip: gym.zip
+      })
     end
+    Rails.logger.info "GYM_JSON #{@gym_json}"
   end
 
   def new

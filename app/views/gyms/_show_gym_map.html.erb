@@ -1,0 +1,66 @@
+<script>
+
+// marker_json = <%=raw @gym_json.to_json %>
+//
+// handler = Gmaps.build('Google');
+// handler.buildMap({
+// 	provider: {
+// 		// disableDefaultUI: true,
+// 		zoom: 10,
+// 		center: new google.maps.LatLng(marker_json.latitude, marker_json.latitude)
+// 	},
+// 	internal: {id: 'map'}}, function(){
+// 		console.log("markers_json" + markers_json)
+//
+// 		// marker = handler.addMarker(markers_json[0]);
+// 		// _.extend(marker, marker_json)
+//
+// 		markers = _.map(markers_json, function(marker_json, index){
+// 		  marker = handler.addMarker(marker_json);
+// 		  _.extend(marker, marker_json);
+// 		  return marker;
+// 		});
+//
+// 	  markers = handler.addMarkers(markers_json);
+//
+//
+// 	  _.each(markers_json, function(json, index){
+// 	  	  		    json.marker = markers[index];
+// 	  	  		  });
+//
+// 	  handler.bounds.extendWith(markers);
+// 	  handler.fitMapToBounds();
+// 	});
+
+handler = Gmaps.build('Google');
+markers_json = <%=raw @gym_json.to_json %>
+
+handler.buildMap({ 
+	provider: {
+		// disableDefaultUI: true, 
+		zoom: 7,
+		center: new google.maps.LatLng(markers_json[0].latitude, markers_json[0].latitude)
+	}, 
+	internal: {id: 'map'}}, function(){
+		console.log("markers_json" + markers_json)
+		
+		markers = _.map(markers_json, function(marker_json, index){
+		  marker = handler.addMarker(marker_json);
+		  _.extend(marker, marker_json);
+		  return marker;
+		});
+		
+	  markers = handler.addMarkers(markers_json);
+
+
+	  _.each(markers_json, function(json, index){
+	  	  		    json.marker = markers[index];
+	  	  		  });
+	
+	  handler.bounds.extendWith(markers);
+	  handler.fitMapToBounds();
+	});
+	
+</script>
+	
+	

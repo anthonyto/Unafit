@@ -1,25 +1,10 @@
 <script>
 
-// function createSidebarLi(json)
-// {
-// 	console.log(json)
-// 	return("<li><a>" + json.name + "</a></li>")
-// };
-
 function createTableRow(json)
 {
 	return("<tr><td>" + json.name + "</td><td>" + json.street + "</td><td>" + json.city + "</td><td>" + json.state 	+ "</td><td>" + json.zip + "</td></tr>")
 };
 
-// function bindLiToMarker($li, marker)
-// {
-//   $li.on('click', function(){
-//     handler.getMap().setZoom(14);
-//     marker.setMap(handler.getMap()); //because clusterer removes map property from marker
-//     marker.panTo();
-//     google.maps.event.trigger(marker.getServiceObject(), 'click');
-//   })
-// };
 
 function bindRowToMarker($tr, marker)
 {
@@ -30,15 +15,6 @@ function bindRowToMarker($tr, marker)
 			google.maps.event.trigger(marker.getServiceObject(), 'click');
 		});
 };
-
-// function createSidebar(markers_json)
-// {
-//   _.each(markers_json, function(json){
-//     var $li = $( createSidebarLi(json) );
-//     $li.appendTo('#sidebar-container');
-//     bindLiToMarker($li, json.marker);
-//   });
-// };
 
 function populateTable(markers_json)
 {
@@ -57,8 +33,8 @@ function populateTable(markers_json)
 			zoom: 10,
 			center: new google.maps.LatLng(<%= @center[0] %>, <%=  @center[1] %>)
 		}, 
-		internal: {id: 'sidebar-builder'}}, function(){
-			markers_json = <%=raw @hash.to_json %>
+		internal: {id: 'map'}}, function(){
+			markers_json = <%=raw @gyms_json.to_json %>
 			console.log("markers_json" + markers_json)
 			
 			markers = _.map(markers_json, function(marker_json, index){

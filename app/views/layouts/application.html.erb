@@ -43,6 +43,7 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>	
+	
 </header>
 
 	<% flash.each do |key, value| %>
@@ -50,14 +51,12 @@
 	<% end %>
 
 <%= yield %>
+<br \>
 
-<!-- <%= render 'layouts/debug' %> -->
+<%= render 'layouts/debug' %>
 
 <nav id="footer" class="navbar navbar-default navbar-bottom">
-	<div class="container-fluid">
-	</div>
 </nav>
-
 
 </body>
 

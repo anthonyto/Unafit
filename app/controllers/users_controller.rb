@@ -35,11 +35,19 @@ class UsersController < ApplicationController
           # if the user is inactive or unsubscribed, send gyms in their area
           @gyms = Gym.near(current_user.client_profile.geocode, 25)
         end
-        @hash = Gmaps4rails.build_markers(@gyms) do |gym, marker|
+        @center = [@gyms.first.latitude, @gyms.first.longitude]
+        @gyms_json = Gmaps4rails.build_markers(@gyms) do |gym, marker|
           marker.lat gym.latitude
           marker.lng gym.longitude
+          marker.json({
+            name: gym.name,
+            street: gym.street,
+            city: gym.city,
+            state: gym.state,
+            zip: gym.zip
+          })
+          marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
         end
-        p "@GYMS #{@hash.inspect}"
         render "show_client"
       end
     end

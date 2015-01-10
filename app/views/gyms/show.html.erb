@@ -1,20 +1,33 @@
 <div class="container-fluid">
+	
+	<!-- Row for gym name -->
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
 			<h4><%= @gym.name %></h4>
-			<ul>
-				<li>Email: <%= @gym.email %></li>
-				<li>Phone: <%= @gym.phone_number %></li>
-				<li>Address: <%= "#{@gym.street}, #{@gym.city}, #{@gym.state} #{@gym.zip}" %></li>
-				<li>Two subscription passes: <%= @gym.two_gym_passes %></li>
-				<li>Three subscription passes: <%= @gym.three_gym_passes %></li>
-				<li>Four subscription passes: <%= @gym.four_gym_passes %></li>
-				<li>Description: <%= @gym.description %></li>
-				<li>Url: <%= @gym.link %></li>
-				<li>Classes: <%= @gym.classes %></li>
-				<li>Reservation Policy: <%= @gym.reservation_policy %></li>
-			</ul>
+			<p><%= @gym.email %></p>
+			<p><%= @gym.phone_number %></p>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	<!-- Row for image and map -->
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-4">
+			shit
+		</div>
+		<div class="col-md-6">
+			<div id="map"></div>
 			
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
 			<% if user_signed_in? && current_user.admin? %>
 				<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%> |
 				<% end %>
@@ -23,15 +36,10 @@
 			<% end %>
 			<%= link_to 'Back', :back, :class => 'btn btn-primary btn-xs' %>
 		</div>
-		
-		<div class="col-md-8">
-			<div style='width: 800px;'>
-			  <div id="sidebar-builder" style='width: 800px; height: 400px;'>
-					<%= render 'show_gym_map'%>
-			  </div>
-			</div>
-		</div>
+		<div class="col-md-1"></div>
 	</div>
+	
 </div>
 
+<%= render 'show_gym_map'%>
 
