@@ -1,13 +1,24 @@
-<h2>Invite An Administrator</h2>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 
-<%= form_for resource, :as => resource_name, :url => new_admin_path, :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
+			<h2>Invite An Administrator</h2>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <p><%= f.label field %><br />
-  <%= f.text_field field %></p>
-<% end -%>
+			<%= form_for resource, as: resource_name, url: new_admin_path, html: { method: :post } do |f| %>
+			  <%= devise_error_messages! %>
+
+			<% resource.class.invite_key_fields.each do |field| -%>
+			<div class="form-group">
+				<%= f.label field, class: 'sr-only' %><br />
+			  <%= f.text_field field, class: "form-control", placeholder: "Email" %>
+			</div>
+			<% end -%>
 
 
-<p><%= f.submit %></p>
-<% end %>
+			<%= f.submit "Invite", class: "btn btn-primary" %>
+			<% end %>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>

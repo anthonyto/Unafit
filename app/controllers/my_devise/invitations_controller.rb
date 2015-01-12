@@ -1,4 +1,7 @@
 class MyDevise::InvitationsController < Devise::InvitationsController
+  
+  # the database says that this is working, but the request logs are still not permitting :first_name or :last_name...uh wtf?!
+  before_filter :configure_permitted_parameters, only: :update
      
    def new_admin
      self.resource = resource_class.new()
@@ -48,35 +51,29 @@ class MyDevise::InvitationsController < Devise::InvitationsController
      end
    end
    
-   # GET /resource/invitation/accept?invitation_token=abcdef
-   def edit
-     resource.invitation_token = params[:invitation_token]
-     # user = User.where(invitation_token: params[:invitation_token]).first
-     # if user.role == 1
-     #   render :edit_manager
-     # else
-     #   render :edit_admin
-     # end
-     render :edit
-   end
-     
+   # PUT /resource/invitation
    def update
-     self.resource = accept_resource
-     invitation_accepted = resource.errors.empty?
-
-     yield resource if block_given?
-
-     if invitation_accepted
-       flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
-       set_flash_message :notice, flash_message if is_flashing_format?
-       sign_in(resource_name, resource)
-       respond_with resource, :location => after_accept_path_for(resource)
-     else
-       respond_with_navigational(resource){ render :edit }
+     respond_to do |format|
+       format.js do
+         invitation_token = Devise.token_generator.digest(resource_class, :invitation_token, update_resource_params[:invitation_token])
+         self.resource = resource_class.where(invitation_token: invitation_token).first
+         resource.skip_password = true
+         resource.update_attributes update_resource_params.except(:invitation_token)
+       end
+       format.html do
+         super
+       end
      end
    end
-   
+      
    private
+   
+   # Add :first_name and :last_name to permitted parameters
+   def configure_permitted_parameters
+     devise_parameter_sanitizer.for(:accept_invitation) do |u|
+       u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :invitation_token,)
+     end
+   end
    
    def invite_admin
      resource_class.invite!(invite_params, current_inviter) do |invitable|

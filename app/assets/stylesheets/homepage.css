@@ -1,0 +1,23 @@
+#homepage-header 
+{
+	min-height: 100px;
+	background: white;
+	opacity: 0.8;
+	border-radius: 0px;
+	border: 0px;
+	padding: 20px;
+	width: 100%;
+	position: absolute;
+}
+
+#landing-image
+{
+	width: 100%;
+};
+
+#how-it-works
+{
+	height: 20%;
+	min-height: 500px;
+};
+

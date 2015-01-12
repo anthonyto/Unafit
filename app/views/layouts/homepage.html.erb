@@ -16,7 +16,7 @@
 	
 <header>
 	
-	<nav id="navigation-header" class="navbar navbar-inverse" role="navigation">
+	<nav id="homepage-header" class="navbar navbar-inverse" role="navigation">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
@@ -48,9 +48,12 @@
 
 	<% flash.each do |key, value| %>
 		<div class="alert alert-<%= key %>"><%= value %></div>
+		
 	<% end %>
 
+
 <%= yield %>
+<br \>
 
 <%= render 'layouts/debug' %>
 
