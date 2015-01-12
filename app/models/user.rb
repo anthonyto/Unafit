@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_one :client_profile
   accepts_nested_attributes_for :client_profile
   
+  before_save :capitalize_attributes
+  
+  
   # set roles, that correspond to integers in the database
   enum role: [:admin, :manager, :client]
   # set user to client by default if it is not set
@@ -82,10 +85,12 @@ class User < ActiveRecord::Base
     self.active? && !self.gyms.empty?
   end
   
-  # def create_profile
-  #   profile = ClientProfile.create
-  #   profile.client_id = self.id
-  #   puts "Profile: #{profile}"
-  # end
+  private 
+  
+  def capitalize_attributes
+    self.first_name = self.first_name.capitalize
+    self.last_name = self.last_name.capitalize
+  end
+  
   
 end

@@ -3,13 +3,13 @@
 	<div class="row">
 	  <div class="col-md-4">
 			<h4>Your Information</h4>
-			<ul>
-				<li>Name:  		<%= "#{current_user.first_name} #{current_user.last_name}" %></li>
-				<li>Phone: 		<%= current_user.client_profile.phone_number %> </li>
-				<li>Address: 	<%= current_user.client_profile.street %></li>
-				<li>City: 		<%= current_user.client_profile.city %></li>
-				<li>Zip Code: <%= current_user.client_profile.zip %></li>
-				<li>State: 		<%= current_user.client_profile.state %></li>
+			<ul class="no-bullets">
+				<li><%= "#{current_user.first_name} #{current_user.last_name}" %></li>
+				<li><%= current_user.client_profile.phone_number %> </li>
+				<li><%= current_user.client_profile.street %></li>
+				<li><%= current_user.client_profile.city %></li>
+				<li><%= current_user.client_profile.zip %></li>
+				<li><%= current_user.client_profile.state %></li>
 				<li>Account: 
 					<% if current_user.active? %>
 						Active

@@ -5,10 +5,19 @@ class ClientProfile < ActiveRecord::Base
   geocoded_by :full_street_address
   after_validation :geocode
   
+  before_save :capitalize_attributes
+  
   def full_street_address
     address = "#{self.street} #{self.city} #{self.state} #{self.zip}"
     return address
   end
   
+  private
   
+  def capitalize_attributes
+    self.city = self.city.titleize
+    self.state = self.state.titleize
+    self.street = self.street.titleize
+  end
+
 end
