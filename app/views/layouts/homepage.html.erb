@@ -26,7 +26,7 @@
 			  <%= link_to "Unafit", '/', :class => "navbar-brand"%>
 			<% end %>		  	
 	    </div>
-  		<p class="navbar-text">
+  		<p class="navbar-text navbar-right">
   		  	<% if user_signed_in? %>
   		  	  <%= link_to current_user.first_name.upcase, user_path(current_user.id), :class => 'navbar-link' %>
 						<% if !current_user.manager? %>

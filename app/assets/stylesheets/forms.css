@@ -1,8 +1,20 @@
-.form-checkbox
+#devise-links-group
 {
+	margin-top: 50px;
 }
 
-.form-button
+.devise-link
 {
-	
+	color: #000000;
 }
+
+.devise-link:hover
+{
+	text-decoration: none;
+}
+
+#form-submit-btn
+{
+	width: 100%;
+}
+ 

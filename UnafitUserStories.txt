@@ -1,25 +1,25 @@
 Unafit User Stories
 
 As a new user I would like to...
-	Register if I am a new user
-	Browse all gyms in my area
+	Register if I am a new user*
+	Browse all gyms in my area*
 	Sort gyms by different parameters ()
-	View details on individual gyms
+	View details on individual gyms*
 		name, location, hours, amenities, how many passes/month, types of workouts, how to schedule, email, phone #
-	Subscribe to either 2 or 3 gyms a mmonth
-	Pay for my membership
+	Subscribe to either 2 or 3 gyms a mmonth*
+	Pay for my membership*
 	Set up monthly recurring payments
 
 As a member I would like to...
-	see my profile info
-	edit my profile info
-	see gyms I'm subscribed to
+	see my profile info*
+	edit my profile info*
+	see gyms I'm subscribed to*
 	edit which gyms I'm subscribed to
-	know how many sessions I have left at each gym
+	know how many sessions I have left at each gym*
 	
 	
 As a gym I would like to..
-	see how many unafit members are signed up with us
+	see how many unafit members are signed up with us*
 	see how many visits each of them has
 	see when unafit members are signed up for classes
 	

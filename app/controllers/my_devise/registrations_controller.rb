@@ -2,6 +2,10 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
   
   before_filter :configure_permitted_parameters
   
+  def new
+    super
+  end
+  
   protected
   
   # my custom fields are :first_name, :last_name

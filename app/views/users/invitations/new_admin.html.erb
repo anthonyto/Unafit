@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
 
 			<h2>Invite An Administrator</h2>
 
@@ -15,10 +15,11 @@
 			</div>
 			<% end -%>
 
-
-			<%= f.submit "Invite", class: "btn btn-primary" %>
+			<div class="text-center devise-link">
+				<%= f.submit "Invite", class: "btn", id: "form-submit-btn" %>
+			</div>
 			<% end %>
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-4"></div>
 	</div>
 </div>

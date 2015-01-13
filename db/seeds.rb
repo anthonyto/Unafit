@@ -36,7 +36,11 @@ gyms.each do |name, email, phone_number, city, state, street, zip, two_gym_passe
 end
 
 User.create!(email: "admin@bar.com", first_name: "anthony", last_name: "to", role: 0, password: "password");
-User.create!(email: "manager@bar.com", first_name: "jeanie", last_name: "to", role: 1, password: "password");
+user = User.create!(email: "manager@bar.com", first_name: "jeanie", last_name: "to", role: 1, password: "password");
+
+gym = Gym.find(1)
+gym.user = user
+gym.save!
 
 user = User.create!(
   email: "madisonclient@bar.com",
