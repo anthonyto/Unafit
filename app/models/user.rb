@@ -88,8 +88,8 @@ class User < ActiveRecord::Base
   private 
   
   def capitalize_attributes
-    self.first_name = self.first_name.capitalize
-    self.last_name = self.last_name.capitalize
+    self.first_name = self.first_name.titleize
+    self.last_name = self.last_name.titleize
   end
   
   

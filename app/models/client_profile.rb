@@ -16,7 +16,7 @@ class ClientProfile < ActiveRecord::Base
   
   def capitalize_attributes
     self.city = self.city.titleize
-    self.state = self.state.titleize
+    self.state = self.state.upcase
     self.street = self.street.titleize
   end
 

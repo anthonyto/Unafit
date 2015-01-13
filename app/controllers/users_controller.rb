@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       render "show_admin"
     elsif current_user.manager?
       @gym   = Gym.where(user_id: current_user.id).first
-      @hash  = gym_to_hash(@gym)
+      @gym_json  = gym_to_hash(@gym)
       @users = @gym.users
       render "show_manager"
     else

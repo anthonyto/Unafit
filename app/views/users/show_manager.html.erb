@@ -3,10 +3,11 @@
 		
 		<div class="col-md-4">
 			<h4><%= @gym.name %> Manager Dashboard</h4>
-			<ul>
-				<li>Email: <%= @gym.email %></li>
-				<li>Phone: <%= @gym.phone_number %></li>
-				<li>Address: <%= "#{@gym.street}, #{@gym.city}, #{@gym.state} #{@gym.zip}" %></li>
+			<ul class="no-bullets">
+				<li><%= @gym.email %></li>
+				<li><%= @gym.phone_number %></li>
+				<li><%= @gym.street %></li>
+				<li><%= @gym.city %>, <%= @gym.state %> <%= @gym.zip %></li>
 				<li>Two subscription passes: <%= @gym.two_gym_passes %></li>
 				<li>Three subscription passes: <%= @gym.three_gym_passes %></li>
 				<li>Four subscription passes: <%= @gym.four_gym_passes %></li>
