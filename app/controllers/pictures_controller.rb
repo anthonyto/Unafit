@@ -23,7 +23,7 @@ class PicturesController < ApplicationController
 
   def create
     gym = Gym.find(params[:gym_id])
-    @picture = Gym.pictures.build(picture_params)
+    @picture = gym.pictures.build(picture_params)
     @picture.save
     respond_with(@picture)
   end

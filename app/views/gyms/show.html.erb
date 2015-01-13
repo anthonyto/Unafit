@@ -34,7 +34,9 @@
 			<% if user_signed_in? %>
 				<%= link_to 'Home', user_path(current_user.id), :class => 'btn btn-primary btn-xs' %>
 			<% end %>
-			<%= link_to 'Back', :back, :class => 'btn btn-primary btn-xs' %>
+
+			<%= render 'layouts/back-btn' %>
+
 		</div>
 		<div class="col-md-1"></div>
 	</div>
@@ -42,4 +44,3 @@
 </div>
 
 <%= render 'show_gym_map'%>
-

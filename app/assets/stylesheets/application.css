@@ -17,6 +17,7 @@
  *= require_self
  */
 
-.form-inline > .form-group {
-    vertical-align: top;
+a:visited 
+{
+	color: inherit;
 }
