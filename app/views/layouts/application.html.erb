@@ -21,9 +21,9 @@
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
 			<% if user_signed_in? %>
-			  <%= link_to "Unafit", user_path(current_user.id), class: "navbar-brand"%>
+			  <%= link_to image_tag("logo.png"), user_path(current_user.id), class: "navbar-brand"%>
 			<% else %>
-			  <%= link_to "Unafit", '/', :class => "navbar-brand"%>
+			  <%= link_to image_tag("logo.png"), '/', :class => "navbar-brand"%>
 			<% end %>		  	
 	    </div>
   		<p class="navbar-text navbar-right">
