@@ -10,6 +10,7 @@ class GymPolicy
   end
   
   def show?
+    @current_user.admin? || @current_user.client?
   end
   
   def check_in_client?

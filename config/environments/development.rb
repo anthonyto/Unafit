@@ -39,6 +39,9 @@ Rails.application.configure do
   # be different for staging and production. 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
+  # imagemagick installation location
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  
   # Mailer settings
   config.action_mailer.delivery_method = :smtp
 

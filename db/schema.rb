@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231223004) do
+ActiveRecord::Schema.define(version: 20150113211015) do
 
   create_table "client_profiles", force: true do |t|
     t.string   "phone_number"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20141231223004) do
   end
 
   add_index "gyms", ["user_id"], name: "index_gyms_on_user_id", using: :btree
+
+  create_table "pictures", force: true do |t|
+    t.string   "file_name"
+    t.integer  "gym_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["gym_id"], name: "index_pictures_on_gym_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.integer  "gym_id"

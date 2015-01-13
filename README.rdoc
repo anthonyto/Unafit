@@ -29,6 +29,8 @@ Please feel free to use a different markup language if you do not plan to run
 
 Setup
 
+You need imagemagick for paperclip to work. You also need Amazon S3 credentials in a test bucket.
+
 You should user pow, or ip address geocoding will not work. www.pow.cx
 
 Subscriptions

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Error pages handling
   get 'errors/file_not_found'
   get 'errors/unprocessable'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
       get 'update_sessions_left', to: 'gyms#update_sessions_left'
     end
     resources :users, only: [:index, :show]
+    resources :pictures, only: [:index, :show]
   end
 
   devise_for :users, controllers: { registrations: "my_devise/registrations", invitations: "my_devise/invitations"}
@@ -39,7 +41,9 @@ Rails.application.routes.draw do
       patch 'edit_subscriptions', to: 'users#update_subscriptions'
     end
     resources :client_profiles
-    resources :gyms
+    resources :gyms do 
+      resources :pictures
+    end
     resources :charges
   end
   

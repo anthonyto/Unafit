@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    authorize current_user
     if current_user.admin?
       @users = User.all
     else
@@ -55,7 +54,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    authorize current_user
     @user = User.new
   end
   
@@ -95,7 +93,6 @@ class UsersController < ApplicationController
   
   # GET /users/1/edit_subscriptionss
   def edit_subscriptions
-    authorize current_user
     @subscribed_gyms = current_user.gyms
     @gyms            = Gym.near(current_user.client_profile.geocode, 25)
 

@@ -37,6 +37,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'whenever', :require => false
 # Google maps integration
 gem 'gmaps4rails', '~> 2.1.2'
+gem "paperclip", "~> 4.2"
 
 
 group :development, :test do 
