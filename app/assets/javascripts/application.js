@@ -19,4 +19,5 @@
 //= require gmaps/google
 //= require jquery.dataTables.min.js
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require jvfloat.js
 //= require_tree .

@@ -1,0 +1,38 @@
+.jvFloat
+{
+position: relative;
+}
+
+.jvFloat .placeHolder.required
+{
+color: $white;
+}
+
+/* Start CSS3 Animations on supported browser */
+.jvFloat .placeHolder
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: auto;
+	min-width: 100px;
+	color: $white;
+	font-size: $base-smaller-fsize;
+	letter-spacing: $base-letter-spacing;
+	font-weight: 500;
+	margin-top: 0;
+	-webkit-transition: margin-top 100ms, opacity 120ms, visibility 120ms;
+	transition: margin-top 100ms, opacity 120ms, visibility 120ms;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.jvFloat .placeHolder.active
+{
+display: block;
+visibility: visible;
+margin-top: -20px;
+opacity: 1;
+-webkit-transition: margin-top 100ms, opacity 120ms, visibility 120ms;
+transition: margin-top 100ms, opacity 120ms, visibility 120ms;
+}

@@ -18,3 +18,24 @@
 	width: 100%;
 }
  
+.form-group
+{
+	margin-bottom: 20px;
+}
+
+/*input
+{
+	border-top: none !important;
+	border-right: none !important;
+	border-top-style: none !important;
+	border-right-style: none !important;
+	border-top-width: none !important;
+	border-right-width: none !important;
+}
+
+.form-control:focus
+{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}*/

@@ -9,29 +9,29 @@
 
 			  <div class="form-group">
 			    <%= f.label :first_name, class: 'sr-only' %><br />
-			    <%= f.text_field :first_name, class: "form-control", placeholder: "First Name", autofocus: true %>
+			    <%= f.text_field :first_name, class: "form-control jv-float", placeholder: "First Name", autofocus: true %>
 			  </div>
 	
 			  <div class="form-group">
 			    <%= f.label :last_name, class: 'sr-only' %><br />
-			    <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+			    <%= f.text_field :last_name, class: "form-control jv-float", placeholder: "Last Name" %>
 			  </div>
 
 			  <div class="form-group">
 			    <%= f.label :email, class: 'sr-only'  %><br />
-			    <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+			    <%= f.email_field :email, class: "form-control jv-float", placeholder: "Email" %>
 			  </div>
 
 			  <div class="form-group">
 			    <%= f.label :password, class: 'sr-only'  %>
 			    <% if @validatable %>
 			    <% end %><br />
-			    <%= f.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "off" %>
+			    <%= f.password_field :password, class: "form-control jv-float", placeholder: "Password", autocomplete: "off" %>
 			  </div>
 
 			  <div class="form-group">
 			    <%= f.label :password_confirmation, class: 'sr-only'  %><br />
-			    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", autocomplete: "off" %>
+			    <%= f.password_field :password_confirmation, class: "form-control jv-float", placeholder: "Confirm Password", autocomplete: "off" %>
 			  </div>
 
 			  <div class="actions text-center">
@@ -45,3 +45,7 @@
 	</div>
 
 </div>
+
+<script>
+	$(".jv-float").jvFloat();
+</script>
