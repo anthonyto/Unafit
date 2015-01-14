@@ -2,32 +2,11 @@
 	
 	<!-- Row for gym name -->
 	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
+		<div class="col-md-4">
 			<h4><%= @gym.name %></h4>
 			<p><%= @gym.email %></p>
 			<p><%= @gym.phone_number %></p>
-		</div>
-		<div class="col-md-1"></div>
-	</div>
-	
-	<!-- Row for image and map -->
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-4">
-			shit
-		</div>
-		<div class="col-md-6">
-			<div id="map"></div>
 			
-		</div>
-		<div class="col-md-1"></div>
-	</div>
-	
-	
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
 			<% if user_signed_in? && current_user.admin? %>
 				<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%> |
 				<% end %>
@@ -35,11 +14,17 @@
 				<%= link_to 'Home', user_path(current_user.id), :class => 'btn btn-primary btn-xs' %>
 			<% end %>
 
-			<%= render 'layouts/back-btn' %>
-
+			<%= render 'layouts/back_btn' %>
+			
 		</div>
-		<div class="col-md-1"></div>
+		<div class="col-md-4">
+			<%= image_tag @gym.pictures.first.image.url %>
+		</div>
+		<div class="col-md-4">
+			<div id="map"></div>
+		</div>
 	</div>
+	
 	
 </div>
 

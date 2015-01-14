@@ -21,3 +21,8 @@ a:visited
 {
 	color: inherit;
 }
+
+a:hover
+{
+	background-color: inherit;
+}

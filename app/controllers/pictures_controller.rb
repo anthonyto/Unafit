@@ -22,10 +22,10 @@ class PicturesController < ApplicationController
   end
 
   def create
-    gym = Gym.find(params[:gym_id])
-    @picture = gym.pictures.build(picture_params)
+    @gym = Gym.find(params[:gym_id])
+    @picture = @gym.pictures.build(picture_params)
     @picture.save
-    respond_with(@picture)
+    respond_with(@gym)
   end
 
   def update
@@ -44,6 +44,6 @@ class PicturesController < ApplicationController
     end
 
     def picture_params
-      params.require(:picture).permit(:file_name, :gym_id)
+      params.require(:picture).permit(:file_name, :gym_id, :image)
     end
 end

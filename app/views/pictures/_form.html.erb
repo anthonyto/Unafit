@@ -11,15 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :file_name %><br>
     <%= f.text_field :file_name %>
   </div>
   <div class="field">
     <%= f.label :gym_id %><br>
     <%= f.text_field :gym_id %>
+  </div> -->
+	<div class="form-group">
+		<%= f.label :image, class: "sr-only" %>
+		<%= f.file_field :image %>
+	</div>
+		
+  <div class="actions text-center devise-link">
+	  <%= f.submit "Submit", class: "btn", id: "form-submit-btn" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	
 <% end %>

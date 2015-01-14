@@ -23,3 +23,7 @@ CA 92122
 
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+
+
+arn:aws:s3:::my_bucket
+arn:aws:s3:::unafit_dev/*
