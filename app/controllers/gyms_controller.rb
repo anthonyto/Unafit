@@ -1,5 +1,6 @@
 class GymsController < ApplicationController
   before_action :set_gym, only: [:show, :edit, :update, :check_in_client, :update_sessions_left, :destroy]
+  # before_filter :authorize_user
 
   respond_to :html
 
@@ -95,6 +96,10 @@ class GymsController < ApplicationController
   end
 
   private
+  
+    def authorize_user
+      authorize current_user
+    end
   
     def decrement_session(gym, user)
       sessions_left = user.subscriptions.where(gym_id: gym.id).first.sessions_left

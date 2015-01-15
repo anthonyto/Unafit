@@ -3,7 +3,7 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
 
-			<h2>Invite An Administrator</h2>
+			<h3>Invite An Administrator</h3>
 
 			<%= form_for resource, as: resource_name, url: new_admin_path, html: { method: :post } do |f| %>
 			  <%= devise_error_messages! %>
@@ -11,7 +11,7 @@
 			<% resource.class.invite_key_fields.each do |field| -%>
 			<div class="form-group">
 				<%= f.label field, class: 'sr-only' %><br />
-			  <%= f.text_field field, class: "form-control", placeholder: "Email" %>
+			  <%= f.text_field field, class: "form-control jv-float", placeholder: "Email" %>
 			</div>
 			<% end -%>
 
@@ -23,3 +23,7 @@
 		<div class="col-md-4"></div>
 	</div>
 </div>
+
+<script>
+	$(".jv-float").jvFloat();
+</script>

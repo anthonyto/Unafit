@@ -2,7 +2,8 @@ class MyDevise::InvitationsController < Devise::InvitationsController
   
   # the database says that this is working, but the request logs are still not permitting :first_name or :last_name...uh wtf?!
   before_filter :configure_permitted_parameters, only: :update
-  before_filter :authorize_user
+  # There are problems with this, they need to be resolved
+  # before_filter :authorize_user
      
    def new_admin
      self.resource = resource_class.new()
@@ -68,6 +69,10 @@ class MyDevise::InvitationsController < Devise::InvitationsController
    end
       
    private
+   
+   def authorize_user
+     authorize current_user
+   end
    
    # Add :first_name and :last_name to permitted parameters
    def configure_permitted_parameters

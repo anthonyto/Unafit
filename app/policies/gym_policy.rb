@@ -13,6 +13,14 @@ class GymPolicy
     @current_user.admin? || @current_user.client?
   end
   
+  def new? 
+    @current_user.admin?
+  end
+  
+  def create? 
+    @current_user.admin?
+  end
+  
   def check_in_client?
     @current_user.manager?
   end
@@ -20,9 +28,10 @@ class GymPolicy
   def update_sessions_left?
     @current_user.manager?
   end
-  
-  def new_manager?
-    @current_user.admin?
+
+  ## HOW CAN WE ENFORCE THAT A MANAGER CAN ONLY UPDATE THEIR OWN GYM???
+  def edit? 
+    @current_user.admin? or @current_user.manager?
   end
   
   def update?

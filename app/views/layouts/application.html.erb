@@ -30,7 +30,7 @@
 						<% if  current_user.manager? %>
 	  		  	  <%= link_to current_user.gym.name.upcase, user_path(current_user.id), class: 'navbar-link' %>
 						<% elsif user_signed_in? %>
-	  		  	  <%= link_to current_user.first_name.upcase, user_path(current_user.id), class: 'navbar-link' %>
+	  		  	  <%= link_to 'DASHBOARD', user_path(current_user.id), class: 'navbar-link' %>
 						<% end %>
 						<% if !current_user.manager? %>
 							<%= link_to 'BROWSE GYMS', gyms_path, class: "navbar-link" %> 
@@ -61,8 +61,7 @@
 
 <%= render 'layouts/debug' %>
 
-<nav id="footer" class="navbar navbar-default navbar-bottom">
-</nav>
+<%= render 'layouts/footer' %>
 
 </body>
 

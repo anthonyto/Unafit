@@ -27,3 +27,8 @@ CA 92122
 
 arn:aws:s3:::my_bucket
 arn:aws:s3:::unafit_dev/*
+
+
+TODO 
+FIX ALL POLICIES! Authorization is FUCKED right now
+Why is there a line break in between each field on the sign up page? 
