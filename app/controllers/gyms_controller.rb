@@ -32,7 +32,8 @@ class GymsController < ApplicationController
         street: gym.street,
         city: gym.city,
         state: gym.state,
-        zip: gym.zip
+        zip: gym.zip,
+        id: gym.id
       })
       marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
     end
