@@ -38,6 +38,7 @@ markers_json = <%=raw @gym_json.to_json %>
 handler.buildMap({ 
 	provider: {
 		// disableDefaultUI: true, 
+		scrollwheel: false,
 		zoom: 7,
 		center: new google.maps.LatLng(markers_json[0].latitude, markers_json[0].latitude)
 	}, 

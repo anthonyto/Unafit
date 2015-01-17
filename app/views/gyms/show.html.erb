@@ -1,12 +1,15 @@
-<div class="container-fluid">
+<div class="container-fluid no-pad-margin">
 	
-	<!-- Row for gym name -->
 	<div class="row">
-		<div class="col-md-4">
+		<!-- <div class="col-md-6 no-padding">
+			<div id="map"></div>
+		</div> -->
+		<div class="col-md-6 no-pad-margin text-center">
+			<br \>
 			<h4><%= @gym.name %></h4>
 			<p><%= @gym.email %></p>
 			<p><%= @gym.phone_number %></p>
-			
+		
 			<% if user_signed_in? && current_user.admin? %>
 				<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%> |
 				<% end %>
@@ -15,17 +18,19 @@
 			<% end %>
 
 			<%= render 'layouts/back_btn' %>
-			
 		</div>
-		<div class="col-md-4">
-			<%= image_tag @gym.pictures.first.image.url %>
+		
+		<div class="col-md-6 no-pad-margin">
+			<%= render 'carousel' %>
 		</div>
-		<div class="col-md-4">
+	</div><!-- row -->
+	
+	<div class="row">
+		<div class="col-md-12 no-pad-margin">
 			<div id="map"></div>
 		</div>
 	</div>
-	
-	
+
 </div>
 
 <%= render 'show_gym_map'%>

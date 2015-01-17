@@ -1,3 +1,4 @@
-<%= link_to gym.name, gym_path(gym) %></br>
-<%= gym.street %></br>
-<%= gym.city %>, <%= gym.name %>
+<strong><%= gym.name %></strong><br \> 
+<%= gym.street %><br \> 
+<%= gym.city %>, <%= gym.zip %><br \> 
+<%= link_to "Details", gym_path(gym), class: "btn btn-default center-block btn-xs" %>

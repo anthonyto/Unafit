@@ -2,7 +2,8 @@
 
 function createTableRow(json)
 {
-	return("<tr><td> <a href='/gyms/" + json.id + "'>"  + json.name + "</a></td><td>" + json.street + "</td><td>" + json.city + "</td><td>" + json.state 	+ "</td><td>" + json.zip + "</td></tr>")
+	// return("<tr><td> <a href='/gyms/" + json.id + "'>"  + json.name + "</a></td><td>" + json.street + "</td><td>" + json.city + "</td><td>" + json.state 	+ "</td><td>" + json.zip + "</td></tr>")
+	return("<tr><td>" + json.name + "</a></td><td>" + json.street + ", " + json.city + "</td>")
 };
 
 

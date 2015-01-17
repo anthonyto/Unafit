@@ -2,11 +2,11 @@
 {
 	min-height: 100px;
 	background: white;
-	background-color: transparent;
 	border-radius: 0px;
 	border: 0px;
 	padding: 20px;
 	width: 100%;
+	background-color: transparent;
 	position: absolute;
 }
 

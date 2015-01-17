@@ -41,6 +41,7 @@ class GymsController < ApplicationController
   end
 
   def show
+    @pictures = @gym.pictures
     @gym_json = Gmaps4rails.build_markers(@gym) do |gym, marker|
       marker.lat gym.latitude
       marker.lng gym.longitude
