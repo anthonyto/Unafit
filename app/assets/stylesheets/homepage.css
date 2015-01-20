@@ -28,12 +28,15 @@
 #landing-image
 {
 	width: 100%;
+/*	position: relative;*/
 }
 
 #how-it-works
 {
 	height: 20%;
 	min-height: 400px;
+/*	background-color: #000000;
+	opacity: 0.5;*/
 }
 
 .info-image
@@ -48,4 +51,14 @@
 	padding: 0px 0px 0px 0px !important;
 /*	padding-left: 0px !important;*/
 /*	padding-right: 0px !important;*/
+}
+
+#splash-info
+{
+	font-size: 90px;
+	color: #FFFFFF;
+	margin-top: 40%;
+	margin-left: 25%;
+	max-width: 30%;
+	position: absolute;
 }
