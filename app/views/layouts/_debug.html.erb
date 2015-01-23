@@ -1,8 +1,10 @@
 </br></br></br></br><strong><p>For development purposes only</p></strong>
 <%= debug(params) if Rails.env.development? %>
-<!-- LOCATION: <%= @location %>
+<% if false %>
+LOCATION: <%= @location %>
 Lat: <%= @location.latitude %>
-Long: <%= @location.longitude %> -->
+Long: <%= @location.longitude %>
+<% end %>
 <% if user_signed_in? %>
 	Signed in as: <%=current_user.role %>
 	Your account is: 

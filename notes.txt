@@ -1,34 +1,14 @@
 tail -f log/development.log | grep -vE "(^$|asset)"
 
-Gym.create(:name => "test", :street => "7960 kathryn crosby court", :state => "ca", :city => "san diego", :zip => "92127")
-
-'2014-12-26 08:13:00 UTC'
-'2014-11-26 08:13:00 UTC'
-
-
-Questions: 
-
-how long do you want invitations to last? 
-
-test gym
-
 The Boxing Club
 8650 Genesee Avenue
 San Diego
 CA 92122
 
-
-//= require jquery.dataTables.min.js
- *= require jquery.dataTables.min.css
-
- *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-
-
-arn:aws:s3:::my_bucket
-arn:aws:s3:::unafit_dev/*
-
-
 TODO 
 FIX ALL POLICIES! Authorization is FUCKED right now
 Why is there a line break in between each field on the sign up page? 
+
+Questions: 
+
+how long do you want invitations to last? 
