@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   
   # Only set email confirmations in production, because they are annoying in dev
   if Rails.env.production?
+    # put confirmable back into production when you've set up a staging environment too
     devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
+    devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :invitable
   else
     devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :invitable
   end
