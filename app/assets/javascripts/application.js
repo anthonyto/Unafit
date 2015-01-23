@@ -20,4 +20,6 @@
 //= require jquery.dataTables.min.js
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require jvfloat.js
+//= require edit_subscriptions.js
+//= require normalize-carousel.js
 //= require_tree .

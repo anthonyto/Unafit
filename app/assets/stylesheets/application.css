@@ -15,6 +15,16 @@
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require jquery.dataTables.min.css
  *= require jvfloat.css
+ *= require carousel.css.css
+ *= require dashboards.css
+ *= require footer.css
+ *= require forms.css
+ *= require header.css
+ *= require homepage.css
+ *= require map.css
+ *= require scaffolds.css
+ *= require show_client.css
+ *= require show_gym.css
  *= require_self
  */
 
