@@ -18,7 +18,6 @@
         }
 
         return text;
-				console.log("jvfloat")
       }
       function setState () {
         // change span.placeHolder to span.placeHolder.active
