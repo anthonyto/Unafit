@@ -9,15 +9,18 @@
 			<h4><%= @gym.name %></h4>
 			<p><%= @gym.email %></p>
 			<p><%= @gym.phone_number %></p>
-		
-			<% if user_signed_in? && current_user.admin? %>
-				<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%> |
-				<% end %>
-			<% if user_signed_in? %>
-				<%= link_to 'Home', user_path(current_user.id), :class => 'btn btn-primary btn-xs' %>
-			<% end %>
 
-			<%= render 'layouts/back_btn' %>
+			<% if false %>
+				<% if user_signed_in? && current_user.admin? %>
+					<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%> |
+					<% end %>
+				<% if user_signed_in? %>
+					<%= link_to 'Home', user_path(current_user.id), :class => 'btn btn-primary btn-xs' %>
+				<% end %>
+
+				<%= render 'layouts/back_btn' %>
+			<% end %>
+			
 		</div>
 		
 		<div class="col-md-6 no-pad-margin">
