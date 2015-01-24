@@ -11,10 +11,14 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= image_tag @pictures.first.image.url %>
-      <div class="carousel-caption">
-        <%= @pictures.first.caption %>
-      </div>
+			<% if @pictures.empty? %>
+	      <%= image_tag 'default-gym.jpg' %>
+			<% else %>	
+	      <%= image_tag @pictures.first.image.url %>
+	      <div class="carousel-caption">
+	        <%= @pictures.first.caption %>
+	      </div>
+			<% end %>
     </div>
 		<% @pictures.each do |picture| %>
 		    <div class="item">

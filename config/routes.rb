@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get 'update_sessions_left', to: 'gyms#update_sessions_left'
     end
     resources :users, only: [:index, :show]
-    resources :pictures, only: [:index, :show]
+    resources :pictures
   end
 
   devise_for :users, controllers: { registrations: "my_devise/registrations", invitations: "my_devise/invitations"}

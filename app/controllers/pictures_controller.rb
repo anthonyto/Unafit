@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @gym = Gym.find(current_user.gym.id)
+    @gym = Gym.find(params[:gym_id])
     @picture = Picture.new
     respond_with(@picture)
   end

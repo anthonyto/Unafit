@@ -16,9 +16,7 @@
 				<li>Classes: <%= @gym.classes %></li>
 				<li>Reservation Policy: <%= @gym.reservation_policy %></li>
 			</ul>
-			<%= link_to 'Edit', edit_gym_path(@gym), :class => 'btn btn-primary btn-xs'%>
-			<%= link_to 'Add Pictures', new_user_gym_picture_path(current_user.id, @gym.id), :class => 'btn btn-primary btn-xs'%>
-			
+						
 			<h4>Statistics</h4>
 			<ul>
 				<li>Unafit members: <%= @users.size %></li>

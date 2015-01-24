@@ -12,6 +12,7 @@
 						<th>State</th>
 						<th>Description</th>
 						<th>Manager</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<% @gyms.each do |gym| %>
@@ -29,6 +30,10 @@
 							<% else %>
 								<%= gym.user.first_name %>
 							<% end %>
+						</td>
+						<td>
+							<%= link_to 'Edit', edit_gym_path(gym), :class => 'btn btn-primary btn-xs'%>
+							<%= link_to 'Add Pictures', new_gym_picture_path(gym.id), :class => 'btn btn-primary btn-xs'%>
 						</td>
 					</tr>
 				</tbody>
