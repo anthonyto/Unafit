@@ -100,7 +100,7 @@ article { text-align: left; }
 
 /* Preloader */
 #mask { position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: #F6F6F6;z-index: 10000;height: 100%; }
-#loader {width: 200px;height: 200px;position: absolute;left: 50%;top: 50%;background-image: url("loading.gif");background-repeat: no-repeat;background-position: center;margin: -100px 0 0 -100px; }
+#loader {width: 200px;height: 200px;position: absolute;left: 50%;top: 50%;background-image: url(loading.gif);background-repeat: no-repeat;background-position: center;margin: -100px 0 0 -100px; }
 
 .sticky { position: fixed; top:0; display: block; width: 100%; z-index: 9; }
 
