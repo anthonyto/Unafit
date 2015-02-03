@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   
   def index
-    render :layout => 'homepage'
+    render :layout => false
   end
   
 end

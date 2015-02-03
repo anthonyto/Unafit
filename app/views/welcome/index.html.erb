@@ -1,36 +1,256 @@
-<div class="container-fluid">
-	<div class="row">
-		<%= image_tag "homepage-fade-text-smfont.jpg", id: "landing-image" %>
-	</div>
-	<div class="row" id="how-it-works">
-		<i><h1 class="text-center" style="color:#92c4e3">How It Works</h1></i>
-		<div class="text-center" style="margin-left: 25%; margin-top: 50px">
-			<h3 class="text-left" style="color:#">1. Create your profile</h3>
-			<h3 class="text-left">2. Pick the studios that you'd like to attend that month</h3>
-			<h3 class="text-left">3. Start getting fit</h3>
-		</div>
-	</div>
-	<div class="row" id="homepage-info">
-		<div class="col-md-4 image-container">
-			<%= image_tag "info2.jpg", class: "info-image" %>
-			<div class="text-over-image text-center">
-				<h2>Look Great</h2>
-				<p>Choose the studios that make you feel good and look great.</p>
-			</div>
-		</div>
-		<div class="col-md-4 image-container">
-			<%= image_tag "info3.jpg", class: "info-image" %>
-			<div class="text-over-image text-center">
-				<h2>Stay Fresh</h2>
-				<p>There's a reason why fitness studios are so popular - they're lots of fun! So, don't miss out.</p>
-			</div>
-		</div>
-		<div class="col-md-4 image-container">
-			<%= image_tag "info1.jpg", class: "info-image" %>
-			<div class="text-over-image text-center">
-				<h2>Break Free</h2>
-				<p>No more overcrowded big box gyms. Just you and a small class of people looking to get fit.</p>
-			</div>
-		</div>
-	</div>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Home</title>
+    <meta name="description" content="Startups template">
+    <meta name="keywords" content="Startups template">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.jpg">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/apple-touch-icon-72x72.jpg">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/apple-touch-icon-114x114.jpg">
+    <link rel="stylesheet" href="assets/google-font.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/font-awesome.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/bootstrap.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/font-lineicons.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/animate.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/toastr.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/homepage.css" type="text/css" media="all" />
+    
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="landing-page">
+
+    <!-- Preloader -->
+    <div id="mask">
+        <div id="loader"></div>
+    </div>
+        
+    <header>
+        <nav class="navigation navigation-header">
+            <div class="container">
+                <div class="navigation-brand">
+                    <div class="brand-logo">
+						<a href="index.html" class="logo"></a>
+						<span class="sr-only">unafit</span>
+                    </div>
+                    <button class="navigation-toggle visible-xs" type="button" data-toggle="dropdown" data-target=".navigation-navbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navigation-navbar">
+                    <ul class="navigation-bar navigation-bar-left">
+                        <li class="active"><a href="#hero">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#guarantee">Contacts</a></li>
+                    </ul>
+                    <ul class="navigation-bar navigation-bar-right">
+                        <li><a href="register.html">Login</a></li>
+                        <li class="featured"><a href="register.html">Sign up</a></li>
+                    </ul>  
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div id="hero" class="static-header light clearfix">
+        <div class="text-heading">
+            <h1 class="animated hiding" data-animation="bounceInDown" data-delay="0">Start getting <span class="highlight">fit</span> today!</h1>
+            <p class="animated hiding" data-animation="fadeInDown" data-delay="500">Combine all your favorite fitness studios into a single membership</p>
+            <ul class="list-inline">
+                <li><a href="register.html" class="btn btn-primary animated hiding" data-animation="bounceIn" data-delay="700">Get started</a></li>
+                <li><a href="#" class="btn btn-default animated hiding" data-animation="bounceIn" data-delay="900">Take tour</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <hr class="no-margin" />
+    <a id="showHere"></a>
+    
+    <section id="about" class="section dark">
+        <div class="container">
+            <div class="section-content row">   
+                <div class="col-sm-6 animated hiding" data-animation="fadeInLeft">
+                    <img src="assets/helmet.jpg" class="img-responsive" alt="process 3" />
+                </div>
+                <div class="col-sm-6 animated hiding" data-animation="fadeInRight">
+					<br/><br/>
+                    <article>
+                        <h3><span class="highlight">GYMS</span> ARE EXPENSIVE</h3>
+                        <div class="sub-title">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br/> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
+                        <p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+                    </article>
+                </div>   
+								
+                <hr class="clearfix" />
+								      
+                <div class="col-sm-6 pull-right animated hiding" data-animation="fadeInRight">
+                    <img src="assets/content_image1.png" class="img-responsive" alt="process 2" />
+                </div>
+                <div class="col-sm-6 animated hiding" data-animation="fadeInLeft">
+					<br/><br/>
+                    <article>
+                        <h3><span class="highlight">VARIETY</span> IS THE SPICE OF LIFE</h3>
+                        <div class="sub-title">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br/> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
+                        <p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+                    </article>
+                </div>
+                
+                <hr class="clearfix" />
+                
+                <div class="col-sm-6 animated hiding" data-animation="fadeInLeft">
+                    <img src="assets/helmet.jpg" class="img-responsive" alt="process 3" />
+                </div>
+                <div class="col-sm-6 animated hiding" data-animation="fadeInRight">
+					<br/><br/>
+                    <article>
+                        <h3>TAKE A <span class="highlight">JUMP</span> IN</h3>
+                        <div class="sub-title">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br/> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
+                        <p>In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, quam non erat mirum sapientiae lorem cupido patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.</p>
+                    </article>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <section id="features" class="section inverted">
+        <div class="container">
+            <div class="section-content">
+                <div id="featuredTab">
+                    <ul class="list-unstyled animated hiding" data-animation="fadeInRight">
+                      <li class="active">
+                          <a href="#home" data-toggle="tab">
+                              <div class="tab-info">
+                                  <div class="tab-title">BROWSE</div>
+                                  <div class="tab-desc">Gyms in your area that are<br /> partnered with Unafit</div>
+                              </div>
+                              <!--<div class="tab-icon"><span class="icon icon-multimedia-20"></span></div>-->
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#profile" data-toggle="tab">
+                              <div class="tab-info">
+                                  <div class="tab-title">PICK</div>
+                                  <div class="tab-desc">Each month, choose gyms <br />that you love or want to explore</div>
+                              </div>
+                              <!--<div class="tab-icon"><span class="icon icon-seo-icons-27"></span></div>-->
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#messages" data-toggle="tab">
+                              <div class="tab-info">
+                                  <div class="tab-title">GET FIT</div>
+                                  <div class="tab-desc">Poop <br />hac divisione rem ipsam prorsus</div>
+                              </div>
+                              <!-- <div class="tab-icon"><span class="icon icon-seo-icons-28"></span></div>-->
+                          </a>
+                      </li>
+                    </ul>
+                    
+                    <div class="tab-content animated hiding" data-animation="fadeInLeft">
+                      <div class="tab-pane in active" id="home"><img src="assets/rich_features_1.png" class="img-responsive animated hiding" data-animation="fadeInLeft" alt="macbook" /></div>
+                      <div class="tab-pane" id="profile"><img src="assets/rich_features_2.png" class="img-responsive animated hiding" data-animation="fadeInLeft" alt="macbook" /></div>
+                      <div class="tab-pane" id="messages"><img src="assets/rich_features_3.png" class="img-responsive animated hiding" data-animation="fadeInLeft" alt="macbook" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	  <section id="guarantee" class="long-block light">
+	      <div class="container">
+	          <div class="col-md-12 col-lg-9">
+				<i class="icon icon-seo-icons-24 pull-left"></i>
+	              <article class="pull-left">
+	                  <h2>Sign up today!</h2>
+	                  <p class="thin">In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret.</p>
+	              </article>
+	          </div>
+		
+	          <div class="col-md-12 col-lg-3">
+	              <a href="http://themeforest.net/item/startuply-responsive-multipurpose-landing-page/7953388" class="btn btn-default">Get this template</a>
+	          </div>
+	      </div>
+	  </section>
+    
+    <footer id="footer" class="footer light">
+        <div class="container">
+            <div class="footer-content row">
+                <div class="col-sm-4">
+                    <div class="logo-wrapper">
+                        <img src="assets/logo.png" alt="logo" />
+                    </div>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco. Qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Nisi ut aliquid ex ea commodi consequatur?</p>
+                    <p><strong>Mike Harbele, Co-Founder</strong>.</p>
+                </div>
+                <div class="col-sm-5 social-wrap">
+                    <div class="footer-title">Social Networks</div>
+                    <ul class="list-inline socials">
+                        <li><a href="#"><span class="icon icon-socialmedia-08"></span></a></li>
+                        <li><a href="#"><span class="icon icon-socialmedia-09"></span></a></li>
+                        <li><a href="#"><span class="icon icon-socialmedia-16"></span></a></li>
+                        <li><a href="#"><span class="icon icon-socialmedia-04"></span></a></li>
+                    </ul>
+                    <ul class="list-inline socials">
+                        <li><a href="#"><span class="icon icon-socialmedia-07"></span></a></li>
+                        <li><a href="#"><span class="icon icon-socialmedia-16"></span></a></li>
+                        <li><a href="#"><span class="icon icon-socialmedia-09"></span></a></li>
+                        <li><a href="#"><span class="icon icon-socialmedia-08"></span></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-title">Our Contacts</div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="icon icon-chat-messages-14"></span> 
+                            <a href="mailto:unafitmailer@gmail.com">unafitmailer@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="icon icon-seo-icons-34"></span> 
+                            2901 Marmora road, Glassgow, Seattle, WA 98122-1090
+                        </li>
+                        <li>
+                            <span class="icon icon-seo-icons-17"></span>
+                            1 - 234-456-7980
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">Unafit 2014. All rights reserved.</div>
+    </footer>
+    
+    <div class="back-to-top"><i class="fa fa-angle-up fa-3x"></i></div>
+    
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js?ver=1"></script>
+    <![endif]-->  
+    <!--[if (gte IE 9) | (!IE)]><!-->  
+       <script type="text/javascript" src="assets/jquery-2.1.3.min.js?ver=1"></script>
+    <!--<![endif]-->  
+    
+    <script type="text/javascript" src="assets/bootstrap.min.js"></script>
+		<script type="text/javascript" src="assets/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="assets/jquery.nav.js"></script>
+    <script type="text/javascript" src="assets/jquery.appear.js"></script>
+    <script type="text/javascript" src="assets/jquery.plugin.js"></script>
+    <script type="text/javascript" src="assets/jquery.countdown.js"></script>
+    <script type="text/javascript" src="assets/waypoints.min.js"></script>
+    <script type="text/javascript" src="assets/waypoints-sticky.min.js"></script>
+    <script type="text/javascript" src="assets/jquery.validate.js"></script>
+    <script type="text/javascript" src="assets/toastr.min.js"></script>
+    <script type="text/javascript" src="assets/headhesive.min.js"></script>
+    <script type="text/javascript" src="assets/scripts.js"></script>
+</body>
+</html>

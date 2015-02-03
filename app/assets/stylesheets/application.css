@@ -25,6 +25,7 @@
  *= require scaffolds.css
  *= require show_client.css
  *= require show_gym.css
+ *= require font-awesome
  *= require_self
  */
 
