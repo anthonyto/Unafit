@@ -12,7 +12,7 @@
  *
  *= require_tree .
  *= require bootstrap
- *= require jquery.ui
+ *= require jquery/ui
  *= require fontawesome
  *= require jvfloat.css
  *= require carousel.css

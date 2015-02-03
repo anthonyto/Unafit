@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui
+//= require jquery/ui
 //= require bootstrap
 //= require underscore
 //= require waypoints
