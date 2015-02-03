@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
- *= require jquery-ui
- *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require bootstrap
+ *= require fontawesome
  *= require jvfloat.css
  *= require carousel.css
  *= require dashboards.css
@@ -24,7 +24,6 @@
  *= require scaffolds.css
  *= require show_client.css
  *= require show_gym.css
- *= require font-awesome
  *= require_self
  */
 

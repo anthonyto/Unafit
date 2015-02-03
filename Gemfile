@@ -8,16 +8,25 @@ gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'font-awesome-rails'
+# gem 'font-awesome-rails'
 # Not sure if I want to use this yet. Seems complicated and unnecessary
-gem 'jquery-datatables-rails', '~> 3.1.1'
-gem 'jquery-ui-rails'
-gem 'twitter-bootstrap-rails'
-gem 'jquery-rails'
-gem 'underscore-rails'
+# gem 'jquery-datatables-rails', '~> 3.1.1'
+# gem 'jquery-ui-rails'
+# gem 'twitter-bootstrap-rails'
+# gem 'jquery-rails'
+# gem 'underscore-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+# Assets
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-underscore'
+  gem 'rails-assets-fontawesome'
+  gem 'rails-assets-waypoints'
+end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks# bundle exec rake doc:rails generates the API under doc/api.

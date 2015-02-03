@@ -25,3 +25,21 @@ credentials
 picture sizes 3000x2000
 stripe account
 	payment options
+
+
+ *= require_tree .
+ *= require jquery-ui
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require jvfloat.css
+ *= require carousel.css
+ *= require dashboards.css
+ *= require footer.css
+ *= require forms.css
+ *= require header.css
+ *= require homepage.css
+ *= require map.css
+ *= require scaffolds.css
+ *= require show_client.css
+ *= require show_gym.css
+ *= require font-awesome
+ *= require_self
