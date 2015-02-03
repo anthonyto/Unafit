@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery.ui'
   gem 'rails-assets-underscore'
   gem 'rails-assets-fontawesome'
   gem 'rails-assets-waypoints'
