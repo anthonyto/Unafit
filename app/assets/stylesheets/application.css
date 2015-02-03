@@ -13,7 +13,6 @@
  *= require_tree .
  *= require jquery-ui
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
- *= require jquery.dataTables.min.css
  *= require jvfloat.css
  *= require carousel.css
  *= require dashboards.css

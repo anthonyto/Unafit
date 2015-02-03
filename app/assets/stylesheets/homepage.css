@@ -100,7 +100,7 @@ article { text-align: left; }
 
 /* Preloader */
 #mask { position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: #F6F6F6;z-index: 10000;height: 100%; }
-#loader {width: 200px;height: 200px;position: absolute;left: 50%;top: 50%;background-image: url(loading.gif);background-repeat: no-repeat;background-position: center;margin: -100px 0 0 -100px; }
+#loader {width: 200px; height:200px; position: absolute; left: 50%; top: 50%; background-image:url(loading.gif); background-repeat: no-repeat; background-position: center; margin: -100px 0 0 -100px; }
 
 .sticky { position: fixed; top:0; display: block; width: 100%; z-index: 9; }
 
@@ -670,7 +670,7 @@ input[type=file]:focus, input[type=radio]:focus, input[type=checkbox]:focus { ou
     #featuredTab li a .tab-info:after, 
     #featuredTab li a .tab-icon:after
        #featuredTab li.active > a:after { display: none; }
-    #featuredTab li > a .tab-info { width: 100%; padding: 15px; line-heigh: 18px; }
+    #featuredTab li > a .tab-info { width: 100%; padding: 15px; line-height: 18px; }
     #featuredTab li > a .tab-info .tab-desc { line-height: 22px; }
     #featuredTab li.active a .tab-info { -webkit-border-bottom-left-radius: 0; -moz-border-radius-bottomleft: 0; border-bottom-left-radius: 0; -webkit-border-top-right-radius: 5px; -moz-border-radius-topright: 5px; border-top-right-radius: 5px; }
     #featuredTab li > a .tab-icon { display: none; }
