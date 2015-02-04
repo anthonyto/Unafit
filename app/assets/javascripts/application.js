@@ -18,7 +18,4 @@
 //= require waypoints
 //= require turbolinks
 //= require gmaps/google
-//= require jvfloat.js
-//= require edit_subscriptions.js
-//= require normalize_carousel.js
 //= require_tree .

@@ -17,6 +17,15 @@ Questions:
 
 how long do you want invitations to last? 
 
+	source 'https://rails-assets.org' do
+	  gem 'rails-assets-bootstrap'
+	  gem 'rails-assets-jquery'
+	  gem 'rails-assets-jquery.ui'
+	  gem 'rails-assets-underscore'
+	  gem 'rails-assets-fontawesome'
+	  gem 'rails-assets-waypoints'
+	end
+
 
 Staging DB:
 
