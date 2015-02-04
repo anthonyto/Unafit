@@ -1,5 +1,9 @@
 tail -f log/development.log | grep -vE "(^$|asset)"
 
+
+RAILS_ENV=production rake assets:precompile --trace
+RAILS_ENV=development rake assets:precompile --trace
+
 The Boxing Club
 8650 Genesee Avenue
 San Diego

@@ -8,13 +8,6 @@ gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-# gem 'font-awesome-rails'
-# Not sure if I want to use this yet. Seems complicated and unnecessary
-# gem 'jquery-datatables-rails', '~> 3.1.1'
-# gem 'jquery-ui-rails'
-# gem 'twitter-bootstrap-rails'
-# gem 'jquery-rails'
-# gem 'underscore-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -28,9 +21,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-fontawesome'
   gem 'rails-assets-waypoints'
 end
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks# bundle exec rake doc:rails generates the API under doc/api.
 
 # For authentication and authorization
 gem 'devise'
@@ -55,7 +45,6 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 
 group :development, :test do 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'

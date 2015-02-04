@@ -9,13 +9,13 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ * 
+ * Jquery.ui IS NOT INCLUDED HERE
  *
  *= require_tree .
  *= require bootstrap
- *= require jquery/ui
  *= require fontawesome
  *= require jvfloat.css
- *= require carousel.css
  *= require dashboards.css
  *= require footer.css
  *= require forms.css
