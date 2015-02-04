@@ -12,6 +12,7 @@
 //
 // Jquery.ui IS NOT INCLUDED HERE
 //
+//= require_tree .
 //= require jquery
 //= require bootstrap
 //= require underscore
