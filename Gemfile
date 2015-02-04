@@ -14,12 +14,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Assets
 source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
-  gem 'rails-assets-jquery'
+  gem 'rails-assets-bootstrap', '3.1.1'
+  gem 'rails-assets-jquery', '2.1.0'
   gem 'rails-assets-jquery.ui'
+  gem 'rails-assets-jquery-ujs'
   gem 'rails-assets-underscore'
   gem 'rails-assets-fontawesome'
-  gem 'rails-assets-waypoints'
+  gem 'rails-assets-waypoints', '2.0.4'
 end
 
 # For authentication and authorization

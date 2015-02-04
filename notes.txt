@@ -4,10 +4,6 @@ tail -f log/development.log | grep -vE "(^$|asset)"
 bundle exec rake assets:precompile RAILS_ENV=production --trace
 RAILS_ENV=development rake assets:precompile --trace
 
-The Boxing Club
-8650 Genesee Avenue
-San Diego
-CA 92122
 
 TODO 
 FIX ALL POLICIES! Authorization is FUCKED right now
@@ -17,19 +13,6 @@ Questions:
 
 how long do you want invitations to last? 
 
-	source 'https://rails-assets.org' do
-	  gem 'rails-assets-bootstrap'
-	  gem 'rails-assets-jquery'
-	  gem 'rails-assets-jquery.ui'
-	  gem 'rails-assets-underscore'
-	  gem 'rails-assets-fontawesome'
-	  gem 'rails-assets-waypoints'
-	end
-
-
-Staging DB:
-
-Prod DB:
 
 info for them:
 
@@ -38,21 +21,3 @@ credentials
 picture sizes 3000x2000
 stripe account
 	payment options
-
-
- *= require_tree .
- *= require jquery-ui
- *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
- *= require jvfloat.css
- *= require carousel.css
- *= require dashboards.css
- *= require footer.css
- *= require forms.css
- *= require header.css
- *= require homepage.css
- *= require map.css
- *= require scaffolds.css
- *= require show_client.css
- *= require show_gym.css
- *= require font-awesome
- *= require_self

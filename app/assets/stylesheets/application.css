@@ -12,10 +12,10 @@
  * 
  * Jquery.ui IS NOT INCLUDED HERE
  *
- *= require_tree .
- *= require bootstrap
+ @import require bootstrap
  *= require fontawesome
  *= require_self
+ *= require_tree .
  */
 
 

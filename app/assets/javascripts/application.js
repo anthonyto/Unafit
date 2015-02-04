@@ -12,11 +12,19 @@
 //
 // Jquery.ui IS NOT INCLUDED HERE
 //
-//= require_tree .
 //= require jquery
+//= require jquery-ujs
 //= require bootstrap
-//= require underscore
+//= require jquery.flexslider-min.js
+//= require jquery.nav.js
+//= require jquery.appear.js
+//= require jquery.plugin.js
+//= require jquery.countdown.js
 //= require waypoints
+//= require jquery.validate.js
+//= require	headhesive.min.js
+//= require	scripts.js
+//= require underscore
 //= require turbolinks
 //= require gmaps/google
 //= require_tree .
