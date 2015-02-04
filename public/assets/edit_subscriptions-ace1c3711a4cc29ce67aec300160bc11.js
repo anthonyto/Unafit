@@ -1,1 +1,0 @@
-function checkboxlimit(c,e){for(var c=c,e=e,o=0;o<c.length;o++)c[o].onclick=function(){for(var o=0,n=0;n<c.length;n++)o+=c[n].checked?1:0;o>e&&(alert("You can only select a maximum of "+e+" checkboxes"),this.checked=!1)}}
