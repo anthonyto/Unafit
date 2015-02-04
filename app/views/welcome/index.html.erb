@@ -5,16 +5,20 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Home</title>
-    <meta name="description" content="Startups template">
-    <meta name="keywords" content="Startups template">
-    <link rel="shortcut icon" href="assets/favicon.ico">
+    <title>Unafit</title>
+    <meta name="description" content="Unafit unafit">
+    <meta name="keywords" content="Unafit unafit">
+    <!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.jpg">
     <link rel="apple-touch-icon" sizes="72x72" href="assets/apple-touch-icon-72x72.jpg">
     <link rel="apple-touch-icon" sizes="114x114" href="assets/apple-touch-icon-114x114.jpg">
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+		<%= stylesheet_link_tag 'bootstrap.min.css' %>
+		<%= stylesheet_link_tag 'font-awesome.min.css' %>
+		<%= stylesheet_link_tag 'font-lineicons.css' %>
+		<%= stylesheet_link_tag 'animate.css' %>
+		<%= stylesheet_link_tag 'toastr.min.css' %>
+		<%= stylesheet_link_tag 'scripts.css' %>
     
     <!--[if lt IE 9]>
         <script src="assets/js/html5.js"></script>
@@ -48,11 +52,11 @@
                         <li class="active"><a href="#hero">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#guarantee">Contacts</a></li>
+                        <li><a href="#footer">Contacts</a></li>
                     </ul>
                     <ul class="navigation-bar navigation-bar-right">
-                        <li><a href="register.html">Login</a></li>
-                        <li class="featured"><a href="register.html">Sign up</a></li>
+												<li><%= link_to "Login", new_user_session_path %></li>
+												<li><%= link_to "Sign up", new_user_registration_path, class: "featured" %></li>
                     </ul>  
                 </div>
             </div>
@@ -65,7 +69,7 @@
             <p class="animated hiding" data-animation="fadeInDown" data-delay="500">Combine all your favorite fitness studios into a single membership</p>
             <ul class="list-inline">
 								<li><%= link_to "Get Started", new_user_registration_path, class: 'btn btn-primary animated hiding', data: {animation: 'bounceIn', delay: 700 }  %></li>
-                <li><a href="#" class="btn btn-default animated hiding" data-animation="bounceIn" data-delay="900">Take tour</a></li>
+                <li><a href="#about" class="btn btn-default animated hiding" data-animation="bounceIn" data-delay="900">Take tour</a></li>
             </ul>
         </div>
     </div>
@@ -129,7 +133,7 @@
                           <a href="#home" data-toggle="tab">
                               <div class="tab-info">
                                   <div class="tab-title">BROWSE</div>
-                                  <div class="tab-desc">Gyms in your area that are<br /> partnered with Unafit</div>
+                                  <div class="tab-desc">Gyms in your area that are<br /> exclusively partnered with Unafit</div>
                               </div>
                               <!--<div class="tab-icon"><span class="icon icon-multimedia-20"></span></div>-->
                           </a>
@@ -138,7 +142,7 @@
                           <a href="#profile" data-toggle="tab">
                               <div class="tab-info">
                                   <div class="tab-title">PICK</div>
-                                  <div class="tab-desc">Each month, choose gyms <br />that you love or want to explore</div>
+                                  <div class="tab-desc">Each month, choose gyms that you<br /> want to explore or already love</div>
                               </div>
                               <!--<div class="tab-icon"><span class="icon icon-seo-icons-27"></span></div>-->
                           </a>
@@ -164,7 +168,7 @@
         </div>
     </section>
 	
-	  <section id="guarantee" class="long-block light">
+	  <section id="signup" class="long-block light">
 	      <div class="container">
 	          <div class="col-md-12 col-lg-9">
 				<i class="icon icon-seo-icons-24 pull-left"></i>
@@ -175,7 +179,7 @@
 	          </div>
 		
 	          <div class="col-md-12 col-lg-3">
-	              <a href="http://themeforest.net/item/startuply-responsive-multipurpose-landing-page/7953388" class="btn btn-default">Sign Up</a>
+							<%= link_to "Sign up", new_user_registration_path, class: "btn btn-default" %>
 	          </div>
 	      </div>
 	  </section>
@@ -232,3 +236,17 @@
 
 </body>
 </html>
+
+<%= javascript_include_tag 'jquery-2.1.0.min.js'%>
+<%= javascript_include_tag 'bootstrap.min.js'%>
+<%= javascript_include_tag 'jquery.flexslider-min.js'%>
+<%= javascript_include_tag 'jquery.nav.js'%>
+<%= javascript_include_tag 'jquery.appear.js'%>
+<%= javascript_include_tag 'jquery.plugin.js'%>
+<%= javascript_include_tag 'jquery.countdown.js'%>
+<%= javascript_include_tag 'waypoints.min.js'%>
+<%= javascript_include_tag 'waypoints-sticky.min.js'%>
+<%= javascript_include_tag 'jquery.validate.js'%>
+<%= javascript_include_tag 'toastr.min.js'%>
+<%= javascript_include_tag 'headhesive.min.js'%>
+<%= javascript_include_tag 'scripts.js'%>

@@ -12,12 +12,17 @@
  * 
  * Jquery.ui IS NOT INCLUDED HERE
  *
- @import require bootstrap
+ *= require bootstrap
  *= require fontawesome
  *= require_self
  *= require_tree .
+ *= stub bootstrap.min.css
+ *= stub font-awesome.min.css
+ *= stub font-lineicons.css
+ *= stub animate.css
+ *= stub toastr.min.css
+ *= stub scripts.css
  */
-
 
 a:visited 
 {
