@@ -1,8 +1,61 @@
-//= require google-map-api.js
-//= require gmap3.infobox.js
-//= require gmap3.clusterer.js
-//= require map.js
+$(window).load(function() {
+    /***********************************************************
+     * ISOTOPE
+     ***********************************************************/
+    var isotope_works = $('.properties-items');
+    isotope_works.isotope({
+        'itemSelector': '.property-item'
+    });
 
+    $('.properties-filter a').click(function() {
+        $(this).parent().parent().find('li').removeClass('selected');
+        $(this).parent().addClass('selected');
+
+        var selector = $(this).attr('data-filter');
+        isotope_works.isotope({ filter: selector });
+        return false;
+    });
+});
+
+$(document).ready(function() {
+	'use strict';
+
+    /***********************************************************
+     * FLEXSLIDER
+     ***********************************************************/
+    $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: "thumbnails"
+    });
+
+    /***********************************************************
+     * CHAINED SELECT BOXES
+     ***********************************************************/
+    $('#select-location').chained('#select-country');
+    $('#select-sublocation').chained('#select-location');
+
+    /***********************************************************
+     * BXSLIDER
+     ***********************************************************/
+	$('.bxslider').bxSlider({
+  		minSlides: 1,
+  		maxSlides: 6,
+  		slideWidth: 170,
+  		slideMargin: 30,
+        responsive: false
+	});
+
+    /***********************************************************
+     * ACCORDION
+     ***********************************************************/
+    $('.panel-heading a[data-toggle="collapse"]').on('click', function () {
+        if ($(this).closest('.panel-heading').hasClass('active')) {
+            $(this).closest('.panel-heading').removeClass('active');
+        } else {
+            $('.panel-heading a[data-toggle="collapse"]').closest('.panel-heading').removeClass('active');
+            $(this).closest('.panel-heading').addClass('active');
+        }
+    });
 
     /***********************************************************
      * MAP
@@ -79,3 +132,51 @@
             styles: styles[6]
         });
     }
+
+    /***********************************************************
+     * PALETTE
+     ***********************************************************/
+    $('.palette-colors a').click(function(e) {
+        e.preventDefault();
+        var newCSSHref = $(this).attr('href');
+        $('#css-main').attr('href', newCSSHref);
+    });
+    // close the palette on click
+    $('.palette-toggle').click(function() {
+        $('.palette-wrapper').toggleClass('palette-closed');
+    });
+
+    // change page layout from palette
+    $('.palette-layout').change(function() {
+        $('body').removeClass('layout-wide').removeClass('layout-boxed');
+        $('body').addClass($(this).find(":selected").attr('value'));
+    });
+
+    // change page header style from palette
+    $('.palette-header').change(function() {
+        $('body').removeClass('header-light').removeClass('header-dark');
+        $('body').addClass($(this).find(":selected").attr('value'));
+    });
+
+    // change page footer style from palette
+    $('.palette-footer').change(function() {
+        $('body').removeClass('footer-light').removeClass('footer-dark');
+        $('body').addClass($(this).find(":selected").attr('value'));
+    });
+
+    // change navigation style from palette
+    $('.palette-map-navigation').change(function() {
+        $('body').removeClass('map-navigation-light').removeClass('map-navigation-dark');
+        $('body').addClass($(this).find(":selected").attr('value'));
+    });
+
+    // select a background pattern from palette
+    $('.palette-patterns a').click(function() {
+        var activePattern = $('.palette-patterns a.active');
+        $('body').removeClass(activePattern.attr('class'));
+        activePattern.removeClass('active');
+
+        $('body').addClass($(this).attr("class"));
+        $(this).addClass('active');
+    });
+});

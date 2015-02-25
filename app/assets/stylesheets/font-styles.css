@@ -2,14 +2,31 @@
 
 @font-face {
   font-family: "line-icons";
-  src: font-url("line-icons.eot");
-  src: font-url("line-icons.eot?#iefix") format("embedded-opentype"),
-			 font-url("line-icons.woff") format("woff"),
- 			 font-url("line-icons.ttf") format("truetype"),
-			 font-url("line-icons.svg#line-icons") format("svg");
+  src: url("line-icons.eot");
+  src: url("line-icons.eot?#iefix") format("embedded-opentype"),
+       url("line-icons.woff") format("woff"),
+       url("line-icons.ttf") format("truetype"),
+       url("line-icons.svg#line-icons") format("svg");
   font-weight: normal;
   font-style: normal;
+}
 
+@font-face {
+  font-family: "Raleway";
+  src: url("raleway.woff2") format("woff"),
+			 url("raleway-bold.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "flexslider";
+  src: url("flexslider-icon.eot?#iefix") format("embedded-opentype"),
+       url("flexslider-icon.woff") format("woff"),
+       url("flexslider-icon.ttf") format("truetype"),
+       url("flexslider-icon.svg#line-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 [data-icon]:before {

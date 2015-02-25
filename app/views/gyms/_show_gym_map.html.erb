@@ -42,7 +42,7 @@ handler.buildMap({
 		zoom: 7,
 		center: new google.maps.LatLng(markers_json[0].latitude, markers_json[0].latitude)
 	}, 
-	internal: {id: 'map'}}, function(){
+	internal: {id: 'map-property'}}, function(){
 		console.log("markers_json" + markers_json)
 		
 		markers = _.map(markers_json, function(marker_json, index){

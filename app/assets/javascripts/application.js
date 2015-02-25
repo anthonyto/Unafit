@@ -20,17 +20,4 @@
 //= require turbolinks
 //= require gmaps/google
 //= require_tree .
-//= stub jquery-2.1.0.min.js
-//= stub bootstrap.min.js
-//= stub jquery.flexslider-min.js
-//= stub jquery.nav.js
-//= stub jquery.appear.js
-//= stub jquery.plugin.js
-//= stub jquery.countdown.js
-//= stub waypoints.min.js
-//= stub waypoints-sticky.min.js
-//= stub jquery.validate.js
-//= stub toastr.min.js
-//= stub headhesive.min.js
-//= stub scripts.js
 

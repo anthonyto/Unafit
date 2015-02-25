@@ -14,53 +14,7 @@
  *
  *= require bootstrap
  *= require fontawesome
+ *= require font-styles.css
  *= require_self
  *= require_tree .
- *= stub bootstrap.min.css
- *= stub font-awesome.min.css
- *= stub font-lineicons.css
- *= stub animate.css
- *= stub toastr.min.css
- *= stub scripts.css
  */
-
-a:visited 
-{
-	color: inherit;
-}
-
-a:hover
-{
-	background-color: inherit;
-}
-
-html, body
-{
-	height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body > .container-fluid
-{
-	height: auto;
-	min-height: 100%;
-}
-
-.no-pad-margin
-{
-	margin: 0px 0px 0px 0px !important;
-	padding: 0px 0px 0px 0px !important;
-}
-
-/*.row
-{
-    display: table;
-}
-
-[class*="col-"]
-{
-    float: none;
-    display: table-cell;
-    vertical-align: top;
-}*/

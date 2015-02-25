@@ -9,7 +9,14 @@
        url("line-icons.svg#line-icons") format("svg");
   font-weight: normal;
   font-style: normal;
+}
 
+@font-face {
+  font-family: "Raleway";
+  src: url("raleway.woff2") format("woff"),
+			 url("raleway-bold.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 [data-icon]:before {

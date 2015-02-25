@@ -1,35 +1,113 @@
-<div class="container-fluid">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
+	<%= stylesheet_link_tag 'index-gyms-files' %>
 		
-		<div class="row">
-			<div class="col-md-12" style="background-color:#f4f3f3; min-height:100px; margin-bottom:10px">
-				<strong><h5><%= @gym.name %></h5></strong>
-				<p><%= @gym.full_street_address %></p>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-6">
-				<%= render 'carousel' %>
-			</div>
-			<div class="col-md-6">
-				<div id="map"></div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-12" style="background-color:#f4f3f3; min-height:400px;">
-				
-			</div>
-		</div>
-		
-	</div>
-	<div class="col-md-1"></div>
-</div>
+</head>
 
-</div>
+<body>
 
-<%= render 'show_gym_map'%>
+
+<div id="main-inner">
+	<div id="map-property"></div>
+	<div class="container">
+		<div class="block-content block-content-small-padding">
+			<div class="block-content-inner">
+								
+				<div class="row">
+					<div class="col-sm-9">
+						<h2 class="property-detail-title">A.  Peter Cooper Village &amp; Stuyvesant Town</h2>
+						<h3 class="property-detail-subtitle">New York, Brooklyn <strong>$ 680 000</strong></h3>
+
+						<div class="flexslider">
+							<ul class="slides">
+								<% @pictures.each do |picture| %>
+								<li data-thumb="<%= picture.image.url %>">
+									<%= image_tag picture.image.url%>
+								</li>
+								<% end %>
+							</ul><!-- /.slides -->
+						</div><!-- /.flexslider -->
+
+						<hr>
+
+					</div>
+
+					<div class="col-sm-3">
+						<div class="widget">
+							<h3 class="widget-title">Contact</h3>
+							<div class="widget-content">
+								<label>Email</label><br />
+								<p><%= @gym.email %></p>
+								<label>Phone</label><br />
+								<p><%= @gym.phone_number %></p>
+								<label>Address</label><br />
+								<p><%= @gym.full_street_address %></p>
+							</div><!-- /.widget-content -->
+						</div><!-- /.widget -->
+					</div>
+					
+				</div><!-- /.row -->
+									
+				<h2>Description</h2>
+
+				<p>
+					Vestibulum feugiat tempor mattis. Maecenas venenatis at erat sit amet viverra. Fusce sagittis pretium est vel iaculis. Proin vel tincidunt nisi. Sed non vehicula purus. In auctor sodales metus, ac fermentum odio sagittis quis. Curabitur volutpat, erat nec varius dapibus, felis libero malesuada mauris, at vestibulum enim erat non nibh. Donec ac nibh dapibus, sagittis libero a, sodales enim. Quisque a viverra mi.
+				</p>
+
+				<hr>
+
+				<h2>Amenities</h2>
+
+				<div class="row">
+					<ul class="property-detail-amenities">
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Air conditioning</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Balcony</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Bedding</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Cable TV</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Cleaning after exit</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Cofee pot</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Computer</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Cot</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Dishwasher</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> DVD</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Fan</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Fridge</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Grill</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Hairdryer</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Heating</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Hi-fi</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Internet</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Iron</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Juicer</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Lift</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Microwave</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Oven</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Parking</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Parquet</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Radio</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Roof terrace</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Smoking allowed</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Terrace</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Toaster</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Towelwes</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Use of pool</li>
+						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Video</li>
+					</ul>
+				</div><!-- /.row -->
+									
+									
+			</div><!-- /.block-content-inner -->
+		</div><!-- /.block-content -->
+	</div><!-- /.container -->
+</div><!-- /#main-inner -->
+
+	
+	<%= render 'show_gym_map'%>
+	<%= javascript_include_tag 'index-gyms-files' %>
+
+</body>

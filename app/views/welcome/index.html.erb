@@ -9,12 +9,8 @@
     <meta name="description" content="Unafit unafit">
     <meta name="keywords" content="Unafit unafit">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
-		<%= stylesheet_link_tag 'bootstrap.min.css' %>
-		<%= stylesheet_link_tag 'font-awesome.min.css' %>
-		<%= stylesheet_link_tag 'font-lineicons.css' %>
-		<%= stylesheet_link_tag 'animate.css' %>
-		<%= stylesheet_link_tag 'toastr.min.css' %>
-		<%= stylesheet_link_tag 'scripts.css' %>
+	  <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> -->
+		<%= stylesheet_link_tag 'homepage-files.css' %>
     
     <!--[if lt IE 9]>
         <script src="assets/js/html5.js"></script>
@@ -51,6 +47,7 @@
                         <li><a href="#footer">Contacts</a></li>
                     </ul>
                     <ul class="navigation-bar navigation-bar-right">
+												<li><%= link_to "Browse Gyms", gyms_path %></li>
 												<li><%= link_to "Login", new_user_session_path %></li>
 												<li><%= link_to "Sign up", new_user_registration_path, class: "featured" %></li>
                     </ul>  
@@ -185,7 +182,7 @@
             <div class="footer-content row">
                 <div class="col-sm-4">
                     <div class="logo-wrapper">
-                        <img src="assets/logo.png" alt="logo" />
+											<%= image_tag 'logo.png' %>
                     </div>
                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco. Qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Nisi ut aliquid ex ea commodi consequatur?</p>
                     <p><strong>Mike and Nick, Co-Founders</strong>.</p>
@@ -233,16 +230,5 @@
 </body>
 </html>
 
-<%= javascript_include_tag 'jquery-2.1.0.min.js'%>
-<%= javascript_include_tag 'bootstrap.min.js'%>
-<%= javascript_include_tag 'jquery.flexslider-min.js'%>
-<%= javascript_include_tag 'jquery.nav.js'%>
-<%= javascript_include_tag 'jquery.appear.js'%>
-<%= javascript_include_tag 'jquery.plugin.js'%>
-<%= javascript_include_tag 'jquery.countdown.js'%>
-<%= javascript_include_tag 'waypoints.min.js'%>
-<%= javascript_include_tag 'waypoints-sticky.min.js'%>
-<%= javascript_include_tag 'jquery.validate.js'%>
-<%= javascript_include_tag 'toastr.min.js'%>
-<%= javascript_include_tag 'headhesive.min.js'%>
-<%= javascript_include_tag 'scripts.js'%>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'homepage-files' %>

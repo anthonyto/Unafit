@@ -1,0 +1,9 @@
+//= require jquery.flexslider-min.js
+//= require jquery.nav.js
+//= require jquery.appear.js
+//= require jquery.plugin.js
+//= require jquery.countdown.js
+//= require jquery.validate.js
+//= require toastr.min.js
+//= require headhesive.min.js
+//= require homepage-scripts.js

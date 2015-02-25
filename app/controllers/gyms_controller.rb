@@ -37,7 +37,8 @@ class GymsController < ApplicationController
       })
       marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
     end
-    respond_with(@gyms, @gyms_json)
+    # respond_with(@gyms, @gyms_json)
+    render layout: "gyms"
   end
 
   def show

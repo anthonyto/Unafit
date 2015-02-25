@@ -1,19 +1,67 @@
-<div class="container-fluid">
+<div id="main-wrapper">
+  <div id="main">
+		<div id="main-inner">
 
-	<div class="row">
-		<div class="col-md-8 no-pad-margin">
-		  <div id="map">
-		  </div>
-		</div>
-		<div class="col-md-4">
-			<%= render 'gym_table' %>
-		</div>
-	</div>
-	
-	
-</div>
+			<!-- MAP -->
+			<div class="block-content no-padding">
+				<div class="block-content-inner">
+					<div class="map-wrapper">
+						<div id="map" data-style="1"></div><!-- /#map -->
 
+					</div><!-- /.map-wrapper -->
+				</div><!-- /.block-content-inner -->
+			</div><!-- /.block-content -->
+			<!-- /MAP -->
 
-<%= render 'index_gyms_map' %>
+			<div class="container">          
 
+				<!-- ISOTOPE GRID -->
+				<div class="block-content block-content-small-padding">
+					<div class="block-content-inner">
 
+						<ul class="properties-filter">
+							<li class="selected"><a href="#" data-filter="*"><span>All</span></a></li>
+							<li><a href="#" data-filter=".property-featured"><span>Featured</span></a></li>
+							<li><a href="#" data-filter=".property-rent"><span>Rent</span></a></li>
+							<li><a href="#" data-filter=".property-sale"><span>Sale</span></a></li>
+						</ul>
+						<!-- /.property-filter -->
+
+						<div class="properties-items">
+							<% @gyms.each_slice(4) do |four_gyms| %>
+							<div class="row">
+								<% four_gyms.each do |gym| %>
+									<div class="property-item property-rent col-sm-6 col-md-3">
+										<div class="property-box">
+											<div class="property-box-inner">
+												<h3 class="property-box-title"><%= link_to gym.name, gym_path(gym) %></h3>
+
+												<div class="property-box-picture">
+													<div class="property-box-price"></div>
+													<!-- /.property-box-price -->
+													<div class="property-box-picture-inner">
+														<a href="property-detail.html" class="property-box-picture-target">
+															<% if gym.pictures.empty? %>
+																<%= link_to(image_tag('default-gym.jpg'), gym_path(gym), class: "property-box-picture-target") %>
+															<% else %>
+																<%= link_to(image_tag(gym.pictures.first.image.url), gym_path(gym), class: "property-box-picture-target") %>
+															<% end %>
+														</a><!-- /.property-box-picture-target -->
+													</div>
+													<!-- /.property-picture-inner -->
+												</div>
+												<!-- /.property-picture -->
+
+											</div><!-- /.property-box-inner -->
+										</div><!-- /.property-box -->
+									</div><!-- /.property-item -->
+								<% end %>						
+							</div><!-- /.row -->
+							<% end %>
+						</div><!-- /.properties-items -->
+					</div><!-- /.block-content-inner -->
+				</div><!-- /.block-content -->                
+			</div><!-- /.container -->
+		</div><!-- /#main-inner -->
+	</div><!-- /#main-wrapper -->
+</div><!-- /#main -->
