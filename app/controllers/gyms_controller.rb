@@ -37,7 +37,6 @@ class GymsController < ApplicationController
       })
       marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
     end
-    # respond_with(@gyms, @gyms_json)
     render layout: "gyms"
   end
 
@@ -54,7 +53,7 @@ class GymsController < ApplicationController
         zip: gym.zip
       })
     end
-    Rails.logger.info "GYM_JSON #{@gym_json}"
+    render layout: "gyms"
   end
 
   def new
