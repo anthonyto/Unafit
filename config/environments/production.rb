@@ -81,7 +81,7 @@ Rails.application.configure do
   # Overrride paperclip defaults
   config.paperclip_defaults = {
     :storage => :s3,
-    :path => "/images/gyms/:gym_id/pictures/:id/:filename",
+    :path => "/images/gyms/:gym_id/pictures/:id/:style/:filename",
     :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],

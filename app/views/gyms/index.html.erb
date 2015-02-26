@@ -37,7 +37,7 @@
 											<div class="property-box-picture-inner">
 												<a href="property-detail.html" class="property-box-picture-target">
 													<% if gym.pictures.empty? %>
-														<%= link_to(image_tag('default.jpg'), gym_path(gym), class: "property-box-picture-target") %>
+														<%= link_to(image_tag('index-gyms-default.jpg'), gym_path(gym), class: "property-box-picture-target") %>
 													<% else %>
 														<%= link_to(image_tag(gym.pictures.first.image.url(:medium)), gym_path(gym), class: "property-box-picture-target") %>
 													<% end %>

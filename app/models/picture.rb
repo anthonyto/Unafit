@@ -10,7 +10,6 @@ class Picture < ActiveRecord::Base
                     :convert_options => {
                        :thumb => "-strip" },
                     :default_url => "/images/:style/missing.png"
-                    # :path => "/events/:event_id/pictures/:id"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   
   
