@@ -1,61 +1,8 @@
-<header>
-	<nav class="navigation navigation-header">
-		<div class="container">
-			<div class="navigation-brand">
-				<div class="brand-logo">
-					<a href="index.html" class="logo"></a>
-					<span class="sr-only">unafit</span>
-				</div>
-			</div>
-			<div class="navigation-navbar">
-				<ul class="navigation-bar navigation-bar-left">
-					<li class="active"><a href="#hero">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#features">Features</a></li>
-					<li><a href="#footer">Contacts</a></li>
-				</ul>
-				<ul class="navigation-bar navigation-bar-right">
-					<li><%= link_to "Login", new_user_session_path, class: "header-link" %></li>
-					<li><%= link_to "Sign up", new_user_registration_path, class: "header-link featured" %></li>
-				</ul>  
-			</div>
-		</div>
-	</nav>
-</header>
+<!-- MAP -->
+<div class="block-content no-padding">
+	<div class="map-wrapper">
+		<div id="map" data-style="1"></div><!-- /#map -->
 
-.navigation { background: #fafafa; z-index: 2; }
-.navigation-brand { float: left; }
-.navigation-brand:after { content: ''; display: table; }
-.navigation-brand .brand-logo  { width:215px; height:75px; }
-.navigation-brand .brand-logo .logo { display:block; height: 50px; background:url(logo.png) center center no-repeat; }
-.fixmenu-clone .brand-logo .logo { background:url(logo.png) center center no-repeat; }
-.navigation-brand .brand-logo h4 { margin-top:15px; }
-.navigation-brand .brand-logo  a { color:#fff; }
-.navigation-navbar { display: block; }
-.navigation-bar { margin: 0 auto; padding: 0; list-style: none; }
-.navigation-bar-left { float: left; }
-.navigation-bar-right { float: right; }
-.navigation-bar > li { display: inline-block; }
-.navigation-bar > li a { display: inline-block; padding:15px; }
-.navigation-bar > li a:Hover,
-.navigation-bar > li.active a { color: #fe4918; text-decoration: none; }
-
-.navigation-toggle { position: relative; float: right; padding: 9px 10px; margin: 10px 15px; border-radius: 4px; border: 1px solid #1ac6ff; outline: none; background: transparent; }
-.navigation-toggle:after { content: ''; clear: both; height: 1%; }
-.navigation-toggle .icon-bar { display: block; width: 22px; height: 2px; border-radius: 1px; background: #1ac6ff; opacity: 0.7; }
-.navigation-toggle .icon-bar+.icon-bar { margin-top: 4px; }
-
-/* Navigation Header */
-.navigation-header { position: relative; top:10px; background: transparent; left: 0; right: 0; width: 100%; z-index: 99; }
-.navigation-header .navigation-brand { margin-right: 125px; margin-top: 17px; }
-.navigation-header .navigation-bar > li { padding: 15px 15px; }
-.navigation-header .navigation-bar > li > a { font-size: 13px; text-transform: uppercase; color: #eff3f6; border-bottom: 2px solid transparent; padding: 10px 0; line-height: 13px; opacity: 0.8; }
-
-.navigation-header .navigation-bar > li > a:Hover { opacity: 0.9; }
-.navigation-header .navigation-bar-left > li.active > a { color: #fff; border-bottom: 2px solid #1ac6ff; opacity: 0.9; }
-.navigation-header .navigation-bar > li.featured { padding: 15px 0; }
-.navigation-header .navigation-bar > li.featured > a { border: 1px solid #1ac6ff; color: #1ac6ff; padding: 10px 25px; display: inline-block; opacity: 1; border-radius: 3px; }
-.navigation-header .navigation-bar > li.featured > a:Hover { opacity: .9; background:#1ac6ff; color:#fff; }
-
-.header-link { color: gray; }
-.header-link > a:hover { text-decoration: none; }
+	</div><!-- /.map-wrapper -->
+</div><!-- /.block-content -->
+<!-- /MAP -->
