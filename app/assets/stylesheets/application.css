@@ -17,4 +17,6 @@
  *= require font-styles.css
  *= require_self
  *= require_tree .
+ *= stub scripts.css
+ *= stub realocation.css
  */

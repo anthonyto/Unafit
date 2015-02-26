@@ -4801,7 +4801,7 @@ ol li:last-child {
 	margin-right: -800px
 }
 .background-primary {
-	background-color: #39b54a
+	background-color: #1AC6FF
 }
 .background-primary a {
 	color: #fff
@@ -4813,7 +4813,7 @@ ol li:last-child {
 	background-color: #dbdbdb
 }
 .background-map {
-	background-image: url("../img/map.png");
+	background-image: url("map.png");
 	background-repeat: repeat;
 	background-position: center center
 }
@@ -6128,7 +6128,7 @@ h3.property-small-title a {
 	vertical-align: 0px
 }
 .property-detail-amenities li .ok {
-	color: #39b54a
+	color: #1AC6FF
 }
 .property-detail-amenities li .no {
 	color: #cecece
@@ -6452,7 +6452,7 @@ h4.agency-row-subtitle a {
 	margin-bottom: -1px
 }
 #map {
-	border-bottom: 3px solid #39b54a;
+	border-bottom: 3px solid #1AC6FF;
 	height: 553px
 }
 .map-wrapper {
@@ -6489,7 +6489,7 @@ h4.agency-row-subtitle a {
 	border: 2px solid rgba(0, 0, 0, 0.1)
 }
 #map-property {
-	border-bottom: 3px solid #39b54a;
+	border-bottom: 3px solid #1AC6FF;
 	height: 200px
 }
 .marker {
