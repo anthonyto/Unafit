@@ -61,7 +61,7 @@
 	}
 	
     // Navigation Scroll
-    $('.navigation-bar').onePageNav({
+    $('.jquery-nav').onePageNav({
         currentClass: 'active',
         changeHash: true,
         scrollSpeed: 750,

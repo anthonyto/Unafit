@@ -1,33 +1,25 @@
 <header>
-	<nav class="navbar navbar-inverse" role="navigation">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-			<% if user_signed_in? %>
-			  <%= link_to image_tag("logo.png"), user_path(current_user.id), class: "navbar-brand" %>
-			<% else %>
-			  <%= link_to image_tag("logo.png"), '/', :class => "navbar-brand"%>
-			<% end %>		 
-	    </div>
-			<p class="navbar-text navbar-right">
-			  	<% if user_signed_in? %>
-						<% if  current_user.manager? %>
-	  		  	  <%= link_to current_user.gym.name.upcase, user_path(current_user.id), class: 'navbar-link' %>
-						<% elsif user_signed_in? %>
-	  		  	  <%= link_to current_user.first_name.upcase, user_path(current_user.id), class: 'navbar-link' %>
-						<% end %>
-						<% if !current_user.manager? %>
-							<%= link_to 'BROWSE GYMS', gyms_path, class: "navbar-link" %> 
-						<% end %>
-		  	  <%= link_to 'ACCOUNT', edit_user_registration_path, class: 'navbar-link' %> 
-		  	  <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
-			  	<% else %>
-						<%= link_to 'BROWSE GYMS', gyms_path, class: "navbar-link" %> 
-			  	  <%= link_to "SIGN UP", new_user_registration_path, class: 'navbar-link'  %> 
-			  	  <%= link_to "LOGIN", new_user_session_path, class: 'navbar-link'  %>
-			  	<% end %>
-			</p>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
+	<nav class="navigation navigation-header">
+		<div class="container">
+			<div class="navigation-brand">
+				<div class="brand-logo">
+					<a href="/" class="logo"></a>
+					<span class="sr-only">unafit</span>
+				</div>
+			</div>
+			<div class="navigation-navbar">
+				<ul class="jquery-nav navigation-bar navigation-bar-left black-links">
+					<li class="active"><a href="#hero">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#features">Features</a></li>
+					<li><a href="#footer">Contacts</a></li>
+				</ul>
+				<ul class="navigation-bar navigation-bar-right black-links">
+					<li><%= link_to "Browse Gyms", gyms_path %></li>
+					<li><%= link_to "Login", new_user_session_path %></li>
+					<li><%= link_to "Sign up", new_user_registration_path, class: "featured" %></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 </header>
