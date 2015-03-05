@@ -1,7 +1,21 @@
 <!-- LOGGED IN -->
-	<ul class="navigation-bar navigation-bar-right">
-			<li><%= link_to "Browse Gyms", gyms_path %></li>
-			<li><%= link_to "Login", new_user_session_path %></li>
-			<li><%= link_to "Sign up", new_user_registration_path, class: "featured" %></li>
-	</ul>
-<!--NOT LOGGED IN -->
+<% if user_signed_in? %>
+	<% if current_user.admin? %>
+		<!-- Admin -->
+		<li><%= link_to "BROWSE GYMS", gyms_path %></li>
+	<% elsif current_user.manager? %>
+		<!-- Manager -->
+  	<li><%= link_to current_user.gym.name.upcase, user_path(current_user.id) %></li>
+	<% else %>
+		<!-- User -->
+		<li><%= link_to "BROWSE GYMS", gyms_path %></li>
+		<li><%= link_to current_user.first_name.upcase, user_path(current_user.id) %></li>
+	<% end %>
+  <li><%= link_to 'ACCOUNT', edit_user_registration_path %></li>
+	<li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
+<% else %>
+	<!--NOT LOGGED IN -->
+	<li><%= link_to "BROWSE GYMS", gyms_path %></li>
+	<li><%= link_to "LOGIN", new_user_session_path %></li>
+	<li><%= link_to "SIGN UP", new_user_registration_path, class: "featured" %></li>
+<% end %>

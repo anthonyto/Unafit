@@ -41,9 +41,7 @@
 							<li><a href="#footer">Contacts</a></li>
 						</ul>
 						<ul class="navigation-bar navigation-bar-right white-links">
-							<li><%= link_to "Browse Gyms", gyms_path %></li>
-							<li><%= link_to "Login", new_user_session_path %></li>
-							<li><%= link_to "Sign up", new_user_registration_path, class: "featured" %></li>
+							<%= render 'layouts/nav_links' %>
 						</ul>
 					</div>
 				</div>
