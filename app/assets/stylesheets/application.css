@@ -15,8 +15,10 @@
  *= require bootstrap
  *= require fontawesome
  *= require font-styles.css
+ *= require header.css
+ *= require footer.css
+ *= require forms.css
  *= require_self
- *= require_tree .
  *= stub scripts.css
  *= stub realocation.css
  */

@@ -13,6 +13,8 @@
 // Jquery.ui IS NOT INCLUDED HERE
 //
 //= require jquery
+
+// jquery-ujs has to be loaded before bootstrap to fix bootstrap tooltip conflict with jquery ui tooltip
 //= require jquery-ujs
 //= require bootstrap
 //= require waypoints
@@ -20,4 +22,5 @@
 //= require turbolinks
 //= require gmaps/google
 //= require_tree .
+//= stub realocation.js
 
