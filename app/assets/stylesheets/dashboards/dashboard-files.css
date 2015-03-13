@@ -1,8 +1,8 @@
 /*
- *= dashboards/uniform.default.css
- *= dashboards/components-rounded.css
- *= dashboards/plugins.css
- *= dashboards/layout.css
- *= dashboards/default.css
- *= dashboards/custom.css
+ *= require dashboards/uniform.default.css
+ *= require dashboards/components-rounded.css
+ *= require dashboards/plugins.css
+ *= require dashboards/layout.css
+ *= require dashboards/default.css
+ *= require dashboards/custom.css
 */
