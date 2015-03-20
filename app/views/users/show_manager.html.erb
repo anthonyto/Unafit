@@ -1,39 +1,90 @@
-<div class="container-fluid">
-	<div class="row">
-		
-		<div class="col-md-4">
-			<h4><%= @gym.name %> Manager Dashboard</h4>
-			<ul class="no-bullets">
-				<li><%= @gym.email %></li>
-				<li><%= @gym.phone_number %></li>
-				<li><%= @gym.street %></li>
-				<li><%= @gym.city %>, <%= @gym.state %> <%= @gym.zip %></li>
-				<li>Two subscription passes: <%= @gym.two_gym_passes %></li>
-				<li>Three subscription passes: <%= @gym.three_gym_passes %></li>
-				<li>Four subscription passes: <%= @gym.four_gym_passes %></li>
-				<li>Description: <%= @gym.description %></li>
-				<li>Url: <%= @gym.link %></li>
-				<li>Classes: <%= @gym.classes %></li>
-				<li>Reservation Policy: <%= @gym.reservation_policy %></li>
-			</ul>
-						
-			<h4>Statistics</h4>
-			<ul>
-				<li>Unafit members: <%= @users.size %></li>
-			</ul>
+<%= stylesheet_link_tag 'dashboards/dashboard-files', 'data-turbolinks-track' => true %>
+
+<!-- BEGIN PAGE CONTAINER -->
+<div class="page-container">
+
+	<!-- BEGIN PAGE CONTENT -->
+	<div class="page-content">
+		<div class="container">
 			
-			<h4>Manage</h4>
-			<%= link_to 'Show all Users', gym_users_path(@gym.id), :class => "btn btn-primary btn-sm"%>
-			<%= link_to 'Check in a User', check_in_client_gym_path(@gym.id), :class => "btn btn-primary btn-sm"%>
-		</div>
-		
-		<div class="col-md-8">
-			<div style='width: 800px;'>
-			  <div id="map" style='width: 800px; height: 400px;'>
-					<%= render 'gyms/show_gym_map'%>
-			  </div>
+			<!-- BEGIN PAGE CONTENT INNER -->
+			<div class="row margin-top-10">
+				<div class="col-md-6 col-sm-12">
+					<!-- BEGIN PORTLET-->
+					<div class="portlet light ">
+						<div class="portlet-title">
+							<div class="caption caption-md">
+								<i class="icon-bar-chart theme-font hide"></i>
+								<span class="caption-subject theme-font bold uppercase">Your Account</span>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<h3><%= @gym.name %></h3>
+							
+							<p><%= @gym.phone_number %></p>
+							<p><%= @gym.email %></p>
+							<p><%= @gym.street %></p>
+							<p><%= @gym.city %>, <%= @gym.state %> <%= @gym.zip %></p>
+							<p>Two subscription passes: <%= @gym.two_gym_passes %></p>
+							<p>Three subscription passes: <%= @gym.three_gym_passes %></p>
+							<p>Four subscription passes: <%= @gym.four_gym_passes %></p>
+							<p>Description: <%= @gym.description %></p>
+							<p>Url: <%= @gym.link %></p>
+							<p>Classes: <%= @gym.classes %></p>
+							<p>Reservation Policy: <%= @gym.reservation_policy %></p>
+						</div>
+					</div>
+					<!-- END PORTLET-->
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<!-- BEGIN PORTLET-->
+					<div class="portlet light ">
+						<div class="portlet-title">
+							<div class="caption caption-md">
+								<i class="icon-bar-chart theme-font hide"></i>
+								<span class="caption-subject theme-font bold uppercase">Members</span>
+							</div>
+						</div>
+						<div class="portlet-body">
+							
+							<div class="table-scrollable table-scrollable-borderless">
+								<% if @users.empty? %>
+									<h4>No members yet.</h4>
+								<% else %>
+									<table class="table table-hover table-light">
+									<thead>
+									<tr class="uppercase">
+										<th colspan="2">
+											 Name
+										</th>
+										<th>
+											 Total:  <%= @users.size %>
+										</th>
+									</tr>
+									</thead>
+									<% @users.each do |user| %>
+										<tr>
+											<td>
+												<%= user.first_name %> <%= user.last_name %>
+
+											</td>
+											<td>
+									 			<%= link_to 'Check In', check_in_client_gym_path(@gym.id), :class => "btn btn-default btn-sm"%>
+											</td>
+										</tr>
+									<% end %>
+									</table>
+								<% end %>
+							</div>
+						</div>
+					</div>
+					<!-- END PORTLET-->
+				</div>
 			</div>
+			<!-- END PAGE CONTENT INNER -->
 		</div>
-		
 	</div>
+	<!-- END PAGE CONTENT -->
 </div>
+<!-- END PAGE CONTAINER -->
+<%= javascript_include_tag 'dashboards/dashboard-files', 'data-turbolinks-track' => true %>
