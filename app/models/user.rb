@@ -82,11 +82,15 @@ class User < ActiveRecord::Base
   def active?
     self.role == "client" && self.client_profile.active?
   end
+  
+  def subscribed?
+    self.gyms.any?
+  end
 
   def active_and_subscribed?
     self.active? && !self.gyms.empty?
   end
-  
+    
   private 
   
   def capitalize_attributes

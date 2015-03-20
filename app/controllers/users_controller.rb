@@ -24,6 +24,7 @@ class UsersController < ApplicationController
       @users = @gym.users
       render "show_manager"
     else
+      # if user has not set up their client profile, make them.
       if current_user.client_profile.nil?
         redirect_to new_user_client_profile_path(current_user.id)
       else

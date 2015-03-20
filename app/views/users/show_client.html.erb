@@ -15,97 +15,15 @@
 						<div class="portlet-title">
 							<div class="caption caption-md">
 								<i class="icon-bar-chart theme-font hide"></i>
-								<span class="caption-subject theme-font bold uppercase">Sales Summary</span>
-								<span class="caption-helper hide">weekly stats...</span>
-							</div>
-							<div class="actions">
-								<div class="btn-group btn-group-devided" data-toggle="buttons">
-									<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
-									<input type="radio" name="options" class="toggle" id="option1">Today</label>
-									<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-									<input type="radio" name="options" class="toggle" id="option2">Week</label>
-									<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-									<input type="radio" name="options" class="toggle" id="option2">Month</label>
-								</div>
+								<span class="caption-subject theme-font bold uppercase">Your Account</span>
 							</div>
 						</div>
 						<div class="portlet-body">
-							<div class="row list-separated">
-								<div class="col-md-3 col-sm-3 col-xs-6">
-									<div class="font-grey-mint font-sm">
-										 Total Sales
-									</div>
-									<div class="uppercase font-hg font-red-flamingo">
-										 13,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-3 col-xs-6">
-									<div class="font-grey-mint font-sm">
-										 Revenue
-									</div>
-									<div class="uppercase font-hg theme-font">
-										 4,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-3 col-xs-6">
-									<div class="font-grey-mint font-sm">
-										 Expenses
-									</div>
-									<div class="uppercase font-hg font-purple">
-										 11,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-3 col-xs-6">
-									<div class="font-grey-mint font-sm">
-										 Growth
-									</div>
-									<div class="uppercase font-hg font-blue-sharp">
-										 9,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</div>
-							</div>
-							<ul class="list-separated list-inline-xs hide">
-								<li>
-									<div class="font-grey-mint font-sm">
-										 Total Sales
-									</div>
-									<div class="uppercase font-hg font-red-flamingo">
-										 13,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</li>
-								<li>
-								</li>
-								<li class="border">
-									<div class="font-grey-mint font-sm">
-										 Revenue
-									</div>
-									<div class="uppercase font-hg theme-font">
-										 4,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<div class="font-grey-mint font-sm">
-										 Expenses
-									</div>
-									<div class="uppercase font-hg font-purple">
-										 11,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</li>
-								<li class="divider">
-								</li>
-								<li>
-									<div class="font-grey-mint font-sm">
-										 Growth
-									</div>
-									<div class="uppercase font-hg font-blue-sharp">
-										 9,760 <span class="font-lg font-grey-mint">$</span>
-									</div>
-								</li>
-							</ul>
-							<div id="sales_statistics" class="portlet-body-morris-fit morris-chart" style="height: 260px">
-							</div>
+							<h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+							<p><%= current_user.client_profile.street %></p>
+							<p><%= current_user.client_profile.state %>, <%= current_user.client_profile.zip %></p>
+							<p><%= current_user.client_profile.phone_number %></p>
+							<!--phone, address -->
 						</div>
 					</div>
 					<!-- END PORTLET-->
@@ -116,239 +34,48 @@
 						<div class="portlet-title">
 							<div class="caption caption-md">
 								<i class="icon-bar-chart theme-font hide"></i>
-								<span class="caption-subject theme-font bold uppercase">Your Activity</span>
-								<span class="caption-helper hide">weekly stats...</span>
-							</div>
-							<div class="actions">
-								<div class="btn-group btn-group-devided" data-toggle="buttons">
-									<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
-									<input type="radio" name="options" class="toggle" id="option1">Today</label>
-									<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-									<input type="radio" name="options" class="toggle" id="option2">Week</label>
-									<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
-									<input type="radio" name="options" class="toggle" id="option2">Month</label>
-								</div>
+								<span class="caption-subject theme-font bold uppercase">Gym Subscriptions</span>
 							</div>
 						</div>
 						<div class="portlet-body">
-							<div class="row number-stats margin-bottom-30">
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="stat-left">
-										<div class="stat-chart">
-											<!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
-											<div id="sparkline_bar">
-											</div>
-										</div>
-										<div class="stat-number">
-											<div class="title">
-												 Total
-											</div>
-											<div class="number">
-												 2460
-											</div>
-										</div>
-									</div>
+							<% if current_user.active_and_subscribed? %>
+								<div class="table-scrollable table-scrollable-borderless">
+									<table class="table table-hover table-light">
+										<thead>
+											<tr class="uppercase">
+												<th colspan="2">
+													Gym
+												</th>
+												<th>
+													Street
+												</th>
+											</tr>
+										</thead>
+										<% @gyms.each do |gym| %>
+										<tr>
+											<td class="fit">
+											</td>
+											<td>
+												<span class="bold theme-font"><%= gym.name %></span>
+											</td>
+											<td>
+												<%= gym.street %>
+											</td>
+										</tr>
+										<% end %>
+									</table>
 								</div>
-								<div class="col-md-6 col-sm-6 col-xs-6">
-									<div class="stat-right">
-										<div class="stat-chart">
-											<!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
-											<div id="sparkline_bar2">
-											</div>
-										</div>
-										<div class="stat-number">
-											<div class="title">
-												 New
-											</div>
-											<div class="number">
-												 719
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="table-scrollable table-scrollable-borderless">
-								<table class="table table-hover table-light">
-								<thead>
-								<tr class="uppercase">
-									<th colspan="2">
-										 MEMBER
-									</th>
-									<th>
-										 Earnings
-									</th>
-									<th>
-										 CASES
-									</th>
-									<th>
-										 CLOSED
-									</th>
-									<th>
-										 RATE
-									</th>
-								</tr>
-								</thead>
-								<tr>
-									<td class="fit">
-									</td>
-									<td>
-										<a href="javascript:;" class="primary-link">Brain</a>
-									</td>
-									<td>
-										 $345
-									</td>
-									<td>
-										 45
-									</td>
-									<td>
-										 124
-									</td>
-									<td>
-										<span class="bold theme-font">80%</span>
-									</td>
-								</tr>
-								<tr>
-									<td class="fit">
-									</td>
-									<td>
-										<a href="javascript:;" class="primary-link">Nick</a>
-									</td>
-									<td>
-										 $560
-									</td>
-									<td>
-										 12
-									</td>
-									<td>
-										 24
-									</td>
-									<td>
-										<span class="bold theme-font">67%</span>
-									</td>
-								</tr>
-								<tr>
-									<td class="fit">
-									</td>
-									<td>
-										<a href="javascript:;" class="primary-link">Tim</a>
-									</td>
-									<td>
-										 $1,345
-									</td>
-									<td>
-										 450
-									</td>
-									<td>
-										 46
-									</td>
-									<td>
-										<span class="bold theme-font">98%</span>
-									</td>
-								</tr>
-								<tr>
-									<td class="fit">
-									</td>
-									<td>
-										<a href="javascript:;" class="primary-link">Tom</a>
-									</td>
-									<td>
-										 $645
-									</td>
-									<td>
-										 50
-									</td>
-									<td>
-										 89
-									</td>
-									<td>
-										<span class="bold theme-font">58%</span>
-									</td>
-								</tr>
-								</table>
-							</div>
+							<% elsif current_user.active? %>
+								<h3>No Current Subscriptions.</h3>
+								<%= link_to "Subscribe Now", edit_subscriptions_user_path(current_user.id), :class => "btn btn-default btn-sm" %>
+							<% else %>
+								<h3>Ready to sign up?</h3>
+								<h4>Pay your membership to get started!</h4>
+								<%= link_to 'Pay now!', new_user_charge_path(current_user.id), :class => "btn btn-default btn-md" %>
+							<% end %>
 						</div>
 					</div>
 					<!-- END PORTLET-->
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-sm-12">
-					<!-- BEGIN REGIONAL STATS PORTLET-->
-					<div class="portlet light ">
-						<div class="portlet-title">
-							<div class="caption caption-md">
-								<i class="icon-bar-chart theme-font hide"></i>
-								<span class="caption-subject theme-font bold uppercase">Regional Stats</span>
-							</div>
-							<div class="actions">
-								<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-								<i class="icon-cloud-upload"></i>
-								</a>
-								<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-								<i class="icon-wrench"></i>
-								</a>
-								<a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#">
-								</a>
-								<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-								<i class="icon-trash"></i>
-								</a>
-							</div>
-						</div>
-						<div class="portlet-body">
-							<div id="region_statistics_loading">
-								<%= image_tag 'loading.gif', alt: 'logo.png' %>
-							</div>
-							<div id="region_statistics_content" class="display-none">
-								<div class="btn-toolbar margin-bottom-10">
-									<div class="btn-group btn-group-circle" data-toggle="buttons">
-										<a href="" class="btn grey-salsa btn-sm active">
-										Users </a>
-										<a href="" class="btn grey-salsa btn-sm">
-										Orders </a>
-									</div>
-									<div class="btn-group pull-right">
-										<a href="" class="btn btn-circle grey-salsa btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-										Select Region <span class="fa fa-angle-down">
-										</span>
-										</a>
-										<ul class="dropdown-menu pull-right">
-											<li>
-												<a href="javascript:;" id="regional_stat_world">
-												World </a>
-											</li>
-											<li>
-												<a href="javascript:;" id="regional_stat_usa">
-												USA </a>
-											</li>
-											<li>
-												<a href="javascript:;" id="regional_stat_europe">
-												Europe </a>
-											</li>
-											<li>
-												<a href="javascript:;" id="regional_stat_russia">
-												Russia </a>
-											</li>
-											<li>
-												<a href="javascript:;" id="regional_stat_germany">
-												Germany </a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div id="vmap_world" class="vmaps display-none">
-								</div>
-								<div id="vmap_usa" class="vmaps display-none">
-								</div>
-								<div id="vmap_europe" class="vmaps display-none">
-								</div>
-								<div id="vmap_russia" class="vmaps display-none">
-								</div>
-								<div id="vmap_germany" class="vmaps display-none">
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END REGIONAL STATS PORTLET-->
 				</div>
 			</div>
 			<!-- END PAGE CONTENT INNER -->
@@ -361,7 +88,7 @@
 
 <script>
 jQuery(document).ready(function() {    
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
+	Metronic.init(); // init metronic core componets
+	Layout.init(); // init layout
 });
 </script>
