@@ -40,6 +40,7 @@ user = User.create!(email: "manager@bar.com", first_name: "jeanie", last_name: "
 
 gym = Gym.find(1)
 gym.user = user
+
 gym.save!
 
 user = User.create!(

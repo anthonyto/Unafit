@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   # before_filter :authorize_user
 
-  # GET /users
-  # GET /users.json
   def index
     if current_user.admin?
       @users = User.all
@@ -56,25 +54,25 @@ class UsersController < ApplicationController
 
   # I don't think we need these
   # GET /users/new
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
   # POST /users
   # POST /users.json
-  def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #
+  #   respond_to do |format|
+  #     if @user.save
+  #       format.html { redirect_to @user, notice: 'User was successfully created.' }
+  #       format.json { render :show, status: :created, location: @user }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # GET /users/1/edit
   def edit
@@ -98,18 +96,13 @@ class UsersController < ApplicationController
   def edit_subscriptions
     @subscribed_gyms = current_user.gyms
     @gyms            = Gym.near(current_user.client_profile.geocode, 25)
-
   end
   
   def update_subscriptions
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render :edit
     end
   end
   
@@ -117,9 +110,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to root, notice: 'User was successfully destroyed.'
     end
   end
 
