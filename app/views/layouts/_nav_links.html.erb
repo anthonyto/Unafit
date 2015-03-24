@@ -12,7 +12,7 @@
 		<li><%= link_to "DASHBOARD", user_path(current_user) %></li>
 		<li><%= link_to "BROWSE GYMS", gyms_path %></li>
 	<% end %>
-  <li><%= link_to 'UPDATE ACCOUNT', edit_user_registration_path %></li>
+  <li><%= link_to 'ACCOUNT', edit_user_registration_path %></li>
 	<li><%= link_to 'SIGN OUT', destroy_user_session_path, :method => :delete %></li>
 <% else %>
 	<!--NOT LOGGED IN -->
