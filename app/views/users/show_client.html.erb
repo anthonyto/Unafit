@@ -9,7 +9,7 @@
 			
 			<!-- BEGIN PAGE CONTENT INNER -->
 			<div class="row margin-top-10">
-				<div class="col-md-6 col-sm-12">
+				<div id="left-col" class="col-md-6 col-sm-12">
 					<!-- BEGIN PORTLET-->
 					<div class="portlet light ">
 						<div class="portlet-title">
@@ -28,7 +28,7 @@
 					</div>
 					<!-- END PORTLET-->
 				</div>
-				<div class="col-md-6 col-sm-12">
+				<div id="right-col" class="col-md-6 col-sm-12">
 					<!-- BEGIN PORTLET-->
 					<div class="portlet light ">
 						<div class="portlet-title">
@@ -87,6 +87,8 @@
 <%= javascript_include_tag 'dashboards/dashboard-files', 'data-turbolinks-track' => true %>
 
 <script>
+$("#right-col").height($("#left-col").height());
+
 jQuery(document).ready(function() {    
 	Metronic.init(); // init metronic core componets
 	Layout.init(); // init layout

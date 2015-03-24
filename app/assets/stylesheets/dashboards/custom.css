@@ -18,7 +18,7 @@ Rounded Portlets
 }
 */
 
-#client-content, #gym-clients
+#gym-clients
 {
 	overflow-y: scroll;
 }
