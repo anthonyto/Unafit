@@ -66,13 +66,10 @@ class GymsController < ApplicationController
   def create
     @gym  = Gym.new(gym_params)
     
-    respond_to do |format|
-      if @gym.save
-        format.html { redirect_to new_manager_path(@gym.id), notice: 'Gym was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-      end
+    if @gym.save
+      redirect_to new_manager_path(@gym.id), notice: 'Gym was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -81,14 +78,11 @@ class GymsController < ApplicationController
     respond_with(@gym)
   end
   
-  def check_in_client
-    @users = @gym.users
-  end
-  
   # How can we enforce that a manager can only check in a client of their own? 
-  def update_sessions_left
+  def check_in_client
     @user = User.find(params[:user_id])
     decrement_session(@gym, @user)
+    flash[:notice] = "#{@user.first_name} successfully checked in."
     redirect_to current_user
   end
 

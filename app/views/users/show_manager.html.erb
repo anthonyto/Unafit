@@ -58,18 +58,23 @@
 											 Name
 										</th>
 										<th>
+											Sessions Left:
+										</th>
+										<th>
 											 Total:  <%= @users.size %>
 										</th>
 									</tr>
 									</thead>
 									<% @users.each do |user| %>
 										<tr>
-											<td>
+											<td colspan="2">
 												<%= user.first_name %> <%= user.last_name %>
-
 											</td>
 											<td>
-									 			<%= link_to 'Check In', check_in_client_gym_path(@gym.id), :class => "btn btn-default btn-sm"%>
+												<%= user.subscriptions.where(gym_id: @gym.id).first.sessions_left %>
+											</td>
+											<td>
+									 			<%= link_to 'Check In', check_in_client_gym_path(@gym.id, user.id), :class => "btn btn-default btn-sm"%>
 											</td>
 										</tr>
 									<% end %>

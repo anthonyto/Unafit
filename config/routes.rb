@@ -9,8 +9,7 @@ Rails.application.routes.draw do
 
   resources :gyms do
     member do
-      get 'check_in_client', to: 'gyms#check_in_client'
-      get 'update_sessions_left', to: 'gyms#update_sessions_left'
+      get 'check_in_client/:user_id', to: 'gyms#check_in_client', as: 'check_in_client'
     end
     resources :users, only: [:index, :show]
     resources :pictures
