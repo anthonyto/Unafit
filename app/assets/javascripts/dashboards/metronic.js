@@ -1,3 +1,5 @@
+$("#gym-clients").height($("#gym-info").height());
+
 /**
 Core script to handle the entire theme and core functions
 **/

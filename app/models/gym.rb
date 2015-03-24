@@ -5,7 +5,7 @@ class Gym < ActiveRecord::Base
   has_many :subscriptions
   has_many :users, :through => :subscriptions
   has_many :pictures
-  belongs_to :user
+  belongs_to :manager, class_name: "User", foreign_key: "user_id"
   geocoded_by :full_street_address
   after_validation :geocode
   before_save :capitalize_attributes

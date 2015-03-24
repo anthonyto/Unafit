@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 gyms = [
-  ["Capital Fitness", "foo@bar.com", "(858)383-7081", "Madison", "wi", "15 North Butler St", "53703", 8, 6, 4, "foobarfoo"],
+  ["Gym with clients", "foo@bar.com", "(858)383-7081", "Madison", "wi", "15 North Butler St", "53703", 8, 6, 4, "foobarfoo"],
   ["Anytime Fitness", "foo@bar.com", "(858)383-7081", "Madison", "wi", "301 East Campus Mall", "53715", 8, 6, 4, "foobarfoo" ],
   ["Princeton Club", "foo@bar.com", "(858)383-7081", "Madison", "wi", "1726 Eagan Road", "53704", 8, 6, 4, "foobarfoo"],
   ["Planet Fitness", "foo@bar.com", "(858)383-7081", "Monona", "wi", "2305 West Broadway", "53713", 8, 6, 4, "foobarfoo"],
@@ -39,7 +39,7 @@ User.create!(email: "admin@bar.com", first_name: "anthony", last_name: "to", rol
 user = User.create!(email: "manager@bar.com", first_name: "jeanie", last_name: "to", role: 1, password: "password");
 
 gym = Gym.find(1)
-gym.user = user
+gym.manager = user
 
 gym.save!
 
@@ -49,7 +49,7 @@ user = User.create!(
   last_name: "mingus", 
   role: 2,
   password: "password"
-);
+)
 
 user.build_client_profile(
   phone_number: "(858)484-7081", 
@@ -68,7 +68,7 @@ user = User.create!(
   last_name: "mingus", 
   role: 2,
   password: "password"
-);
+)
 
 user.build_client_profile(
   phone_number: "(858)484-7081", 
@@ -80,3 +80,35 @@ user.build_client_profile(
   active: true
 )
 user.client_profile.save!
+
+clients = ('1'..'10').to_a
+
+clients.each do |num|
+  user = User.create!(
+    email: "sdclient#{num}@bar.com",
+    first_name: "san diego",
+    last_name: "mingus", 
+    role: 2,
+    password: "password"
+  )
+  user.build_client_profile(
+    phone_number: "(858)484-7081", 
+    city: "San Diego",
+    state: "CA", 
+    street: "7960 Kathryn Crosby Court", 
+    zip: "92127",
+    last_payment: "2014-12-26 08:13:00",
+    active: true
+  )
+  user.client_profile.save!
+end
+
+clients = User.find_by_role(2)
+gym = Gym.find_by_name("Gym with clients")
+
+User.where(role:2).each do |user|
+  # gym.users << user
+  gym.subscriptions.create(user: user, sessions_left: '3')
+end
+
+

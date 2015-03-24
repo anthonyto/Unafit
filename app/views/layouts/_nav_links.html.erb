@@ -6,7 +6,7 @@
 		<li><%= link_to "BROWSE GYMS", gyms_path %></li>
 	<% elsif current_user.manager? %>
 		<!-- Manager -->
-  	<li><%= link_to current_user.gym.name.upcase, user_path(current_user.id) %></li>
+  	<li><%= link_to current_user.managed_gym.name.upcase, user_path(current_user.id) %></li>
 	<% else %>
 		<!-- User -->
 		<li><%= link_to "DASHBOARD", user_path(current_user) %></li>

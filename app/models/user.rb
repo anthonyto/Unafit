@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   has_many :subscriptions
   has_many :gyms, :through => :subscriptions
-  has_one :gym
+  has_one :managed_gym, class_name: "Gym", foreign_key: "user_id"
   has_one :client_profile
   accepts_nested_attributes_for :client_profile
   

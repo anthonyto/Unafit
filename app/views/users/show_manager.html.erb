@@ -9,7 +9,7 @@
 			
 			<!-- BEGIN PAGE CONTENT INNER -->
 			<div class="row margin-top-10">
-				<div class="col-md-6 col-sm-12">
+				<div id="gym-info" class="col-md-6 col-sm-12">
 					<!-- BEGIN PORTLET-->
 					<div class="portlet light ">
 						<div class="portlet-title">
@@ -36,7 +36,7 @@
 					</div>
 					<!-- END PORTLET-->
 				</div>
-				<div class="col-md-6 col-sm-12">
+				<div id="gym-clients" class="col-md-6 col-sm-12">
 					<!-- BEGIN PORTLET-->
 					<div class="portlet light ">
 						<div class="portlet-title">
@@ -45,7 +45,7 @@
 								<span class="caption-subject theme-font bold uppercase">Members</span>
 							</div>
 						</div>
-						<div class="portlet-body">
+						<div id="client-content" class="portlet-body">
 							
 							<div class="table-scrollable table-scrollable-borderless">
 								<% if @users.empty? %>
@@ -65,18 +65,22 @@
 										</th>
 									</tr>
 									</thead>
+									<tbody>
 									<% @users.each do |user| %>
 										<tr>
 											<td colspan="2">
 												<%= user.first_name %> <%= user.last_name %>
 											</td>
 											<td>
-												<%= user.subscriptions.where(gym_id: @gym.id).first.sessions_left %>
+												<%= user.subscriptions.find_by(gym_id: @gym.id).sessions_left %>
 											</td>
 											<td>
-									 			<%= link_to 'Check In', check_in_client_gym_path(@gym.id, user.id), :class => "btn btn-default btn-sm"%>
+												<% if user.subscriptions.find_by(gym_id: @gym.id).sessions_left > 0 %>
+										 			<%= link_to 'Check In', check_in_client_gym_path(@gym.id, user.id), :class => "btn btn-default btn-sm"%>
+												<% end %>
 											</td>
 										</tr>
+									</tbody>
 									<% end %>
 									</table>
 								<% end %>
