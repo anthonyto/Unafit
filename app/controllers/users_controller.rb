@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     if current_user.admin?
       @gyms = Gym.all
+      @num_users = User.count
       render "show_admin"
     elsif current_user.manager?
       @gym   = Gym.where(user_id: current_user.id).first

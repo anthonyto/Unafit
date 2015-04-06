@@ -17,12 +17,16 @@
 								<i class="icon-bar-chart theme-font hide"></i>
 								<span class="caption-subject theme-font bold uppercase">Your Account</span>
 							</div>
+							<div class="text-right">
+								<%= link_to "Edit", edit_user_client_profile_path(current_user.id, current_user.client_profile), :class => "btn btn-default btn-sm" %>
+							</div>
 						</div>
 						<div class="portlet-body">
 							<h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
 							<p><%= current_user.client_profile.street %></p>
 							<p><%= current_user.client_profile.state %>, <%= current_user.client_profile.zip %></p>
 							<p><%= current_user.client_profile.phone_number %></p>
+							<p>Number of sessions: <%= current_user.client_profile.number_of_sessions %></p>
 							<!--phone, address -->
 						</div>
 					</div>
@@ -34,7 +38,10 @@
 						<div class="portlet-title">
 							<div class="caption caption-md">
 								<i class="icon-bar-chart theme-font hide"></i>
-								<span class="caption-subject theme-font bold uppercase">Gym Subscriptions</span>
+								<span class="caption-subject theme-font bold uppercase">Gym Subscriptions</span>							
+							</div>
+							<div class="text-right">
+								<%= link_to "Edit", edit_subscriptions_user_path(current_user.id), :class => "btn btn-default btn-sm" %>
 							</div>
 						</div>
 						<div class="portlet-body">
