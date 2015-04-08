@@ -5443,10 +5443,6 @@ h4.agency-row-subtitle a {
 .map-navigation-light .map-navigation .form-control {
 	border: 2px solid rgba(0, 0, 0, 0.1)
 }
-#map-property {
-	border-bottom: 3px solid #1AC6FF;
-	height: 200px
-}
 .marker {
 	background-color: #fff;
 	border: 3px solid #1AC6FF;

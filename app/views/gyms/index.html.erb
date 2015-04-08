@@ -1,4 +1,4 @@
-<div id="map-canvas"></div>
+<div id="map-index"></div>
 
 <script>
 	handler = Gmaps.build('Google');
@@ -10,7 +10,7 @@
 			scrollwheel: true,
 			zoom: 7
 		},
-		internal: {id: 'map-canvas'}}, function(){
+		internal: {id: 'map-index'}}, function(){
 		
 			markers = _.map(markers_json, function(marker_json, index){
 			  marker = handler.addMarker(marker_json);

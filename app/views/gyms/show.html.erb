@@ -1,64 +1,104 @@
-	<div id="map-property"></div>
-	<div class="container">
-		<div class="block-content block-content-small-padding">
-			<div class="block-content-inner">
+<div id="map-show"></div>
+<div class="container">
+	<div class="block-content block-content-small-padding">
+		<div class="block-content-inner">
+							
+			<div class="row">
+				<div class="col-sm-9">
+					<h2 class="property-detail-title"><%= @gym.name %></h2>
+					<h3 class="property-detail-subtitle"><%= "#{@gym.street}" %></h3>
+
+					<div class="flexslider">
+						<ul class="slides">
+							<% @pictures.each do |picture| %>
+							<li data-thumb="<%= picture.image.url(:small) %>">
+								<%= image_tag picture.image.url(:large) %>
+							</li>
+							<% end %>
+						</ul><!-- /.slides -->
+					</div><!-- /.flexslider -->
+
+					<hr>
+
+				</div>
+
+				<div class="col-sm-3">
+					<div class="widget">
+						<h3 class="widget-title">Contact</h3>
+						<div class="widget-content">
+							<label>Email</label><br />
+							<p><%= @gym.email %></p>
+							<label>Phone</label><br />
+							<p><%= @gym.phone_number %></p>
+							<label>Address</label><br />
+							<p><%= @gym.full_street_address %></p>
+						</div><!-- /.widget-content -->
+					</div><!-- /.widget -->
+				</div>
+				
+			</div><!-- /.row -->
 								
-				<div class="row">
-					<div class="col-sm-9">
-						<h2 class="property-detail-title"><%= @gym.name %></h2>
-						<h3 class="property-detail-subtitle"><%= "#{@gym.street}" %></h3>
+			<h3>Description</h3>
 
-						<div class="flexslider">
-							<ul class="slides">
-								<% @pictures.each do |picture| %>
-								<li data-thumb="<%= picture.image.url(:small) %>">
-									<%= image_tag picture.image.url(:large) %>
-								</li>
-								<% end %>
-							</ul><!-- /.slides -->
-						</div><!-- /.flexslider -->
+			<p>
+				Vestibulum feugiat tempor mattis. Maecenas venenatis at erat sit amet viverra. Fusce sagittis pretium est vel iaculis. Proin vel tincidunt nisi. Sed non vehicula purus. In auctor sodales metus, ac fermentum odio sagittis quis. Curabitur volutpat, erat nec varius dapibus, felis libero malesuada mauris, at vestibulum enim erat non nibh. Donec ac nibh dapibus, sagittis libero a, sodales enim. Quisque a viverra mi.
+			</p>
 
-						<hr>
+			<hr>
 
-					</div>
+			<h3>Amenities</h3>
 
-					<div class="col-sm-3">
-						<div class="widget">
-							<h3 class="widget-title">Contact</h3>
-							<div class="widget-content">
-								<label>Email</label><br />
-								<p><%= @gym.email %></p>
-								<label>Phone</label><br />
-								<p><%= @gym.phone_number %></p>
-								<label>Address</label><br />
-								<p><%= @gym.full_street_address %></p>
-							</div><!-- /.widget-content -->
-						</div><!-- /.widget -->
-					</div>
-					
-				</div><!-- /.row -->
-									
-				<h3>Description</h3>
+			<div class="row">
+				<ul class="property-detail-amenities">
+					<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Parking</li>
+					<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Showers</li>
+					<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Air Conditioning</li>
+					<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Lockers</li>
+					<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Sauna</li>
+				</ul>
+			</div><!-- /.row -->
+								
+								
+		</div><!-- /.block-content-inner -->
+	</div><!-- /.block-content -->
+</div><!-- /.container -->
 
-				<p>
-					Vestibulum feugiat tempor mattis. Maecenas venenatis at erat sit amet viverra. Fusce sagittis pretium est vel iaculis. Proin vel tincidunt nisi. Sed non vehicula purus. In auctor sodales metus, ac fermentum odio sagittis quis. Curabitur volutpat, erat nec varius dapibus, felis libero malesuada mauris, at vestibulum enim erat non nibh. Donec ac nibh dapibus, sagittis libero a, sodales enim. Quisque a viverra mi.
-				</p>
+<script>
+	handler = Gmaps.build('Google');
+	marker_json = <%=raw @gym_json.to_json %>
+	console.log(marker_json)
+	
+	// handler.buildMap({ internal: {id: 'map-show'}}, function(){
+	//   marker = handler.addMarkers([marker_json[0]]);
+	//
+	//   handler.bounds.extendWith(markers);
+	//   handler.fitMapToBounds();
+	// });
 
-				<hr>
+	handler.buildMap({
+		provider: {
+			disableDefaultUI: true,
+			scrollwheel: true,
+			zoom: 7
+		},
+		internal: {id: 'map-show'}}, function(){
 
-				<h3>Amenities</h3>
+			markers = _.map(marker_json, function(marker_json, index){
+			  marker = handler.addMarker(marker_json);
+			  _.extend(marker, marker_json);
+			  return marker;
+			});
 
-				<div class="row">
-					<ul class="property-detail-amenities">
-						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Parking</li>
-						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Showers</li>
-						<li class="col-xs-6 col-sm-4"><i class="fa fa-ban no"></i> Air Conditioning</li>
-						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Lockers</li>
-						<li class="col-xs-6 col-sm-4"><i class="fa fa-check ok"></i> Sauna</li>
-					</ul>
-				</div><!-- /.row -->
-									
-									
-			</div><!-- /.block-content-inner -->
-		</div><!-- /.block-content -->
-	</div><!-- /.container -->
+		  markers = handler.addMarkers(marker_json);
+
+
+		  _.each(marker_json, function(json, index){
+		  	  		    json.marker = markers[index];
+		  	  		  });
+
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+		});
+	
+	
+</script>

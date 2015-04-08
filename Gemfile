@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'foreman'
+  gem 'factory_girl_rails'
 end
 
 group :production do
