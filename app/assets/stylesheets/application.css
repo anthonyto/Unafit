@@ -18,6 +18,7 @@
  *= require header.css
  *= require footer.css
  *= require forms.css
+ *= require gyms.css
  *= require_self
  *= stub scripts.css
  *= stub realocation.css
@@ -28,6 +29,7 @@ html, body
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	width: 100%;
 }
 
 #full-height-container {

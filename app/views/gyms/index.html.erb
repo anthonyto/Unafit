@@ -1,62 +1,31 @@
-<div id="map"></div>
+<div id="map-canvas"></div>
 
-<div class="container"> 
-	
-	<!-- SLOGAN -->
-	<div class="block-content background-primary background-map block-content-small-padding fullwidth">
-		<div class="block-content-inner">
-			<h2 class="no-margin center"></h2>
-		</div><!-- /.block-content-iner -->
-	</div><!-- /.block-content-->         
+<script>
+	handler = Gmaps.build('Google');
+	markers_json = <%=raw @gyms_json.to_json %>
 
-	<!-- ISOTOPE GRID -->
-	<div class="block-content block-content-small-padding">
-		<div class="block-content-inner">
+	handler.buildMap({ 
+		provider: {
+			disableDefaultUI: true,
+			scrollwheel: true,
+			zoom: 7
+		},
+		internal: {id: 'map-canvas'}}, function(){
+		
+			markers = _.map(markers_json, function(marker_json, index){
+			  marker = handler.addMarker(marker_json);
+			  _.extend(marker, marker_json);
+			  return marker;
+			});
 
-			<ul class="properties-filter">
-				<li class="selected"><a href="#" data-filter="*"><span>All</span></a></li>
-				<li><a href="#" data-filter=".property-featured"><span>Yoga</span></a></li>
-				<li><a href="#" data-filter=".property-rent"><span>Crossfit</span></a></li>
-				<li><a href="#" data-filter=".property-sale"><span>Other</span></a></li>
-			</ul>
-			<!-- /.property-filter -->
+		  markers = handler.addMarkers(markers_json);
 
-			<div class="properties-items">
-				<% @gyms.each_slice(4) do |four_gyms| %>
-				<div class="row">
-					<% four_gyms.each do |gym| %>
-					<div class="property-item property-rent col-sm-6 col-md-3">
-						<div class="property-box">
-							<div class="property-box-inner">
-								<h3 class="property-box-title"><%= link_to gym.name, gym_path(gym) %></h3>
-								<h4 class="property-box-subtitle"><%= gym.street %></h4>
 
-								<div class="property-box-picture">
-									<div class="property-box-price">Foo</div>
-									<!-- /.property-box-price -->
-									<div class="property-box-picture-inner">
-										<a href="property-detail.html" class="property-box-picture-target">
-											<% if gym.pictures.empty? %>
-											<%= link_to(image_tag('index-gyms-default.jpg'), gym_path(gym), class: "property-box-picture-target") %>
-											<% else %>
-											<%= link_to(image_tag(gym.pictures.first.image.url(:medium)), gym_path(gym), class: "property-box-picture-target") %>
-											<% end %>
-										</a><!-- /.property-box-picture-target -->
-									</div><!-- /.property-picture-inner -->
-								</div><!-- /.property-picture -->
-							</div><!-- /.property-box-inner -->
-						</div><!-- /.property-box -->
-					</div><!-- /.property-item -->
-					<% end %>						
-				</div><!-- /.row -->
-				<% end %>
-			</div><!-- /.properties-items -->
+		  _.each(markers_json, function(json, index){
+		  	  		    json.marker = markers[index];
+		  	  		  });
 			
-		</div><!-- /.block-content-inner -->
-	</div><!-- /.block-content -->                
-</div><!-- /.container -->
-
-<!-- Do I need this? -->
-<% if false %>
-	<%= javascript_include_tag 'map', 'data-turbolinks-track' => true %>
-<% end %>
+		  handler.bounds.extendWith(markers);
+		  handler.fitMapToBounds();
+		});
+</script>

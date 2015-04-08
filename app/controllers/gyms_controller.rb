@@ -2,19 +2,14 @@ class GymsController < ApplicationController
   before_action :set_gym, only: [:show, :edit, :update, :check_in_client, :update_sessions_left, :destroy]
   # before_filter :authorize_user
 
+  # why is this here again?
   respond_to :html
 
   def index
-    # FOR DEV ONLY
-    if !user_signed_in? && Rails.env.development? 
-      # in development and not logged in, just get gyms in madison
-      @gyms = Gym.near([43.0771, -89.3815], 25)
-      @center = [43.0771, -89.3815]
-    elsif user_signed_in? && current_user.admin? 
-      # in dev and logged in as admin, send all the gyms
+    if Rails.env.development? 
+      # If Dev, just send all gyms. Whatever. 
       @gyms = Gym.all
       @center = [@gyms.first.latitude, @gyms.first.longitude]
-    # END FOR DEV ONLY
     elsif !user_signed_in? || current_user.client_profile.nil?
       # if a user is not signed in and in prod, or inactive, use their IP to find nearby gyms
       @gyms = Gym.near(request.location, 25)
@@ -24,6 +19,7 @@ class GymsController < ApplicationController
       @gyms = Gym.near(current_user.client_profile.geocode, 50)
       @center = [@gyms.first.latitude, @gyms.first.longitude]
     end
+    # This is all GMaps4Rails stuff
     @gyms_json = Gmaps4rails.build_markers(@gyms) do |gym, marker|
       marker.lat gym.latitude
       marker.lng gym.longitude
@@ -35,9 +31,8 @@ class GymsController < ApplicationController
         zip: gym.zip,
         id: gym.id
       })
-      marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
+      # marker.infowindow render_to_string(partial: "layouts/infowindow", locals: { gym: gym })
     end
-    render layout: "gyms"
   end
 
   def show
@@ -53,7 +48,6 @@ class GymsController < ApplicationController
         zip: gym.zip
       })
     end
-    render layout: "gyms"
   end
 
   def new
