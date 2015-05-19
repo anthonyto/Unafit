@@ -1,16 +1,10 @@
 class User < ActiveRecord::Base
   validates :email, :first_name, :last_name, :role, presence: true
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
   
-  # Only set email confirmations in production, because they are annoying in dev
-  if Rails.env.production?
-    # put confirmable back into production when you've set up a staging environment too
-    # devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
-    devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :invitable
-  else
-    devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :invitable
-  end
+  # I commented this out so I can take away confirmable to test on an airplane
+  # devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :invitable
+  devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :invitable
+
   
   has_many :subscriptions
   has_many :gyms, :through => :subscriptions

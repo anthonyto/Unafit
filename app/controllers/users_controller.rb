@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     else
       # if user has not set up their client profile, make them.
       if current_user.client_profile.nil?
-        redirect_to new_user_client_profile_path(current_user.id)
+        redirect_to new_user_client_profile_path(current_user.id), notice: 'Please complete your profile before proceeding.'
       else
         # If the user is subscribed, send the gyms they are subscribed to
         if current_user.active_and_subscribed? 
@@ -35,7 +35,9 @@ class UsersController < ApplicationController
           # if the user is inactive or unsubscribed, send gyms in their area
           @gyms = Gym.near(current_user.client_profile.geocode, 25)
         end
-        @center = [@gyms.first.latitude, @gyms.first.longitude]
+        if @center
+          @center = [@gyms.first.latitude, @gyms.first.longitude]
+        end
         @gyms_json = Gmaps4rails.build_markers(@gyms) do |gym, marker|
           marker.lat gym.latitude
           marker.lng gym.longitude
@@ -53,34 +55,9 @@ class UsersController < ApplicationController
     end
   end
 
-  # I don't think we need these
-  # GET /users/new
-  # def new
-  #   @user = User.new
-  # end
-
-  # POST /users
-  # POST /users.json
-  # def create
-  #   @user = User.new(user_params)
-  #
-  #   respond_to do |format|
-  #     if @user.save
-  #       format.html { redirect_to @user, notice: 'User was successfully created.' }
-  #       format.json { render :show, status: :created, location: @user }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # GET /users/1/edit
   def edit
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
       if @user.update(user_params)
         redirect_to @user, notice: 'User was successfully updated.'
@@ -89,7 +66,6 @@ class UsersController < ApplicationController
       end
   end
   
-  # GET /users/1/edit_subscriptionss
   def edit_subscriptions
     @subscribed_gyms = current_user.gyms
     @gyms            = Gym.near(current_user.client_profile.geocode, 25)
@@ -103,8 +79,6 @@ class UsersController < ApplicationController
     end
   end
   
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     redirect_to root, notice: 'User was successfully destroyed.'
