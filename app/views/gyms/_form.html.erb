@@ -13,51 +13,52 @@
 
   <div class="form-group">
     <%= f.label :name, class: 'sr-only' %>
-    <%= f.text_field :name, class: "form-control jv-float", placeholder: "Name*" %>
+    <%= f.text_field :name, class: "form-control jv-float", placeholder: "Name*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :email, class: 'sr-only' %>
-    <%= f.text_field :email, class: "form-control jv-float", placeholder: "Email*" %>
+    <%= f.text_field :email, class: "form-control jv-float", placeholder: "Email*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :phone_number, class: 'sr-only' %>
-    <%= f.text_field :phone_number, class: "form-control jv-float", placeholder: "Phone Number*" %>
+    <%= f.text_field :phone_number, class: "form-control jv-float", placeholder: "Phone Number*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :street, class: 'sr-only' %>
-    <%= f.text_field :street, class: "form-control jv-float", placeholder: "Street*" %>
+    <%= f.text_field :street, class: "form-control jv-float", placeholder: "Street*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :city, class: 'sr-only' %>
-    <%= f.text_field :city, class: "form-control jv-float", placeholder: "City*" %>
+    <%= f.text_field :city, class: "form-control jv-float", placeholder: "City*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :state, class: 'sr-only' %>
-    <%= f.text_field :state, class: "form-control jv-float", placeholder: "State*" %>
+    <%= f.text_field :state, class: "form-control jv-float", placeholder: "State*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :zip, class: 'sr-only' %>
-    <%= f.text_field :zip, class: "form-control jv-float", placeholder: "Zip*" %>
+    <%= f.text_field :zip, class: "form-control jv-float", placeholder: "Zip*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :two_gym_passes, class: 'sr-only' %>
-    <%= f.number_field :two_gym_passes, class: "form-control jv-float", placeholder: "Two Gym Passes*" %>
+    <%= f.number_field :two_gym_passes, class: "form-control jv-float", placeholder: "Two Gym Passes*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :three_gym_passes, class: 'sr-only' %>
-    <%= f.number_field :three_gym_passes, class: "form-control jv-float", placeholder: "Three Gym Passes*" %>
+    <%= f.number_field :three_gym_passes, class: "form-control jv-float", placeholder: "Three Gym Passes*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :four_gym_passes, class: 'sr-only' %>
-    <%= f.number_field :four_gym_passes, class: "form-control jv-float", placeholder: "Four Gym Passes*" %>
+    <%= f.number_field :four_gym_passes, class: "form-control jv-float", placeholder: "Four Gym Passes*", required: true %>
   </div>
   <div class="form-group">
-    <%= f.label :status, class: 'sr-only' %>
-    <%= f.text_field :status, class: "form-control jv-float", placeholder: "Status" %>
+    <%= f.label :status %>
+		<%= f.select :status, options_for_select(["Inactive", "Active", "Coming Soon"], @gym.status), required: true %>
+		
   </div>
   <div class="form-group">
     <%= f.label :description, class: 'sr-only' %>
-    <%= f.text_area :description, class: "form-control jv-float", placeholder: "Description*" %>
+    <%= f.text_area :description, class: "form-control jv-float", placeholder: "Description*", required: true %>
   </div>
   <div class="form-group">
     <%= f.label :link, class: 'sr-only' %>
