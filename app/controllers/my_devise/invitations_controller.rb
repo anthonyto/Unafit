@@ -11,7 +11,7 @@ class MyDevise::InvitationsController < Devise::InvitationsController
    
    def new_manager
      @gym = Gym.find(params[:id])
-     self.resource = @gym.build_user()
+     self.resource = @gym.build_manager()
    end
    
    # POST /resource/invitation
