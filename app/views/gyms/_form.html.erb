@@ -52,7 +52,7 @@
     <%= f.number_field :four_gym_passes, class: "form-control jv-float", placeholder: "Four Gym Passes*", required: true %>
   </div>
   <div class="form-group">
-    <%= f.label :status %>
+    <%= f.label :status %></br>
 		<%= f.select :status, options_for_select(["Inactive", "Active", "Coming Soon"], @gym.status), required: true %>
 		
   </div>
