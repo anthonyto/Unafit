@@ -21,8 +21,8 @@
 						<div class="portlet-body">
 							<p>Total Unafit Gyms: <%= @gyms.count %></p>
 							<p>Total Unafit Users: <%= @num_users %></p>
-							<%= link_to 'New Gym', new_gym_path, :class => "btn btn-primary btn-sm" %>
-							<%= link_to 'Invite Admin', new_admin_path, :class => "btn btn-primary btn-sm"%></br >
+							<%= link_to 'New Gym', new_gym_path, :class => "btn btn-default btn-sm" %>
+							<%= link_to 'Invite Admin', new_admin_path, :class => "btn btn-default btn-sm"%></br >
 							<h3>We can add more stuff here.</h3>
 						</div>
 					</div>
@@ -79,8 +79,8 @@
 												<% end %>
 											</td>
 											<td>
-												<%= link_to 'Edit', edit_gym_path(gym), :class => 'btn btn-primary btn-xs'%>
-												<%= link_to 'Add Pictures', new_gym_picture_path(gym.id), :class => 'btn btn-primary btn-xs'%>
+												<%= link_to 'Edit', edit_gym_path(gym), :class => 'btn btn-default btn-xs'%>
+												<%= link_to 'Add Pictures', new_gym_picture_path(gym.id), :class => 'btn btn-default btn-xs'%>
 											</td>
 										</tr>
 									</tbody>
