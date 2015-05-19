@@ -56,17 +56,23 @@
 												<th>
 													Street
 												</th>
+												<th>
+													Sessions Left
+												</th>
 											</tr>
 										</thead>
-										<% @gyms.each do |gym| %>
+										<% @subscriptions.each do |subscription| %>
 										<tr>
 											<td class="fit">
 											</td>
 											<td>
-												<span class="bold theme-font"><%= gym.name %></span>
+												<span class="bold theme-font"><%= subscription.gym.name %></span>
 											</td>
 											<td>
-												<%= gym.street %>
+												<%= subscription.gym.street %>
+											</td>
+											<td>
+												<%= subscription.sessions_left %>
 											</td>
 										</tr>
 										<% end %>

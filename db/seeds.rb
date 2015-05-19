@@ -45,7 +45,7 @@ gym.save!
 
 user = User.create!(
   email: "madisonclient@bar.com",
-  first_name: "Madtown",
+  first_name: "Madisonclient",
   last_name: "mingus", 
   role: 2,
   password: "password"
@@ -64,7 +64,7 @@ user.client_profile.save!
 
 user = User.create!(
   email: "sdclient@bar.com",
-  first_name: "san diego",
+  first_name: "sdclient",
   last_name: "mingus", 
   role: 2,
   password: "password"
@@ -86,7 +86,7 @@ clients = ('1'..'10').to_a
 clients.each do |num|
   user = User.create!(
     email: "sdclient#{num}@bar.com",
-    first_name: "san diego",
+    first_name: "sdclient#{num}",
     last_name: "mingus", 
     role: 2,
     password: "password"

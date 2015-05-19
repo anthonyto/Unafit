@@ -1,5 +1,3 @@
 I probably don't need the index_gyms_map partial
 
 does gym need an email? Or does the gym manager's email provide that already?
-
-  background: #eff3f8;

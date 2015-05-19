@@ -30,7 +30,6 @@ class UsersController < ApplicationController
         # If the user is subscribed, send the gyms they are subscribed to
         if current_user.active_and_subscribed? 
           @subscriptions = current_user.subscriptions
-          @gyms          = current_user.gyms
         else 
           # if the user is inactive or unsubscribed, send gyms in their area
           @gyms = Gym.near(current_user.client_profile.geocode, 25)
