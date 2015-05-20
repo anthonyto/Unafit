@@ -29,7 +29,7 @@ As a gym I would like to..
 As an administrator I would like to...
 	* see how many unafit users there are
 	* see how many gyms are registered with unafit
-	add new gyms
+	* add new gyms
 	
 
 

@@ -75,7 +75,7 @@
 												<% elsif gym.manager.invitation_accepted_at.nil? %>
 													Manager not registered yet. 
 												<% else %>
-													<%= gym.user.first_name %>
+													<%= gym.manager.first_name %>
 												<% end %>
 											</td>
 											<td>

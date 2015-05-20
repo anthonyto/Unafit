@@ -36,7 +36,7 @@ class MyDevise::InvitationsController < Devise::InvitationsController
    def create_manager
      gym = Gym.find(params[:user][:gym_id])
      self.resource = invite_manager
-     gym.user = self.resource
+     gym.manager = self.resource
      gym.save!
 
      resource_invited = resource.errors.empty?
@@ -49,7 +49,8 @@ class MyDevise::InvitationsController < Devise::InvitationsController
        end
        respond_with resource, :location => after_invite_path_for(current_inviter)
      else
-       respond_with_navigational(resource) { render :new }
+       # respond_with_navigational(resource) { render :new }
+       redirect_to new_manager_path(gym.id), alert: "Email is already taken."
      end
    end
    

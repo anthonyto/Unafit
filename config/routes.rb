@@ -18,18 +18,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "my_devise/registrations", invitations: "my_devise/invitations"}
  
   devise_scope :user do
-    # get "/users/invitation/accept", :to => "devise/invitations#edit",   :as => 'accept_user_invitation'
-    # put "/users/invitation", :to => "devise/invitations#update"
-    
     get 'new_admin',   to: 'my_devise/invitations#new_admin'
     patch 'new_admin', to: 'my_devise/invitations#create_admin'
     post 'new_admin',  to: 'my_devise/invitations#create_admin'
     
-    # patch 'edit_admin', to: 'my_devise/invitations#update_admin'
-    # put 'edit_admin', to: 'my_devise/invitations#update_admin'
-    
     get 'gyms/:id/new_manager',   to: 'my_devise/invitations#new_manager', as: 'new_manager'
-    # patch 'gyms/gym_id/new_manager', to: 'my_devise/invitations#create_manager'
     post 'gyms/:id/new_manager',  to: 'my_devise/invitations#create_manager'
   end
  
