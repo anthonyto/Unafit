@@ -38,3 +38,19 @@ Subscriptions
 * handled by stripe
 * Active users are those that are active == true
 * a cron job runs every 24 hours at midnight to inactivate all users whose subscriptions have ended
+
+Deployment
+
+There are two branches, staging and master. The staging branch is deployed to unafit-staging.herokuapp.com and the master branch is deployed to unafit-production.herokuapp.co, (also unafitness.com).
+
+Staging is used for development, and master is always kept clean and production ready. 
+
+Assuming that you've set up your local staging and production branches to remote to the staging and production heroku apps: 
+
+To push to staging: 
+
+git push staging staging:master
+
+Production: 
+
+git push production master:master
