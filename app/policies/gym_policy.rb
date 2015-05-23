@@ -1,16 +1,9 @@
-class GymPolicy
+class GymPolicy < ApplicationPolicy
   attr_reader :current_user, :gym
   
   def initialize(current_user, gym)
     @current_user = current_user
     @gym          = gym
-  end
-  
-  def index?
-  end
-  
-  def show?
-    @current_user.admin? || @current_user.client?
   end
   
   def new? 
@@ -31,6 +24,7 @@ class GymPolicy
 
   ## HOW CAN WE ENFORCE THAT A MANAGER CAN ONLY UPDATE THEIR OWN GYM???
   def edit? 
+    # @gym.manager == @current_user
     @current_user.admin? or @current_user.manager?
   end
   

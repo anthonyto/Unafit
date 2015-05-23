@@ -1,9 +1,5 @@
 class GymsController < ApplicationController
-  before_action :set_gym, only: [:show, :edit, :update, :check_in_client, :update_sessions_left, :destroy]
-  # before_filter :authorize_user
-
-  # why is this here again?
-  respond_to :html
+  before_action :set_managed_gym, only: [:edit, :update, :check_in_client, :destroy]
 
   def index
     if Rails.env.development? 
@@ -19,7 +15,7 @@ class GymsController < ApplicationController
       @gyms = Gym.near(current_user.client_profile.geocode, 50)
       @center = [@gyms.first.latitude, @gyms.first.longitude]
     end
-    # This is all GMaps4Rails stuff
+    # buils a json hash with all the gyms, ready to be used for gmaps4rails
     @gyms_json = Gmaps4rails.build_markers(@gyms) do |gym, marker|
       marker.lat gym.latitude
       marker.lng gym.longitude
@@ -36,6 +32,7 @@ class GymsController < ApplicationController
   end
 
   def show
+    @gym = Gym.find(params[:id])
     @pictures = @gym.pictures
     @gym_json = Gmaps4rails.build_markers(@gym) do |gym, marker|
       marker.lat gym.latitude
@@ -52,14 +49,17 @@ class GymsController < ApplicationController
 
   def new
     @gym  = Gym.new
+    authorize @gym
   end
 
   def edit
+    authorize @gym
   end
 
   def create
     @gym  = Gym.new(gym_params)
-    
+    authorize @gym
+      
     if @gym.save
       redirect_to new_manager_path(@gym.id), notice: 'Gym was successfully created.'
     else
@@ -69,11 +69,14 @@ class GymsController < ApplicationController
 
   def update
     @gym.update(gym_params)
+    authorize @gym
+    
     respond_with(@gym)
   end
   
   # How can we enforce that a manager can only check in a client of their own? 
   def check_in_client
+    authorize @gym
     @user = User.find(params[:user_id])
     decrement_session(@gym, @user)
     flash[:notice] = "#{@user.first_name} successfully checked in."
@@ -81,15 +84,12 @@ class GymsController < ApplicationController
   end
 
   def destroy
+    authorize @gym
     @gym.destroy
     respond_with(@gym)
   end
 
   private
-  
-    def authorize_user
-      authorize current_user
-    end
   
     def decrement_session(gym, user)
       sessions_left = user.subscriptions.where(gym_id: gym.id).first.sessions_left
@@ -103,8 +103,15 @@ class GymsController < ApplicationController
       end
     end
     
-    def set_gym
+    def set_managed_gym
       @gym = Gym.find(params[:id])
+      verify_gym_ownership(@gym)
+    end
+    
+    def verify_gym_ownership(gym)
+      if gym != current_user.managed_gym
+        redirect_to errors_unauthorized_path
+      end
     end
 
     def gym_params
@@ -115,7 +122,4 @@ class GymsController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :role => 1)
     end
     
-    def associate_gym_and_manager(manager)
-      @gym.manager_id = manager.id
-    end
 end

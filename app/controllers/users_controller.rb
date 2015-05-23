@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :edit_subscriptions, :destroy]
+  before_action :set_user, except: [:update_subscriptions]
   before_action :authenticate_user!
   # before_filter :authorize_user
 
   def index
+    authorize @user
     if current_user.admin?
       @users = User.all
     else
@@ -89,9 +90,7 @@ class UsersController < ApplicationController
       authorize current_user
     end
   
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
-      # @user = User.find(params[:id])
       @user = current_user
     end
     
@@ -103,7 +102,6 @@ class UsersController < ApplicationController
       return hash
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :encrypted_password, :gym_ids => [])
     end

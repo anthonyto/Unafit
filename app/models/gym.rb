@@ -18,19 +18,9 @@ class Gym < ActiveRecord::Base
   # This is only if I decide to use native Google Maps api
   # Right now I am using GMaps4Rails. If that works out, then erase this method. I won't need it
   def build_markers(gyms)
-    gyms_json = Hash.new
-    gyms.each do |gym|
-      gym_json = Hash.new
-      gym_json[:id] = gym.id
-      gym_json[:name] = gym.name
-      gym_json[:street] = gym.street
-      gym_json[:city] = gym.city
-      gym_json[:state] = gym.state
-      gym_json[:zip] = gym.zip
-      gym_json[:latlng] = "#{gym.latitude}, #{gym.longitude}"
-      # add gym_json into a nice hash
-    end
   end
+  
+  
   
   private
   

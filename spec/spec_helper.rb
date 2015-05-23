@@ -14,8 +14,9 @@ require 'devise'
 
 RSpec.configure do |config|
   
-  # Include devise
-  config.include Devise::TestHelpers, :type => :controller
+  # silence all warnings to tests run!
+  # I think this is safe..I think. 
+  config.warnings = false
   
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

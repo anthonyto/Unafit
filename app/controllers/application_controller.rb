@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  respond_to :html, :js
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
+  
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   
   before_action :find_location
@@ -16,6 +17,12 @@ class ApplicationController < ActionController::Base
 
   def find_location
     @location = request.location
+  end
+  
+  private
+
+  def user_not_authorized
+    redirect_to errors_unauthorized_path, status: 403
   end
   
 end
