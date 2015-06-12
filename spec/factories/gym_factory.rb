@@ -1,8 +1,8 @@
 FactoryGirl.define do 
   factory :gym do 
-    name "Cyc Fitness"
-    email "foo@bar.com"
-    phone_number "(858)383-7081"
+    name { Faker::Company.name }
+    email { Faker::Internet.email }
+    phone_number { Faker::PhoneNumber.phone_number }
     city "Madison"
     state "WI"
     street "773 University Avenue"

@@ -1,69 +1,128 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
-
-  let(:valid_session) { {} }
   
   context 'client' do 
-    login_client
+    
     describe "GET index" do
+      login(:client)
+      before(:each) { get :index }
       it "is unauthorized" do 
-        get :index 
-        expect(response).to redirect_to(errors_unauthorized_path)
         expect(response).to have_http_status(403)
       end
+      it "renders errors/unauthorized" do
+        expect(response).to render_template("errors/unauthorized")
+      end
     end
+    
+    describe "GET show" do 
+      context "no client profile" do 
+        login(:client)
+        before(:each) { get :show, id: @user.id }
+        it "is successful" do 
+          expect(response).to be_redirect
+          expect(response).to have_http_status(302)
+        end
+        it "renders the new client_profile view" do 
+          expect(response).to redirect_to new_user_client_profile_path(@user.id)
+        end
+      end
+      context "has client profile" do 
+        login(:client_with_client_profile)
+        before(:each) { get :show, id: @user.id }
+        it "is successful" do 
+          expect(response).to be_success
+          expect(response).to have_http_status(200)
+        end
+        it "renders the client dashboard" do 
+          expect(response).to render_template("show_client")
+        end
+      end
+      context "subscribed" do 
+        login(:client_with_subscriptions)
+        before(:each) { get :show, id: @user.id }
+        it "loads users subscriptions as @subscriptions" do 
+          @subscriptions = @user.subscriptions
+          expect(assigns(:subscriptions)).to match(@subscriptions)
+        end
+      end
+    end
+    
   end
   
   context 'manager' do 
-  end
-  
-  context 'admin' do 
-    login_admin
-    describe "Get index" do 
-      it "is successful" do
-        get :index
+    login(:manager)
+    describe "GET index" do 
+      before(:each) { get :index }
+      it "is unauthorized" do
+        expect(response).to have_http_status(403)
+      end
+      it "renders errors/unauthorized" do
+        expect(response).to render_template("errors/unauthorized")
+      end
+    end
+    
+    describe "GET show" do 
+      login(:manager)
+      before(:each) { get :show, id: @user.id }
+      it "is successful" do 
         expect(response).to be_success
         expect(response).to have_http_status(200)
       end
-      
+      it "renders the manager dashboard" do 
+        expect(response).to render_template("show_manager")
+      end
+      it "loads managed_gym as @gym" do 
+        @gym = @user.managed_gym
+        expect(assigns(:gym)).to match(@gym)
+      end
+      it "loads all managed_gyms.users as @users" do 
+        @users = @user.managed_gym.users
+        expect(assigns(:users)).to match(@users)
+      end
+    end
+    
+  end
+  
+  context 'admin' do 
+    login(:admin)
+    describe "GET index" do 
+      before(:each) { get :index }
+      it "is successful" do
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
       it "renders the index template" do
-        get :index
         expect(response).to render_template("index")
       end
-      
       it "loads all users into @users" do
         @users = User.all
-        get :index
         expect(assigns(:users)).to match(@users)
+      end
+    end
+    
+    describe "GET show" do 
+      before(:each) { get :show, id: @user.id }
+      it "is successful" do 
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
+      it "renders the admin dashboard" do 
+        expect(response).to render_template("show_admin")
+      end
+      it "loads all gyms as @gyms" do 
+        @gyms = Gym.all
+        expect(assigns(:gyms)).to match(@gyms)
+      end
+      it "loads total number of users as @num_users" do 
+        @num_users = User.count
+        expect(assigns(:num_users)).to match(@num_users)
       end
     end
   end
 
-  # describe "GET index" do
-#     it "assigns all users as @users" do
-#       user = User.create! valid_attributes
-#       get :index, {}, valid_session
-#       expect(assigns(:users)).to eq([user])
-#     end
-#   end
-#
-#   describe "GET show" do
-#
-#     it "assigns the requested user as @user" do
-#       user = User.create! valid_attributes
-#       get :show, {:id => user.to_param}, valid_session
-#       expect(assigns(:user)).to eq(user)
-#     end
-#   end
-#
-#   describe "GET new" do
-#     it "assigns a new user as @user" do
-#       get :new, {}, valid_session
-#       expect(assigns(:user)).to be_a_new(User)
-#     end
-#   end
-#
+end
+
 #   describe "GET edit" do
 #     it "assigns the requested user as @user" do
 #       user = User.create! valid_attributes
@@ -160,5 +219,3 @@ RSpec.describe UsersController, :type => :controller do
 #       expect(response).to redirect_to(users_url)
 #     end
 #   end
-
-end

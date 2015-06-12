@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    redirect_to errors_unauthorized_path, status: 403
+    render errors_unauthorized_path, status: 403
   end
   
 end

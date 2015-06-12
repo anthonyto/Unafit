@@ -2,8 +2,6 @@ class ClientProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client_profile, only: [:edit, :update]
   
-  respond_to :html
-  
   def new
     @client_profile = current_user.build_client_profile
   end
