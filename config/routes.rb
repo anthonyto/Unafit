@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
  
   
-  resources :users do 
+  resources :users do
     member do 
       get 'edit_subscriptions'
       patch 'edit_subscriptions', to: 'users#update_subscriptions'

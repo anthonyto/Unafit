@@ -29,34 +29,20 @@ class UsersController < ApplicationController
       render "show_client"
     end
   end
-
-  def edit
-  end
-
+  
+  # Apperantly edit_subscriptions automatically knows how to use this method to update the user
+  # Not quite sure how that works, but it does
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+     redirect_to @user, notice: 'User was successfully updated.'
     else
-      render :edit
+     render :edit_subscriptions
     end
   end
   
   def edit_subscriptions
     @subscribed_gyms = current_user.gyms
     @gyms            = Gym.near(current_user.client_profile.geocode, 25)
-  end
-  
-  def update_subscriptions
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
-    else
-      render :edit
-    end
-  end
-  
-  def destroy
-    @user.destroy
-    redirect_to root, notice: 'User was successfully destroyed.'
   end
 
   private

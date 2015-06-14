@@ -14,6 +14,10 @@ class UserPolicy
     @current_user.admin? or @current_user.manager? or @current_user.client?
   end
   
+  def update? 
+    @current_user.client?
+  end
+  
   def edit_subscriptions?
     @current_user.client? and @current_user.client_profile.active?
   end
