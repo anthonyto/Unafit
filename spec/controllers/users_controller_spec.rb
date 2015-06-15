@@ -2,6 +2,49 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
   
+  context "guest" do
+    describe "GET index" do
+      before(:each) { get :index }
+      it "is redirects" do 
+        expect(response).to be_redirect
+        expect(response).to have_http_status(302)
+      end
+      it "redirects to sign up page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+    describe "GET show" do 
+      before(:each) { get :show, id: 1 }
+      it "it redirects" do 
+        expect(response).to be_redirect
+        expect(response).to have_http_status(302)
+      end
+      it "redirects to sign up page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+    describe "GET edit_subscriptions" do 
+      before(:each) { get :edit_subscriptions, id: 1 }
+      it "is redirects" do 
+        expect(response).to be_redirect
+        expect(response).to have_http_status(302)
+      end
+      it "redirects to sign up page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+    describe "PATCH update" do
+      before(:each) { patch :update, id: 1, user: { gym_ids: ["1"]} }
+      it "is redirects" do 
+        expect(response).to be_redirect
+        expect(response).to have_http_status(302)
+      end
+      it "redirects to sign up page" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+  
   context 'client' do 
     describe "GET index" do
       login(:client)
@@ -17,7 +60,7 @@ RSpec.describe UsersController, :type => :controller do
       context "no client profile" do 
         login(:client)
         before(:each) { get :show, id: @user.id }
-        it "is successful" do 
+        it "redirects to client profile" do 
           expect(response).to be_redirect
           expect(response).to have_http_status(302)
         end
@@ -59,7 +102,6 @@ RSpec.describe UsersController, :type => :controller do
     describe "PATCH update" do 
       login(:client_with_client_profile)
       context "with valid params" do 
-        # @gym = FactoryGirl.create(:gym)
         let(:gym) { FactoryGirl.create(:gym) }
         before(:each) { patch :update, id: @user.id, user: { gym_ids: [gym.id]} }
         it "it redirects" do 

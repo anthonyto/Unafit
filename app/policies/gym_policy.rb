@@ -6,6 +6,10 @@ class GymPolicy < ApplicationPolicy
     @gym          = gym
   end
   
+  def index
+    @current_user.admin? or @current_user.manager? or @current_user.client?
+  end
+  
   def new? 
     @current_user.admin?
   end
@@ -22,9 +26,7 @@ class GymPolicy < ApplicationPolicy
     @current_user.manager?
   end
 
-  ## HOW CAN WE ENFORCE THAT A MANAGER CAN ONLY UPDATE THEIR OWN GYM???
   def edit? 
-    # @gym.manager == @current_user
     @current_user.admin? or @current_user.manager?
   end
   

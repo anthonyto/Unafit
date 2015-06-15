@@ -1,6 +1,9 @@
 class GymsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :check_in_client, :destroy]
   before_action :set_managed_gym, only: [:edit, :update, :check_in_client, :destroy]
 
+  respond_to :html
+  
   def index
     if Rails.env.development? 
       # If Dev, just send all gyms. Whatever. 
@@ -15,7 +18,7 @@ class GymsController < ApplicationController
       @gyms = Gym.near(current_user.client_profile.geocode, 50)
       @center = [@gyms.first.latitude, @gyms.first.longitude]
     end
-    # buils a json hash with all the gyms, ready to be used for gmaps4rails
+    # builds a json hash with all the gyms, ready to be used for gmaps4rails
     @gyms_json = Gmaps4rails.build_markers(@gyms) do |gym, marker|
       marker.lat gym.latitude
       marker.lng gym.longitude

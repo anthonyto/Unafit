@@ -11,5 +11,15 @@ FactoryGirl.define do
     three_gym_passes 6
     four_gym_passes 4
     description "foobarfoo"
+    
+    factory :madison_gym do 
+      latitude 43.0771
+      longitude -89.3815
+    end
+    
+    factory :san_diego_gym do 
+      latitude 33.0169
+      longitude -117.11
+    end
   end
 end 

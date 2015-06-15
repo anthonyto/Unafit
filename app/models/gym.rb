@@ -13,14 +13,7 @@ class Gym < ActiveRecord::Base
   def full_street_address
     address = "#{self.street} #{self.city} #{self.state} #{self.zip}"
     return address
-  end
-  
-  # This is only if I decide to use native Google Maps api
-  # Right now I am using GMaps4Rails. If that works out, then erase this method. I won't need it
-  def build_markers(gyms)
-  end
-  
-  
+  end  
   
   private
   
