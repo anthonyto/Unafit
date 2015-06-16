@@ -315,11 +315,20 @@ RSpec.describe GymsController, :type => :controller do
       end
     end
     describe "GET check_in_client" do
-      let(:user) { FactoryGirl.create(:client_with_subscriptions) }
-      before(:each) { get :check_in_client, { id: madison_gym.id, user_id: user.id } }
+      let(:client) { FactoryGirl.create(:client_with_subscriptions) }
       context "manager's gym" do 
+        before(:each) { get :check_in_client, { id: @user.managed_gym.id, user_id: client.id } }
+        it "redirects" do 
+          expect(response).to be_redirect
+          expect(response).to have_http_status(302)
+        end
+        it "redirects to unauthorized" do
+          expect(response).to redirect_to user_path(user)
+        end
       end
       context "random gym" do 
+        before(:each) { get :check_in_client, { id: madison_gym.id, user_id: client.id } }
+        pending("Do we really need to test this?")
       end
     end
     describe "DELETE destroy" do
